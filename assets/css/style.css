@@ -1,0 +1,31 @@
+@media(max-width: 768px){
+	.navbar-brand{
+		width: 100%;
+	}
+	.navbar-brand img{
+		margin: 0 auto;
+	}
+	.navbar-fixed-bottom .navbar-collapse, 
+	.navbar-fixed-top .navbar-collapse {
+		min-height: 400px;
+	}
+}
+@media(min-width: 769px){
+	.dropdown-menu a{
+		height: 30px !important;
+	}
+	.dropdown-menu a:hover{
+		color: #f90000 !important;
+	}
+	.navbar .nav li a{
+		height: 70px;
+	}
+	.page-header{
+		margin-top: 130px;
+	}
+}
+@media(min-width: 1108px){
+	.page-header{
+		margin-top: 60px;
+	}
+}
