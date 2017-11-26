@@ -69,26 +69,26 @@
 
     <div class="navbar-collapse collapse" id="navbar-second-toggle">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="index.php"><i class="icon-home2 position-left"></i> Beranda</a></li>
-        <li><a href="index.php"><i class="icon-design position-left"></i> Perencanaan</a></li>
-        <li><a href="index.php"><i class="icon-versions position-left"></i> Lelang</a></li>
-        <li class="dropdown">
+        <li id="beranda"><a href="index.php"><i class="icon-home2 position-left"></i> Beranda</a></li>
+        <li id="perencanaan"><a href="perencanaan.php"><i class="icon-design position-left"></i> Perencanaan</a></li>
+        <li id="lelang"><a href="lelang.php"><i class="icon-versions position-left"></i> Lelang</a></li>
+        <li id="realisasi" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-statistics position-left"></i> Realisasi <span class="caret"></span>
           </a>
           <ul class="dropdown-menu width-200">
-            <li><a href="index.html"><i class="icon-stats-growth"></i> Realisasi Keuangan</a></li>
-            <li><a href="index.html"><i class="icon-clipboard2"></i> Realisasi Fisik</a></li>
+            <li id="keuangan"><a href="realisasi-keuangan.php"><i class="icon-stats-growth"></i> Realisasi Keuangan</a></li>
+            <li id="fisik"><a href="realisasi-fisik.php"><i class="icon-clipboard2"></i> Realisasi Fisik</a></li>
           </ul>
         </li>
-        <li class="dropdown dropdown-user">
+        <li id="login" class="dropdown dropdown-user">
           <a style="padding-top: 18px;" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="assets/images/demo/users/guest-red.png" alt="">
+            <img src="assets/images/demo/users/guest-red.jpg" alt="">
             <span>Guest</span>
             <i class="caret"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#"><i class="icon-user"></i> Login</a></li>
+            <li id="user"><a href="login.php"><i class="icon-user"></i> Login</a></li>
             <!-- <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
             <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
             <li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
