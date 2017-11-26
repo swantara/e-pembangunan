@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.interface.club/limitless/layout_4/LTR/default/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Nov 2017 08:26:18 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+  <title>E-Pembangunan Kab Badung</title>
 
   <!-- Global stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -17,6 +16,7 @@
   <link href="assets/css/components.css" rel="stylesheet" type="text/css">
   <link href="assets/css/colors.css" rel="stylesheet" type="text/css">
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/morris.css" rel="stylesheet" type="text/css">
   <!-- /global stylesheets -->
 
   <!-- Core JS files -->
@@ -29,17 +29,28 @@
   <!-- /core JS files -->
 
   <!-- Theme JS files -->
+  <script type="text/javascript" src="assets/js/core/libraries/jquery_ui/core.min.js"></script>
+  <script type="text/javascript" src="assets/js/core/libraries/jquery_ui/effects.min.js"></script>
+  <script type="text/javascript" src="assets/js/core/libraries/jquery_ui/interactions.min.js"></script>
+  <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
   <script type="text/javascript" src="assets/js/plugins/visualization/d3/d3.min.js"></script>
   <script type="text/javascript" src="assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
-  <script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
   <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
   <script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
   <script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
   <script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
 
+  <!-- Fancy Tree -->
+  <script type="text/javascript" src="assets/js/plugins/trees/fancytree_all.min.js"></script>
+  <script type="text/javascript" src="assets/js/plugins/trees/fancytree_childcounter.js"></script>
+
   <script type="text/javascript" src="assets/js/core/app.js"></script>
-  <script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
+  <script type="text/javascript" src="assets/js/raphael-min.js"></script>
+  <script type="text/javascript" src="assets/js/morris-min.js"></script>
   <!-- /theme JS files -->
+
+  <script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
+  <script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
 
 </head>
 
@@ -64,8 +75,8 @@
             <i class="icon-statistics position-left"></i> Realisasi <span class="caret"></span>
           </a>
           <ul class="dropdown-menu width-200">
-            <li><a href="starters/layout_boxed.html"><i class="icon-stats-growth"></i> Realisasi Keuangan</a></li>
-            <li><a href="starters/layout_sidebar_sticky.html"><i class="icon-clipboard2"></i> Realisasi Fisik</a></li>
+            <li><a href="index.html"><i class="icon-stats-growth"></i> Realisasi Keuangan</a></li>
+            <li><a href="index.html"><i class="icon-clipboard2"></i> Realisasi Fisik</a></li>
           </ul>
         </li>
         <li class="dropdown dropdown-user">
