@@ -274,98 +274,104 @@
                 	</ul>
               	</div>
 							</div>
-							<div class="panel-body">
 								<div class="tabbable">
-									<ul class="nav nav-tabs">
-										<li class="active"><a href="#progres-keuangan" data-toggle="tab">Progres Keuangan</a></li>
-										<li><a href="#progres-fisik" data-toggle="tab">Progres Fisik</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="progres-keuangan">
-              				<div class="chart" id="line-chart" style="height: 300px;"></div>
-              				<div class="table-responsive mt-30">
-												<table class="table">
-													<thead>
-														<tr class="table-gradient">
-															<th>Keterangan</th>
-															<th>Tahun</th>
-															<th>B01</th>
-															<th>B02</th>
-															<th>B03</th>
-															<th>B04</th>
-															<th>B05</th>
-															<th>B06</th>
-															<th>B07</th>
-															<th>B08</th>
-															<th>B09</th>
-															<th>B010</th>
-															<th>B011</th>
-															<th>B012</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr style="text-align: center;">
-														</tr>
-														<tr>
-															<td><span>Target</span></td>
-															<td>2017</td>	
-															<td>8.12%</td>	
-															<td>21.05%</td>	
-															<td>34.91%</td>	
-															<td>45.02%</td>	
-															<td>49.19%</td>		
-															<td>56.44%</td>		
-															<td>67.26%</td>			
-															<td>78.512%</td>		
-															<td>86.15%</td>	
-															<td>91.62%</td>
-															<td>97.94%</td>
-															<td>100%</td>
-														</tr>
-														<tr>
-															<td><span>Proyeksi</span></td>
-															<td>2017</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>	
-															<td>0.00%</td>														
-														</tr>
-														<tr>
-															<td><span>Realisasi</span></td>
-															<td>2017</td>
-															<td>2.34%</td>
-															<td>3.67%</td>
-															<td>7.01%</td>
-															<td>8.10%</td>
-															<td>13.80%</td>
-															<td>25.77%</td>
-															<td>33.68%</td>
-															<td>39.02%</td>
-															<td>45.10%</td>
-															<td>56.43%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-													</tbody>
-												</table>
+									<div class="panel-body">
+										<ul class="nav nav-tabs mt-minus-30">
+											<li class="active"><a href="#basic-tab3" data-toggle="tab">Progres Keuangan</a></li>
+											<li><a href="#basic-tab4" data-toggle="tab">Progres Fisik</a></li>
+										</ul>
+									</div>
+									<div class="mt-minus-30 tab-content">
+										<div class="tab-pane active" id="basic-tab3">
+											<div class="panel-body">
+	              				<div class="chart" id="line-chart" style="height: 300px;"></div>
+	              				<div class="table-responsive mt-30">
+													<table class="table">
+														<thead>
+															<tr class="table-gradient">
+																<th>Keterangan</th>
+																<th>Tahun</th>
+																<th>B01</th>
+																<th>B02</th>
+																<th>B03</th>
+																<th>B04</th>
+																<th>B05</th>
+																<th>B06</th>
+																<th>B07</th>
+																<th>B08</th>
+																<th>B09</th>
+																<th>B010</th>
+																<th>B011</th>
+																<th>B012</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr style="text-align: center;">
+															</tr>
+															<tr>
+																<td><span>Target</span></td>
+																<td>2017</td>	
+																<td>8.12%</td>	
+																<td>21.05%</td>	
+																<td>34.91%</td>	
+																<td>45.02%</td>	
+																<td>49.19%</td>		
+																<td>56.44%</td>		
+																<td>67.26%</td>			
+																<td>78.512%</td>		
+																<td>86.15%</td>	
+																<td>91.62%</td>
+																<td>97.94%</td>
+																<td>100%</td>
+															</tr>
+															<tr>
+																<td><span>Proyeksi</span></td>
+																<td>2017</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>
+																<td>0.00%</td>	
+																<td>0.00%</td>														
+															</tr>
+															<tr>
+																<td><span>Realisasi</span></td>
+																<td>2017</td>
+																<td>2.34%</td>
+																<td>3.67%</td>
+																<td>7.01%</td>
+																<td>8.10%</td>
+																<td>13.80%</td>
+																<td>25.77%</td>
+																<td>33.68%</td>
+																<td>39.02%</td>
+																<td>45.10%</td>
+																<td>56.43%</td>
+																<td>-</td>
+																<td>-</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 											</div>
-										<div class="tab-pane" id="progres-fisik">
-											<!-- dfsdfsdaf -->
+										</div>
+										<div class="tab-pane" id="basic-tab4">
+											<div class="panel-body">
+												fasfas
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 			<!-- /main content -->
 

@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>E-Pembangunan Kab Badung</title>
 
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="assets/images/favicon.png">
+
   <!-- Global stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
   <link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -50,7 +53,6 @@
   <!-- /theme JS files -->
 
   <script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
-  <script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
 
 </head>
 
