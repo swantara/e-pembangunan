@@ -15,7 +15,7 @@
 						<a href="index.php"><span class="text-semibold white-link">Beranda </span></a>
 						<i class="icon-arrow-right32"></i>
 						<i class="icon-versions position-left"></i>
-						<span class="text-semibold"> Lelang</span> 
+						<span class="text-semibold"> Data Lelang</span> 
 					</h4>
 				</div>
 			</div>
@@ -40,6 +40,7 @@
 								<h5 class="panel-title"><i class="icon-versions mr-10"></i><strong>Pengadaan Melalui Lelang</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
+                		<li><a data-action="reload"></a></li>
                 		<li><a data-action="collapse"></a></li>
                 	</ul>
               	</div>

@@ -70,31 +70,42 @@
     <div class="navbar-collapse collapse" id="navbar-second-toggle">
       <ul class="nav navbar-nav navbar-right">
         <li id="beranda"><a href="index.php"><i class="icon-home2 position-left"></i> Beranda</a></li>
-        <li id="perencanaan"><a href="perencanaan.php"><i class="icon-design position-left"></i> Perencanaan</a></li>
-        <li id="lelang"><a href="lelang.php"><i class="icon-versions position-left"></i> Lelang</a></li>
+        <li id="perencanaan" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-design position-left"></i> Perencanaan<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu width-200">
+            <li id="data-perencanaan"><a href="data-perencanaan.php"><i class="icon-design"></i> Data Perencanaan</a></li>
+            <li id="grafik-perencanaan"><a href="grafik-perencanaan.php"><i class="icon-stats-growth"></i> Grafik Perencanaan</a></li>
+          </ul>
+        </li>
+        <li id="lelang" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-versions position-left"></i> Lelang <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu width-200">
+            <li id="data-lelang"><a href="data-lelang.php"><i class="icon-versions"></i> Data Lelang</a></li>
+            <li id="grafik-lelang"><a href="grafik-lelang.php"><i class="icon-stats-growth"></i> Grafik Lelang</a></li>
+          </ul>
+        </li>
         <li id="realisasi" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-statistics position-left"></i> Realisasi <span class="caret"></span>
           </a>
           <ul class="dropdown-menu width-200">
-            <li id="keuangan"><a href="realisasi-keuangan.php"><i class="icon-stats-growth"></i> Realisasi Keuangan</a></li>
+            <li id="keuangan"><a href="realisasi-keuangan.php"><i class="icon-clipboard2"></i> Realisasi Keuangan</a></li>
+            <li id="grafik-keuangan"><a href="grafik-realisasi-keuangan.php"><i class="icon-stats-growth"></i> Grafik Realisasi Keuangan</a></li>
             <li id="fisik"><a href="realisasi-fisik.php"><i class="icon-clipboard2"></i> Realisasi Fisik</a></li>
+            <li id="grafik-fisik"><a href="grafik-realisasi-fisik.php"><i class="icon-stats-growth"></i> Grafik Realisasi Fisik</a></li>
           </ul>
         </li>
-        <li id="login" class="dropdown dropdown-user">
-          <a style="padding-top: 18px;" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="assets/images/demo/users/guest-red.jpg" alt="">
-            <span>Guest</span>
-            <i class="caret"></i>
+        <li><a href="http://e-monev.badungkab.go.id/v2/login" target="_blank"><i class="icon-link2 position-left"></i> E-Monev</a></li>
+        <li id="login" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user position-left"></i> Login <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li id="user"><a href="login.php"><i class="icon-user"></i> Login</a></li>
-            <!-- <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-            <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-            <li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-            <li><a href="#"><i class="icon-switch2"></i> Logout</a></li> -->
+          <ul class="dropdown-menu width-200">
+            <li id="user"><a href="login.php"><i class="icon-enter"></i> Masuk Ke Aplikasi</a></li>
           </ul>
         </li>
       </ul>

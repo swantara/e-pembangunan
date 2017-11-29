@@ -40,6 +40,7 @@
 								<h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Pengadaan</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
+                		<li><a data-action="reload"></a></li>
                 		<li><a data-action="collapse"></a></li>
                 	</ul>
               	</div>

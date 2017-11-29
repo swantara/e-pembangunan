@@ -10,7 +10,7 @@
 			<div class="content-wrapper">
 
 				<!-- Simple login form -->
-				<form action="index.php">
+				<form action="admin/index.php">
 					<div style="margin: 90px auto auto auto; max-width: 328px;" class="panel panel-body login-form">
 						<div class="text-center">
 							<div><img style="width: 100%; max-width: 88px; min-width: 40px;" src="assets/images/logo-badung.png" /></div>
