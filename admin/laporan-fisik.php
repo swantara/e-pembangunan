@@ -21,7 +21,7 @@
             <!-- About Me Box -->
             <div class="box box-danger">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-user-plus margin-r-5"></i>Tambah Data Penduduk</h3>
+                <h3 class="box-title"><i class="fa fa-user-plus margin-r-5"></i>Pelaporan Realisasi Fisik</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -80,13 +80,85 @@
                     </div>
                   </div>
                 </div>
-                <hr/>
+
+                <br/>
+                <label>Data Awal (Hanya di-inputkan sekali)</label>
+                <hr style="margin-top: 0px; margin-bottom: 5px;" />
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label>NPWP Pemenang</label>
+                      <input required name="nama" type="text" class="form-control" placeholder="NPWP Pemenang">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label>Pemenang</label>
+                      <input required name="nama" type="text" class="form-control" value="Pt Pemenang">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Nilai Kontrak (Rp.)</label>
+                      <input required name="nama" type="text" class="form-control" value="118,981,940.00">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Jangka Waktu Pekerjaan (Hari Kerja)</label>
+                      <input required name="nama" type="text" class="form-control" value="90">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Mulai Pekerjaan</label>
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="datepicker-mulai">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Selesai Pekerjaan</label>
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="datepicker-selesai">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- /.input group -->
+
+                <br/>
+                <label>Data Laporan</label>
+                <hr style="margin-top: 0px; margin-bottom: 5px;" />
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Periode</label>
+                      <input readonly name="nama" type="text" class="form-control" value="2017">
+                    </div>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Bulan</label>
                       <select required name="pendidikan" class="form-control">
-                        <option value="">Pilih Bulan</option>
+                        <option value="">Nopember</option>
+                        <option value="">Bulan 1</option>
+                        <option value="">Bulan 2</option>
+                        <option value="">Bulan 3</option>
                       </select>
                     </div>
                   </div>
@@ -136,35 +208,20 @@
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- bootstrap datepicker -->
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <!-- nik validation -->
   <script>
 
-  function checknik(input)
-  {
-    if($('#nik').val()==""){
-      console.log("meong");
-      $('#help').html('');
-      $('#validation').removeClass("has-success");
-    }
-    else{
-      $.getJSON( "<?=site_url('penduduk/ajaxchecknik/')?>" + input.value)
-      .done(function( data ) {
-        if(data == false)
-          {
-            $('#help').html('');
-            $('#validation').removeClass("has-error");
-            $('#validation').addClass("has-success");
-          }
-          else
-          {
-            $('#help').html('NIK sudah terdaftar');
-            $('#validation').addClass("has-error");
-          }     
-      });                  
-    }    
-  }
-
   $(document).ready(function() {
+    //Date picker
+    $('#datepicker-mulai').datepicker({
+      autoclose: true
+    });
+    //Date picker
+    $('#datepicker-selesai').datepicker({
+      autoclose: true
+    });
     $('#data_penduduk').addClass("active");
     $('#penduduk').addClass("active");
   });

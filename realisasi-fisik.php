@@ -101,9 +101,10 @@
 												<th>Kode Rekening</th>
 												<th>Jenis Pengadaan Barang/Jasa</th>
 												<th>Nama Pengadaan</th>
-												<th>Realisasi Saat Ini</th>
-												<th>Target Penyelesaian</th>
-												<th>Rekanan</th>
+												<th>Target</th>
+												<th>Realisasi</th>
+												<th>Deviasi</th>
+												<th>Pemenang</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -114,31 +115,35 @@
 												<td>Barang</td>	
 												<td>Nama Pengadaan</td>		
 												<td>80%</td>			
-												<td>8 Desember 2017</td>	
+												<td>70%</td>				
+												<td>-10%</td>
 												<td>Nama Rekanan</td>
 											</tr>
 											<tr>
 												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
 												<td>Konstruksi</td>	
-												<td>Nama Pengadaan</td>	
-												<td>79%</td>	
-												<td>8 Desember 2017</td>	
+												<td>Nama Pengadaan</td>				
+												<td>70%</td>			
+												<td>78%</td>				
+												<td>8%</td>
 												<td>Nama Rekanan</td>						
 											</tr>
 											<tr>
 												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
 												<td>Konsultasi</td>	
-												<td>Nama Pengadaan</td>		
-												<td>88%</td>	
-												<td>8 Desember 2017</td>	
+												<td>Nama Pengadaan</td>					
+												<td>70%</td>			
+												<td>78%</td>				
+												<td>8%</td>
 												<td>Nama Rekanan</td>
 											</tr>
 											<tr>
 												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
 												<td>Jasa Lainnya</td>	
-												<td>Nama Pengadaan</td>		
-												<td>92%</td>		
-												<td>8 Desember 2017</td>		
+												<td>Nama Pengadaan</td>					
+												<td>70%</td>			
+												<td>78%</td>				
+												<td>8%</td>	
 												<td>Nama Rekanan</td>
 											</tr>
 										</tbody>

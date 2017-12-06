@@ -130,6 +130,8 @@
             <li><a href="laporan-fisik.php"><i class="fa fa-file-text-o"></i> Pelaporan Fisik</a></li>
           </ul>
         </li>
+        <li class="header">Halaman Utama</li>
+        <li><a href="../index.php"><i class="fa fa-home text-green"></i> <span>Halaman Utama</span></a></li>
         <li class="header">SIGN OUT</li>
         <li><a href="../index.php"><i class="fa fa-power-off text-red"></i> <span>Sign Out</span></a></li>
       </ul>

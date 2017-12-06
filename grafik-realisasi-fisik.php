@@ -150,6 +150,22 @@
 												<td>-</td>
 												<td>-</td>
 											</tr>
+											<tr>
+												<td><span class="pill-yellow">Deviasi</span></td>
+												<td>2017</td>
+												<td>2.34%</td>
+												<td>3.67%</td>
+												<td>7.01%</td>
+												<td>8.10%</td>
+												<td>13.80%</td>
+												<td>25.77%</td>
+												<td>33.68%</td>
+												<td>39.02%</td>
+												<td>45.10%</td>
+												<td>56.43%</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
 										</tbody>
 									</table>
 								</div>
@@ -177,23 +193,23 @@
 	      element: 'line-chart2',
 	      resize: true,
 	      data: [
-	        {y: '2017-01', item1b: 9.31, item2b: 2.02},
-	        {y: '2017-02', item1b: 23.93, item2b: 4.20},
-	        {y: '2017-03', item1b: 39.80, item2b: 8.04},
-	        {y: '2017-04', item1b: 51.46, item2b: 9.35},
-	        {y: '2017-05', item1b: 56.58, item2b: 16.65},
-	        {y: '2017-06', item1b: 63.72, item2b: 37.85},
-	        {y: '2017-07', item1b: 77.66, item2b: 45.02},
-	        {y: '2017-08', item1b: 83.86, item2b: 48.87},
-	        {y: '2017-09', item1b: 87.75, item2b: 60.10},
-	        {y: '2017-10', item1b: 93.31, item2b: 68.53},
+	        {y: '2017-01', item1b: 9.31, item2b: 2.02, item3b: -7.02},
+	        {y: '2017-02', item1b: 23.93, item2b: 4.20, item3b: 7.02},
+	        {y: '2017-03', item1b: 39.80, item2b: 8.04, item3b: 10.02},
+	        {y: '2017-04', item1b: 51.46, item2b: 9.35, item3b: 10.02},
+	        {y: '2017-05', item1b: 56.58, item2b: 16.65, item3b: -7.02},
+	        {y: '2017-06', item1b: 63.72, item2b: 37.85, item3b: -7.02},
+	        {y: '2017-07', item1b: 77.66, item2b: 45.02, item3b: 8.02},
+	        {y: '2017-08', item1b: 83.86, item2b: 48.87, item3b: 9.02},
+	        {y: '2017-09', item1b: 87.75, item2b: 60.10, item3b: 20.02},
+	        {y: '2017-10', item1b: 93.31, item2b: 68.53, item3b: -2.02},
 	        {y: '2017-11', item1b: 97.89},
 	        {y: '2017-12', item1b: 100}
 	      ],
 	      xkey: 'y',
-	      ykeys: ['item1b', 'item2b'],
-	      labels: ['Target', 'Realisasi'],
-	      lineColors: ['#b9e0a0', '#a0d0e0'],
+	      ykeys: ['item1b', 'item2b', 'item3b'],
+	      labels: ['Target', 'Realisasi', 'Deviasi'],
+	      lineColors: ['#b9e0a0', '#a0d0e0', '#cddc39'],
 	      hideHover: 'auto',
 	      postUnits: '%',
 	      xLabels : 'month'

@@ -175,7 +175,7 @@
 
 		                // Add legend
 		                legend: {
-		                    data: ['Diajukan', 'Disetujui']
+		                    data: ['Rencana', 'Disetujui']
 		                },
 
 		                // Enable drag recalculate
@@ -196,7 +196,7 @@
 		                // Add series
 		                series: [
 		                    {
-		                        name: 'Diajukan',
+		                        name: 'Rencana',
 		                        type: 'bar',
 		                        itemStyle: {
 		                            normal: {
