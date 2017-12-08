@@ -12,7 +12,7 @@
 						<i class="icon-home2 position-left"></i>
 						<a href="index.php"><span class="text-semibold white-link">Beranda </span></a>
 						<i class="icon-arrow-right32"></i>
-						<i class="icon-clipboard2 position-left"></i>
+						<i class="icon-stats-growth position-left"></i>
 						<span class="text-semibold"> Realisasi Keuangan</span> 
 					</h4>
 				</div>
@@ -35,7 +35,7 @@
 					<div class="col-lg-12">
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Realisasi Keuangan</strong></h5>
+								<h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Progres Realisasi Fisik</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
                 		<li><a data-action="collapse"></a></li>
@@ -45,51 +45,113 @@
 							<div class="panel-body">
 								<div class="row">
 									<form class="form-vertical" action="#">
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Urusan</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1 - Urusan Wajib Pelayanan Dasar</option>
+							              <option value="opt3">2 - Urusan Wajib Bukan Pelayanan Dasar</option>
+							              <option value="opt4">3 - Urusan Pilihan</option>
+							              <option value="opt4">4 - Fungsi Penunjang Urusan Pemerintahan</option>
+							          </select>
+							        </div>
+								    </div>
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Bidang</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1.01 - Pendidikan</option>
+							              <option value="opt3">1.02 - Kesehatan</option>
+							              <option value="opt4">1.03 - Pekerjaan Umum dan Penataan Ruang</option>
+							              <option value="opt4">1.04 - Perumahan Rakyat dan Kawasan Permukiman</option>
+							          </select>
+							        </div>
+								    </div>
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Unit</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1.01.01 - Dinas Pendidikan, Kepemudaan dan Olah Raga</option>
+							              <option value="opt3">1.02.01 - Dinas Kesehatan</option>
+							              <option value="opt4">1.02.02 - Rumah Sakit Umum Daerah</option>
+							              <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+							          </select>
+							        </div>
+								    </div>
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Sub-Unit</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1.01.01.01 - Dinas Pendidikan, Kepemudaan dan Olah Raga</option>
+							              <option value="opt3">1.02.01.01 - Dinas Kesehatan</option>
+							              <option value="opt4">1.02.02.01 - Rumah Sakit Umum Daerah</option>
+							              <option value="opt4">1.03.01.01 - Dinas Perumahan Rakyat dan Kawasan Permukiman</option>
+							          </select>
+							        </div>
+								    </div>
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Program</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1.01.01 - Program Pelayanan Administrasi Perkantoran</option>
+							              <option value="opt3">1.02.01 - Program Peningkatan Sarana dan Prasarana Aparatur </option>
+							              <option value="opt4">1.02.02 - Program Peningkatan Disiplin Aparatur</option>
+							              <option value="opt4">1.03.01 - Program fasilitasi pindah/purna tugas PNS</option>
+							          </select>
+							        </div>
+								    </div>
+								    <div class="form-group">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Kode Kegiatan</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+							              <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+							              <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+							              <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+							          </select>
+							        </div>
+								    </div>
 										<div class="form-group">
 											<div class="col-md-2">
-												<label class="control-label">Kode Rekening</label>
-												<input placeholder="misal : 4.01 . 4.01.03 . 01 . 02 . 05" type="text" class="form-control">
+												<label class="control-label">Nama Kegiatan</label>
+												<input placeholder="misal : Pengadaan Kendaraan Dinas/Operasional" type="text" class="form-control input-xs">
 											</div>
 										</div>
 								    <div class="form-group">
-								    	<div class="col-md-2">
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
 								    		<label class="control-label">Jenis Pengadaan</label>
-							          <select name="select" class="form-control">
-							              <option value="opt1">Semua Pengadaan</option>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
 							              <option value="opt2">Barang</option>
 							              <option value="opt3">Konstruksi</option>
 							              <option value="opt4">Jasa</option>
 							              <option value="opt4">Jasa Lainnya</option>
+							              <option value="opt4">Swakelola</option>
 							          </select>
 							        </div>
 								    </div>
 								    <div class="form-group">
-								    	<div class="col-md-2">
-								    		<label class="control-label">SKPD</label>
-							          <select name="select" class="form-control">
-							              <option value="opt1">Semua SKPD</option>
-							              <option value="opt2">SKPD 1</option>
-							              <option value="opt3">SKPD 2</option>
-							              <option value="opt4">SKPD 3</option>
-							              <option value="opt4">SKPD 4</option>
+								    	<div style="margin-bottom: 10px;" class="col-md-2">
+								    		<label class="control-label">Bulan</label>
+							          <select name="select" class="form-control input-xs">
+							              <option value="opt1">Semua</option>
+							              <option value="opt2">Januari</option>
+							              <option value="opt3">Pebruari</option>
+							              <option value="opt4">Maret</option>
+							              <option value="opt4">April</option>
+							              <option value="opt4">Mei</option>
 							          </select>
 							        </div>
 								    </div>
-										<div class="form-group">
-											<div class="col-md-2">
-												<label class="control-label">Nama Pengadaan</label>
-												<input placeholder="misal : Pengadaan Kendaraan Dinas/Operasional" type="text" class="form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-md-2">
-												<label class="control-label">Nama Rekanan</label>
-												<input placeholder="misal : PT Jaya Abadi" type="text" class="form-control">
-											</div>
-										</div>
 								    <div class="form-group">
 								    	<div class="col-md-1">
-								    		<button class="btn btn-red mt-26" type="submit"><i class="icon-search4"></i></button>
+								    		<button class="btn btn-xs btn-red mt-26" type="submit"><i class="icon-search4"></i></button>
 								    	</div>
 								    </div>
 									</form>
@@ -98,48 +160,28 @@
 									<table class="table">
 										<thead>
 											<tr class="table-gradient">
+												<th>#</th>
 												<th>Kode Rekening</th>
-												<th>Jenis Pengadaan Barang/Jasa</th>
-												<th>Nama Pengadaan</th>
-												<th>Realisasi Saat Ini</th>
-												<th>Persentase</th>
-												<th>Rekanan</th>
+												<th>Jenis Pengadaan</th>
+												<th>Nama Kegiatan</th>
+												<th>Bulan</th>
+												<th>Target</th>
+												<th>Realisasi</th>
+												<th>Deviasi</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr style="text-align: center;">
 											</tr>
 											<tr>
-												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
-												<td>Barang</td>	
-												<td>Nama Pengadaan</td>	
-												<td>Rp. 400.000.000</td>		
-												<td>80%</td>		
-												<td>Nama Rekanan</td>
-											</tr>
-											<tr>
-												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
-												<td>Konstruksi</td>	
-												<td>Nama Pengadaan</td>	
-												<td>Rp. 400.000.000</td>		
-												<td>80%</td>	
-												<td>Nama Rekanan</td>						
-											</tr>
-											<tr>
-												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
-												<td>Konsultasi</td>	
-												<td>Nama Pengadaan</td>	
-												<td>Rp. 400.000.000</td>		
-												<td>80%</td>	
-												<td>Nama Rekanan</td>
-											</tr>
-											<tr>
-												<td><a href="#">4.01 . 4.01.03 . 01 . 02 . 05</a></td>	
-												<td>Jasa Lainnya</td>	
-												<td>Nama Pengadaan</td>	
-												<td>Rp. 400.000.000</td>		
-												<td>80%</td>			
-												<td>Nama Rekanan</td>
+												<td>1</td>	
+												<td><a href="realisasi-keuangan-detail.php">4.01.03.01.02.05</a></td>	
+												<td>Barang</td>
+												<td>Nama Kegiatan</td>
+												<td>Januari</td>	
+												<td>Rp. 1.000.000</td>	
+												<td>Rp. 1.200.000</td>	
+												<td>(+) Rp. 200.000</td>
 											</tr>
 										</tbody>
 									</table>
@@ -160,11 +202,10 @@
 
   <!-- page script -->
 	<script>
-    $(document).ready(function(){
-      $("#realisasi").addClass("active");
-      $("#keuangan").addClass("active");
-    });
-  </script>
+		$(document).ready(function(){
+		  $("#realisasi-keuangan").addClass("active");
+		});
+	</script>
 	<script>
 	  $(function () {
 	    "use strict";

@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
 
+	<script type="text/javascript" src="assets/js/plugins/visualization/echarts/echarts.js"></script>
 	<!-- Page header -->
 	<div class="page-header mw-200">
 		<!-- <div class="gradient-overlay">
@@ -14,7 +15,7 @@
 					</h4>
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 	<!-- /page header -->
 
@@ -32,233 +33,67 @@
 					<div class="col-lg-12">
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Paket Pengadaan &amp; Struktur Anggaran</strong></h5>
+								<h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Anggaran Satuan Kerja</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
+                		<li><a data-action="reload"></a></li>
                 		<li><a data-action="collapse"></a></li>
                 	</ul>
               	</div>
 							</div>
-								<div class="tabbable">
-									<div class="panel-body">
-										<ul class="nav nav-tabs mt-minus-30">
-											<li class="active"><a href="#basic-tab1" data-toggle="tab">Rencana Paket Pengadaan</a></li>
-											<li><a href="#basic-tab2" data-toggle="tab">Struktur Anggaran</a></li>
-										</ul>
-									</div>
-									<div class="mt-minus-30 tab-content">
-										<div class="tab-pane active" id="basic-tab1">
-											<!-- Default unordered list markup -->
-											<div class="table-responsive">
-												<table class="table table-gradient">
-									        <thead style="text-align: center;">
-									        	<tr>
-									        		<td rowspan="3">
-									        			<h5>Jenis Pengadaan<br>Barang/Jasa</h5>
-									        		</td>
-									        		<td colspan="10">
-									        			<h5>Penyedia</h5>
-									        		</td>
-									        		<td colspan="2" rowspan="2">
-									        			<h5>Swakelola</h5>
-									        		</td>
-									        		<td rowspan="1" colspan="2">
-									        			<h5 >TOTAL</h5>
-									        		</td>
-									        	</tr>
-									        	<tr>
-									        		<td colspan="2">
-									        			<h5>&lt;= Rp. 200 Juta</h5>
-									        		</td>
-									        		<td colspan="2">
-									        			<h5> &gt; Rp. 200 Juta<br> &lt;= Rp. 2.5 Miliar</h5>
-									        		</td>
-									        		<td colspan="2">
-									        			<h5> &gt; Rp. 2.5 Miliar<br> &lt;= Rp. 50 Miliar</h5>
-									        		</td>
-									        		<td colspan="2">
-									        			<h5> &gt; Rp. 50 Miliar<br> &lt;= Rp. 100 Miliar</h5>
-									        		</td>
-									        		<td colspan="2">
-									        			<h5> &gt; Rp. 100 Miliar</h5>
-									        		</td>
-									        		<td colspan="2">
-									        			<h5>Penyedia +<br> swakelola</h5>
-									        		</td>
-									        	</tr>
-									        	<tr>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Paket</h5>
-									        		</td>
-									        		<td>
-									        			<h5>Pagu</h5>
-									        		</td>
-									        	</tr>
-									        </thead>
-									        <tbody>
-									        	<tr>
-															<td>BARANG</td>
-															<td>651</td>
-															<td>36,83</td>
-															<td>196</td>
-															<td>149,37</td>
-															<td>35</td>
-															<td>294,72</td>
-															<td>1</td>
-															<td>80,87</td>
-															<td>0</td>
-															<td>0,00</td>
-															<td>-</td>
-															<td>-</td>
-															<td>883</td>
-															<td>561,79</td>
-														</tr>
-														<tr>
-														</tr><tr>
-															<td>KONSTRUKSI</td>
-															<td>52</td>
-															<td>7,52</td>
-															<td>117</td>
-															<td>136,00</td>
-															<td>151</td>
-															<td>1.149,66</td>
-															<td>1</td>
-															<td>59,52</td>
-															<td>1</td>
-															<td>336,21</td>
-															<td>-</td>
-															<td>-</td>
-															<td>322</td>
-															<td>1.688,91</td>
-														</tr>
-														<tr>
-														</tr><tr>
-															<td>KONSULTANSI</td>
-															<td>215</td>
-															<td>18,18</td>
-															<td>62</td>
-															<td>26,20</td>
-															<td>2</td>
-															<td>6,73</td>
-															<td>0</td>
-															<td>0,00</td>
-															<td>0</td>
-															<td>0,00</td>
-															<td>-</td>
-															<td>-</td>
-															<td>279</td>
-															<td>51,11</td>
-														</tr>
-														<tr>
-														</tr><tr>
-															<td>JASA LAINNYA</td>
-															<td>104</td>
-															<td>5,81</td>
-															<td>30</td>
-															<td>24,84</td>
-															<td>4</td>
-															<td>25,53</td>
-															<td>0</td>
-															<td>0,00</td>
-															<td>0</td>
-															<td>0,00</td>
-															<td>-</td>
-															<td>-</td>
-															<td>138</td>
-															<td>56,18</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th>Jumlah</th>
-															<th>1.022</th>
-															<th>68,34</th>
-															<th>405</th>
-															<th>336,41</th>
-															<th>192</th>
-															<th>1.476,64</th>
-															<th>2</th>
-															<th>140,39</th>
-															<th>1</th>
-															<th>336,21</th>
-															<th>7.817</th>
-															<th>385,20</th>
-															<th>9.439</th>
-															<th>2.743,19</th>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<div class="tab-pane" id="basic-tab2">
-											<div class="panel-body">
-												<a href="#"><p class="mb-15">Jumlah SKPD : 34 Unit</p></a>
-
-												<div class="tree-default well border-left-danger border-left-lg">
-													<ul>
-														<li class="folder expanded aqua-shade">Total Anggaran - Rp. 6.172.197.577.821,05
-															<ul>
-																<li class="expanded orange-shade">Belanja Tidak Langung - Rp. 2.995,09 M
-																	<ul>
-																		<li class="green-shade">Pegawai - Rp. 1.370,30 M</li>
-																		<li class="green-shade">Non Pegawai - Rp. 1.624,80 M</li>
-																	</ul>
-																</li>
-																<li class="expanded orange-shade">Belanja Langsung - Rp. 3.177,10 M
-																	<ul>
-																		<li class="green-shade">Pegawai - Rp. 89,36 M</li>
-																		<li class="expanded green-shade">Non Pegawai - Rp. 3.087,75 M
-																			<ul>
-																				<li class="red-shade">Barang/Jasa - Rp. 1.609,05 M</li>
-																				<li class="red-shade">Modal - Rp. 1.478,70 M</li>
-																			</ul>
-																		</li>
-																	</ul>
-																</li>
-															</ul>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
+							<div class="panel-body">
+        				<div class="chart-container">
+									<div style="height: 1200px !important;" class="chart has-fixed-height" id="basic_bars"></div>
 								</div>
+        				<div class="table-responsive mt-30">
+									<table class="table">
+										<thead>
+											<tr class="table-gradient">
+												<th>#</th>
+												<th>Organisasi Perangkat Daerah</th>
+												<th>Sebelum Perubahan (Miliar)</th>
+												<th>Setelah Perubahan (Miliar)</th>
+												<th>Selisih (Miliar)</th>
+												<th>Persentase</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>	
+												<td>Barang</td>	
+												<td>Rp. 561,79 Miliar</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Rp. 16,31 Miliar</td>		
+												<td>2%</td>
+											</tr>
+											<tr>
+												<td>2</td>	
+												<td>Konstruksi</td>
+												<td>Rp. 1.688,91 Miliar</td>	
+												<td>Rp. 1.670,8 Miliar</td>		
+												<td>Rp. 16.31 Miliar</td>		
+												<td>3,2%</td>													
+											</tr>
+											<tr>
+												<td>3</td>	
+												<td>Konsultasi</td>
+												<td>Rp. 51,11 Miliar</td>	
+												<td>Rp. 48,9 Miliar</td>		
+												<td>Rp. 2,21 Miliar</td>		
+												<td>1,5%</td>		
+											</tr>
+											<tr>
+												<td>4</td>	
+												<td>Jasa Lainnya</td>
+												<td>Rp. 56,18 Miliar</td>	
+												<td>Rp. 54,8 Miliar</td>		
+												<td>Rp. 2,1 Miliar</td>		
+												<td>1,3%</td>		
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -314,22 +149,6 @@
 												<td>91.62%</td>
 												<td>97.94%</td>
 												<td>100%</td>
-											</tr>
-											<tr>
-												<td><span class="pill-yellow">Proyeksi</span></td>
-												<td>2017</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>
-												<td>0.00%</td>	
-												<td>0.00%</td>														
 											</tr>
 											<tr>
 												<td><span class="pill-blue">Realisasi</span></td>
@@ -447,522 +266,6 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-flat">
-							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-spinner mr-10"></i><strong>Proses Pengadaan Barang &amp; Jasa</strong></h5>
-								<div class="heading-elements">
-									<ul class="icons-list">
-                		<li><a data-action="collapse"></a></li>
-                	</ul>
-              	</div>
-							</div>
-								<div class="tabbable">
-									<div class="panel-body">
-										<ul class="nav nav-tabs mt-minus-30">
-											<li class="active"><a href="#basic-tab3" data-toggle="tab">Total Paket dengan nilai 200 Juta - 2.5 Miliar</a></li>
-											<li><a href="#basic-tab4" data-toggle="tab">Total Paket dengan nilai 2.5 Miliar - 50 Miliar</a></li>
-											<li><a href="#basic-tab5" data-toggle="tab">Total Paket dengan nilai lebih dari 50 Miliar</a></li>
-										</ul>
-									</div>
-									<div class="mt-minus-30 tab-content">
-
-										<div class="tab-pane active" id="basic-tab3">
-											<!-- Default unordered list markup -->
-											<div class="table-responsive">
-												<table class="table table-gradient">
-													<thead style="text-align: center;">
-														<tr>
-															<th class="all-border" style="text-align: center;" rowspan="2"><h6>Pelaksanaan Pengadaan</h6></th>
-															<th class="all-border" rowspan="2"></th>
-															<th class="all-border" style="text-align: center;" colspan="12">Total Paket dengan nilai &gt; 200 juta | &lt; 2.5 Miliar) : 405 paket / Rp. <span>336,41</span> M </th>
-														</tr>
-														<tr>
-															<th class="all-border">B01</th>
-															<th class="all-border">B02</th>
-															<th class="all-border">B03</th>
-															<th class="all-border">B04</th>
-															<th class="all-border">B05</th>
-															<th class="all-border">B06</th>
-															<th class="all-border">B07</th>
-															<th class="all-border">B08</th>
-															<th class="all-border">B09</th>
-															<th class="all-border">B10</th>
-															<th class="all-border">B11</th>
-															<th class="all-border">B12</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Pemilihan/Pelaksanaan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Hasil Pemilihan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Kontrak</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Serah Terima</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>25</td>
-															<td>107</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>6.17%</td>
-															<td>26.42%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-
-										<div class="tab-pane" id="basic-tab4">
-											<!-- Default unordered list markup -->
-											<div class="table-responsive">
-												<table class="table table-gradient">
-													<thead style="text-align: center;">
-														<tr>
-															<th class="all-border" style="text-align: center;" rowspan="2"><h6>Pelaksanaan Pengadaan</h6></th>
-															<th class="all-border" rowspan="2"></th>
-															<th class="all-border" style="text-align: center;" colspan="12">Total Paket dengan nilai > 2.5 miliar | < 50 Miliar) : 192 paket / Rp. 1.476,64 M</th>
-														</tr>
-														<tr>
-															<th class="all-border">B01</th>
-															<th class="all-border">B02</th>
-															<th class="all-border">B03</th>
-															<th class="all-border">B04</th>
-															<th class="all-border">B05</th>
-															<th class="all-border">B06</th>
-															<th class="all-border">B07</th>
-															<th class="all-border">B08</th>
-															<th class="all-border">B09</th>
-															<th class="all-border">B10</th>
-															<th class="all-border">B11</th>
-															<th class="all-border">B12</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Pemilihan/Pelaksanaan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Hasil Pemilihan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Kontrak</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Serah Terima</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>25</td>
-															<td>107</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>6.17%</td>
-															<td>26.42%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-
-										<div class="tab-pane" id="basic-tab5">
-											<!-- Default unordered list markup -->
-											<div class="table-responsive">
-												<table class="table table-gradient">
-													<thead style="text-align: center;">
-														<tr>
-															<th class="all-border" style="text-align: center;" rowspan="2"><h6>Pelaksanaan Pengadaan</h6></th>
-															<th class="all-border" rowspan="2"></th>
-															<th class="all-border" style="text-align: center;" colspan="12">Total Paket dengan nilai > 50 Miliar) : 3 paket / Rp. 476,60 M</th>
-														</tr>
-														<tr>
-															<th class="all-border">B01</th>
-															<th class="all-border">B02</th>
-															<th class="all-border">B03</th>
-															<th class="all-border">B04</th>
-															<th class="all-border">B05</th>
-															<th class="all-border">B06</th>
-															<th class="all-border">B07</th>
-															<th class="all-border">B08</th>
-															<th class="all-border">B09</th>
-															<th class="all-border">B10</th>
-															<th class="all-border">B11</th>
-															<th class="all-border">B12</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Pemilihan/Pelaksanaan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Hasil Pemilihan</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Kontrak</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>2</td>
-															<td>24</td>
-															<td>60</td>
-															<td>62</td>
-															<td>93</td>
-															<td>140</td>
-															<td>186</td>
-															<td>225</td>
-															<td>317</td>
-															<td>321</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.49%</td>
-															<td>5.93%</td>
-															<td>14.81%</td>
-															<td>15.31%</td>
-															<td>22.96%</td>
-															<td>34.57%</td>
-															<td>45.93%</td>
-															<td>55.56%</td>
-															<td>78.27%</td>
-															<td>79.26%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-														<tr>
-															<th class="all-border" rowspan="2"><h6>Serah Terima</h6></th>
-															<td class="all-border" rowspan="1"> Paket</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>0</td>
-															<td>25</td>
-															<td>107</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-															<td class="all-border" rowspan="1"> %</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>0.00%</td>
-															<td>6.17%</td>
-															<td>26.42%</td>
-															<td>-</td>
-															<td>-</td>
-														</tr>
-														<tr>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-
-									</div>
-								</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
 			<!-- /main content -->
 
@@ -1032,6 +335,167 @@
 	    });
 
 	  });
+	</script>
+	<script>
+		$(function () {
+
+		    // Set paths
+		    // ------------------------------
+
+		    require.config({
+		        paths: {
+		            echarts: 'assets/js/plugins/visualization/echarts'
+		        }
+		    });
+
+
+		    // Configuration
+		    // ------------------------------
+
+		    require(
+		        [
+		            'echarts',
+		            'echarts/theme/limitless',
+		            'echarts/chart/bar',
+		            'echarts/chart/line'
+		        ],
+
+
+		        // Charts setup
+		        function (ec, limitless) {
+
+		            // Initialize charts
+		            // ------------------------------
+
+		            var basic_bars = ec.init(document.getElementById('basic_bars'), limitless);
+
+
+		            // Charts setup
+		            // ------------------------------
+
+		            //
+		            // Basic bars options
+		            //
+
+		            basic_bars_options = {
+
+		                // Setup grid
+		                grid: {
+		                    x: 580,
+		                    x2: 10,
+		                    y: 35,
+		                    y2: 25
+		                },
+
+		                // Add tooltip
+		                tooltip: {
+		                    trigger: 'axis',
+		                    axisPointer: {
+		                        type: 'shadow'
+		                    }
+		                },
+
+		                // Add legend
+		                legend: {
+		                    data: ['Induk', 'Perubahan']
+		                },
+
+		                // Enable drag recalculate
+		                calculable: true,
+
+		                // Horizontal axis
+		                xAxis: [{
+		                    type: 'value',
+		                    boundaryGap: [0, 0.01]
+		                }],
+
+		                // Vertical axis
+		                yAxis: [{
+		                    type: 'category',
+		                    data: ['Dinas Pendidikan, Kepemudaan dan Olah Raga',
+		                    	'Dinas Kesehatan',
+		                    	'Rumah Sakit Umum Daerah',
+		                    	'Dinas Pekerjaan Umum dan Penataan Ruang',
+		                    	'Dinas Perumahan Rakyat dan Kawasan Permukiman',
+		                    	'Satuan Polisi Pamong Praja',
+		                    	'Badan Kesatuan Bangsa dan Politik',
+		                    	'Badan Penanggulangan Bencana Daerah',
+		                    	'Dinas Kebakaran dan Penyelamatan',
+		                    	'Dinas Sosial',
+		                    	'Dinas Lingkungan Hidup dan Kebersihan',
+		                    	'Dinas Kependudukan dan Pencatatan Sipil',
+		                    	'Dinas Pemberdayaan Masyarakat dan Desa',
+		                    	'Dinas Pengendalian Penduduk dan Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak',
+		                    	'Dinas Perhubungan',
+		                    	'Dinas Komunikasi dan Informatika',
+		                    	'Dinas Koperasi, UKM dan Perdagangan',
+		                    	'Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu',
+		                    	'Dinas Kebudayaan',
+		                    	'Dinas Kearsipan dan Perpustakaan',
+		                    	'Dinas Perikanan',
+		                    	'Dinas Pariwisata',
+		                    	'Dinas Pertanian dan Pangan',
+		                    	'Dinas Perindustrian dan Tenaga Kerja',
+		                    	'Dewan Perwakilan Rakyat Daerah (DPRD)',
+		                    	'Bupati dan Wakil Bupati',
+		                    	'Sekretariat Daerah',
+		                    	'Sekretariat DPRD',
+		                    	'Kecamatan Kuta',
+		                    	'Kecamatan Kuta Utara',
+		                    	'Kecamatan Kuta Selatan',
+		                    	'Kecamatan Mengwi',
+		                    	'Kecamatan Abiansemal',
+		                    	'Kecamatan Petang',
+		                    	'Inspektorat',
+		                    	'Badan Perencanaan Pembangunan Daerah',
+		                    	'Badan Pengelola Keuangan dan Aset Daerah',
+		                    	'Badan Pendapatan Daerah/Pasedahan Agung',
+		                    	'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia',
+		                    	'Badan Penelitian dan Pengembangan']
+		                }],
+
+		                // Add series
+		                series: [
+		                    {
+		                        name: 'Induk',
+		                        type: 'bar',
+		                        itemStyle: {
+		                            normal: {
+		                                color: '#a0d0e0'
+		                            }
+		                        },
+		                        data: [56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79]
+		                    },
+		                    {
+		                        name: 'Perubahan',
+		                        type: 'bar',
+		                        itemStyle: {
+		                            normal: {
+		                                color: '#b9e0a0'
+		                            }
+		                        },
+		                        data: [54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2]
+		                    }
+		                ]
+		            };
+
+		            // Apply options
+		            // ------------------------------
+
+		            basic_bars.setOption(basic_bars_options);
+
+		            // Resize charts
+		            // ------------------------------
+
+		            window.onresize = function () {
+		                setTimeout(function (){
+		                    basic_bars.resize();
+		                }, 200);
+		            }
+		        }
+		    );
+		});
+
 	</script>
 	<script>
       $(document).ready(function(){

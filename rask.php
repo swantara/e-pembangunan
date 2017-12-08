@@ -1,4 +1,6 @@
 <?php include 'header.php'; ?>
+	
+  <script type="text/javascript" src="assets/js/plugins/visualization/echarts/echarts.js"></script>
 
 	<!-- Page header -->
 	<div class="page-header mw-200">
@@ -12,8 +14,8 @@
 						<i class="icon-home2 position-left"></i>
 						<a href="index.php"><span class="text-semibold white-link">Beranda </span></a>
 						<i class="icon-arrow-right32"></i>
-						<i class="icon-stats-growth position-left"></i>
-						<span class="text-semibold"> Realisasi Keuangan</span> 
+						<i class="icon-design position-left"></i>
+						<span class="text-semibold"> RASK</span> 
 					</h4>
 				</div>
 			</div>
@@ -35,7 +37,28 @@
 					<div class="col-lg-12">
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Progres Realisasi Fisik</strong></h5>
+								<h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Anggaran Satuan Kerja</strong></h5>
+								<div class="heading-elements">
+									<ul class="icons-list">
+                		<li><a data-action="reload"></a></li>
+                		<li><a data-action="collapse"></a></li>
+                	</ul>
+              	</div>
+							</div>
+							<div class="panel-body">
+        				<div class="chart-container">
+									<div style="height: 200px !important;" class="chart has-fixed-height" id="basic_bars"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-flat">
+							<div class="panel-heading">
+								<h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Rencana Anggaran Satuan Kerja</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
                 		<li><a data-action="collapse"></a></li>
@@ -124,32 +147,6 @@
 											</div>
 										</div>
 								    <div class="form-group">
-								    	<div style="margin-bottom: 10px;" class="col-md-2">
-								    		<label class="control-label">Jenis Pengadaan</label>
-							          <select name="select" class="form-control input-xs">
-							              <option value="opt1">Semua</option>
-							              <option value="opt2">Barang</option>
-							              <option value="opt3">Konstruksi</option>
-							              <option value="opt4">Jasa</option>
-							              <option value="opt4">Jasa Lainnya</option>
-							              <option value="opt4">Swakelola</option>
-							          </select>
-							        </div>
-								    </div>
-								    <div class="form-group">
-								    	<div style="margin-bottom: 10px;" class="col-md-2">
-								    		<label class="control-label">Bulan</label>
-							          <select name="select" class="form-control input-xs">
-							              <option value="opt1">Semua</option>
-							              <option value="opt2">Januari</option>
-							              <option value="opt3">Pebruari</option>
-							              <option value="opt4">Maret</option>
-							              <option value="opt4">April</option>
-							              <option value="opt4">Mei</option>
-							          </select>
-							        </div>
-								    </div>
-								    <div class="form-group">
 								    	<div class="col-md-1">
 								    		<button class="btn btn-xs btn-red mt-26" type="submit"><i class="icon-search4"></i></button>
 								    	</div>
@@ -162,12 +159,11 @@
 											<tr class="table-gradient">
 												<th>#</th>
 												<th>Kode Rekening</th>
-												<th>Jenis Pengadaan</th>
 												<th>Nama Kegiatan</th>
-												<th>Bulan</th>
-												<th>Target</th>
-												<th>Realisasi</th>
-												<th>Deviasi</th>
+												<th>Sebelum Perubahan</th>
+												<th>Setelah Perubahan</th>
+												<th>Selisih</th>
+												<th>Persentase</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -175,13 +171,39 @@
 											</tr>
 											<tr>
 												<td>1</td>	
-												<td><a href="realisasi-fisik-detail.php">4.01.03.01.02.05</a></td>	
+												<td>4.01.03.01.02.05</td>	
 												<td>Barang</td>
-												<td>Nama Kegiatan</td>
-												<td>Januari</td>	
-												<td>40 %</td>	
-												<td>35 %</td>	
-												<td>(-) 5 %</td>
+												<td>Rp. 561,79 Miliar</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Rp. 16,31 Miliar</td>		
+												<td>2%</td>
+											</tr>
+											<tr>
+												<td>2</td>	
+												<td>4.01.03.01.02.05</td>	
+												<td>Barang</td>
+												<td>Rp. 561,79 Miliar</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Rp. 16,31 Miliar</td>		
+												<td>2%</td>
+											</tr>
+											<tr>
+												<td>3</td>	
+												<td>4.01.03.01.02.05</td>	
+												<td>Barang</td>
+												<td>Rp. 561,79 Miliar</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Rp. 16,31 Miliar</td>		
+												<td>2%</td>
+											</tr>
+											<tr>
+												<td>4</td>	
+												<td>4.01.03.01.02.05</td>	
+												<td>Barang</td>
+												<td>Rp. 561,79 Miliar</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Rp. 16,31 Miliar</td>		
+												<td>2%</td>
 											</tr>
 										</tbody>
 									</table>
@@ -201,42 +223,132 @@
 	<!-- /page container -->
 
   <!-- page script -->
-	<script>
-		$(document).ready(function(){
-		  $("#realisasi-fisik").addClass("active");
-		});
-	</script>
-	<script>
-	  $(function () {
-	    "use strict";
+  <script>
+  	$(function () {
 
-	    // LINE CHART 1
-	    var line = new Morris.Line({
-	      element: 'line-chart',
-	      resize: true,
-	      data: [
-	        {y: '2017-01', item1: 8.12, item2: 2.34},
-	        {y: '2017-02', item1: 21.05, item2: 3.67},
-	        {y: '2017-03', item1: 34.91, item2: 7.01},
-	        {y: '2017-04', item1: 45.02, item2: 8.10},
-	        {y: '2017-05', item1: 49.19, item2: 13.80},
-	        {y: '2017-06', item1: 56.44, item2: 25.77},
-	        {y: '2017-07', item1: 67.26, item2: 33.68},
-	        {y: '2017-08', item1: 78.51, item2: 39.02},
-	        {y: '2017-09', item1: 86.15, item2: 45.10},
-	        {y: '2017-10', item1: 91.62, item2: 56.43},
-	        {y: '2017-11', item1: 97.94},
-	        {y: '2017-12', item1: 100}
-	      ],
-	      xkey: 'y',
-	      ykeys: ['item1', 'item2'],
-	      labels: ['Target', 'Realisasi'],
-	      lineColors: ['#b9e0a0', '#a0d0e0'],
-	      hideHover: 'auto',
-	      postUnits: '%',
-	      xLabels : 'month'
-	    });
-	  });
-	</script>
+		    // Set paths
+		    // ------------------------------
+
+		    require.config({
+		        paths: {
+		            echarts: 'assets/js/plugins/visualization/echarts'
+		        }
+		    });
+
+
+		    // Configuration
+		    // ------------------------------
+
+		    require(
+		        [
+		            'echarts',
+		            'echarts/theme/limitless',
+		            'echarts/chart/bar',
+		            'echarts/chart/line'
+		        ],
+
+
+		        // Charts setup
+		        function (ec, limitless) {
+
+		            // Initialize charts
+		            // ------------------------------
+
+		            var basic_bars = ec.init(document.getElementById('basic_bars'), limitless);
+
+
+		            // Charts setup
+		            // ------------------------------
+
+		            //
+		            // Basic bars options
+		            //
+
+		            basic_bars_options = {
+
+		                // Setup grid
+		                grid: {
+		                    x: 75,
+		                    x2: 35,
+		                    y: 35,
+		                    y2: 25
+		                },
+
+		                // Add tooltip
+		                tooltip: {
+		                    trigger: 'axis',
+		                    axisPointer: {
+		                        type: 'shadow'
+		                    }
+		                },
+
+		                // Add legend
+		                legend: {
+		                    data: ['Induk', 'Perubahan']
+		                },
+
+		                // Enable drag recalculate
+		                calculable: true,
+
+		                // Horizontal axis
+		                xAxis: [{
+		                    type: 'value',
+		                    boundaryGap: [0, 0.01]
+		                }],
+
+		                // Vertical axis
+		                yAxis: [{
+		                    type: 'category',
+		                    data: ['RASK']
+		                }],
+
+		                // Add series
+		                series: [
+		                    {
+		                        name: 'Induk',
+		                        type: 'bar',
+		                        itemStyle: {
+		                            normal: {
+		                                color: '#a0d0e0'
+		                            }
+		                        },
+		                        data: [56.18]
+		                    },
+		                    {
+		                        name: 'Perubahan',
+		                        type: 'bar',
+		                        itemStyle: {
+		                            normal: {
+		                                color: '#b9e0a0'
+		                            }
+		                        },
+		                        data: [54.8]
+		                    }
+		                ]
+		            };
+
+		            // Apply options
+		            // ------------------------------
+
+		            basic_bars.setOption(basic_bars_options);
+
+		            // Resize charts
+		            // ------------------------------
+
+		            window.onresize = function () {
+		                setTimeout(function (){
+		                    basic_bars.resize();
+		                }, 200);
+		            }
+		        }
+		    );
+		});
+
+  </script>
+	<script>
+    $(document).ready(function(){
+      $("#rask").addClass("active");
+    });
+  </script>
 	<script type="text/javascript" src="assets/js/pages/extra_trees.js"></script>
 <?php include 'footer.php'; ?>

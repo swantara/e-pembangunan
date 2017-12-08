@@ -1,4 +1,6 @@
 <?php include 'header.php'; ?>
+	
+  <script type="text/javascript" src="assets/js/plugins/visualization/echarts/echarts.js"></script>
 
 	<!-- Page header -->
 	<div class="page-header mw-200">
@@ -12,8 +14,8 @@
 						<i class="icon-home2 position-left"></i>
 						<a href="index.php"><span class="text-semibold white-link">Beranda </span></a>
 						<i class="icon-arrow-right32"></i>
-						<i class="icon-stats-growth position-left"></i>
-						<span class="text-semibold"> Realisasi Keuangan</span> 
+						<i class="icon-design position-left"></i>
+						<span class="text-semibold"> RASK</span> 
 					</h4>
 				</div>
 			</div>
@@ -35,7 +37,7 @@
 					<div class="col-lg-12">
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Progres Realisasi Fisik</strong></h5>
+								<h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Pengadaan Melalui Kontrak</strong></h5>
 								<div class="heading-elements">
 									<ul class="icons-list">
                 		<li><a data-action="collapse"></a></li>
@@ -136,19 +138,12 @@
 							          </select>
 							        </div>
 								    </div>
-								    <div class="form-group">
-								    	<div style="margin-bottom: 10px;" class="col-md-2">
-								    		<label class="control-label">Bulan</label>
-							          <select name="select" class="form-control input-xs">
-							              <option value="opt1">Semua</option>
-							              <option value="opt2">Januari</option>
-							              <option value="opt3">Pebruari</option>
-							              <option value="opt4">Maret</option>
-							              <option value="opt4">April</option>
-							              <option value="opt4">Mei</option>
-							          </select>
-							        </div>
-								    </div>
+										<div class="form-group">
+											<div class="col-md-2">
+												<label class="control-label">Pelaksana</label>
+												<input placeholder="misal : Pengadaan Kendaraan Dinas/Operasional" type="text" class="form-control input-xs">
+											</div>
+										</div>
 								    <div class="form-group">
 								    	<div class="col-md-1">
 								    		<button class="btn btn-xs btn-red mt-26" type="submit"><i class="icon-search4"></i></button>
@@ -164,10 +159,11 @@
 												<th>Kode Rekening</th>
 												<th>Jenis Pengadaan</th>
 												<th>Nama Kegiatan</th>
-												<th>Bulan</th>
-												<th>Target</th>
-												<th>Realisasi</th>
-												<th>Deviasi</th>
+												<th>Tanggal Mulai</th>
+												<th>Tanggal Selesai</th>
+												<th>Lama Pekerjaan</th>
+												<th>Nilai Kontrak</th>
+												<th>Pelaksana</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -175,13 +171,14 @@
 											</tr>
 											<tr>
 												<td>1</td>	
-												<td><a href="realisasi-fisik-detail.php">4.01.03.01.02.05</a></td>	
+												<td>4.01.03.01.02.05</td>	
 												<td>Barang</td>
 												<td>Nama Kegiatan</td>
-												<td>Januari</td>	
-												<td>40 %</td>	
-												<td>35 %</td>	
-												<td>(-) 5 %</td>
+												<td>01-04-2017</td>	
+												<td>01-08-2017</td>	
+												<td>90 Hari</td>	
+												<td>Rp. 578.2 Miliar</td>		
+												<td>Pelaksana</td>
 											</tr>
 										</tbody>
 									</table>
@@ -200,43 +197,10 @@
 	</div>
 	<!-- /page container -->
 
-  <!-- page script -->
 	<script>
-		$(document).ready(function(){
-		  $("#realisasi-fisik").addClass("active");
-		});
-	</script>
-	<script>
-	  $(function () {
-	    "use strict";
-
-	    // LINE CHART 1
-	    var line = new Morris.Line({
-	      element: 'line-chart',
-	      resize: true,
-	      data: [
-	        {y: '2017-01', item1: 8.12, item2: 2.34},
-	        {y: '2017-02', item1: 21.05, item2: 3.67},
-	        {y: '2017-03', item1: 34.91, item2: 7.01},
-	        {y: '2017-04', item1: 45.02, item2: 8.10},
-	        {y: '2017-05', item1: 49.19, item2: 13.80},
-	        {y: '2017-06', item1: 56.44, item2: 25.77},
-	        {y: '2017-07', item1: 67.26, item2: 33.68},
-	        {y: '2017-08', item1: 78.51, item2: 39.02},
-	        {y: '2017-09', item1: 86.15, item2: 45.10},
-	        {y: '2017-10', item1: 91.62, item2: 56.43},
-	        {y: '2017-11', item1: 97.94},
-	        {y: '2017-12', item1: 100}
-	      ],
-	      xkey: 'y',
-	      ykeys: ['item1', 'item2'],
-	      labels: ['Target', 'Realisasi'],
-	      lineColors: ['#b9e0a0', '#a0d0e0'],
-	      hideHover: 'auto',
-	      postUnits: '%',
-	      xLabels : 'month'
-	    });
-	  });
-	</script>
+    $(document).ready(function(){
+      $("#kontrak").addClass("active");
+    });
+  </script>
 	<script type="text/javascript" src="assets/js/pages/extra_trees.js"></script>
 <?php include 'footer.php'; ?>
