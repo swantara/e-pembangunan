@@ -104,7 +104,7 @@
                   <td><?=$no?></td>
                   <th><?=$row->tahun?></th>
                   <td>
-                    <a href="<?=site_url('backend/detailkegiatan/'.$row->kd_urusan.'/'.$row->kd_bidang.'/'.$row->kd_unit.'/'.$row->kd_sub.'/'.$row->kd_prog.'/'.$row->kd_keg)?>">
+                    <a href="<?=site_url('backend/detailkegiatan/?kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
                       <?php 
                         echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg;
                       ?>

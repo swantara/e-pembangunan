@@ -25,19 +25,10 @@ class Backend extends CI_Controller {
 		$this->load->view('be/template_be', $data);
 	}
 
-	public function detailkegiatan($kd_urusan, $kd_bidang, $kd_unit, $kd_sub, $kd_prog, $kd_keg)
+	public function detailkegiatan()
 	{
-		$data['test'] = array(
-		  'kd_urusan' => $kd_urusan,
-		  'kd_bidang' => $kd_bidang,
-		  'kd_unit' => $kd_unit,
-		  'kd_sub' => $kd_sub,
-		  'kd_prog' => $kd_prog,
-		  'kd_keg' => $kd_keg
-		  );
-		// $data['nama_opd'] = $this->backend->getopd();
-		// $data['kegiatan'] = $this->backend->getkegiatan();
-		// $data['nama_kegiatan'] = $this->rask->getnamakegiatan();
+		// echo json_encode($this->backend->getdetailkegiatan());
+		$data['kegiatan'] = $this->backend->getdetailkegiatan();
 		$data['body'] = $this->load->view('be/kegiatan_detail', $data, true);
 		$this->load->view('be/template_be', $data);
 	}

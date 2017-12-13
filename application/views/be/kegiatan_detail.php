@@ -21,22 +21,9 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive">
               <table id="example2" class="table table-bordered table-striped">
-                <?php
-
-                if(is_object($test) || is_array($test)) :
-                  foreach ($test as $row) :
-                    echo $test->kd_urusan . "<br/>";
-                    echo $test->kd_bidang . "<br/>";
-                    echo $test->kd_unit . "<br/>";
-                    echo $test->kd_sub . "<br/>";
-                    echo $test->kd_prog . "<br/>";
-                    echo $test->kd_keg . "<br/>";
-                  endforeach;
-                endif;
-                ?>
                 <thead>
                 <tr>
-                  <th style="width: 10px;">No</th>
+                  <th style="width: 10px;">#</th>
                   <th>Kode Rekening</th>
                   <th>Jenis Pengadaan</th>
                   <th>Nama Kegiatan</th>
@@ -47,8 +34,15 @@
                 </tr>
                 </thead>
                 <tbody>
+
+                <?php
+                if(is_object($kegiatan) || is_array($kegiatan)) :
+                  $no = 1;
+                  foreach ($kegiatan as $row) :
+                ?>
+
                 <tr>
-                  <td>1.</td>
+                  <td><?=$no?></td>
                   <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
                   <td>Barang</td>
                   <td>Nama Pekerjaan</td>
@@ -57,76 +51,13 @@
                   <td>(+) 4.024.896.800,00</td>
                   <td>(+) 13,43%</td>
                 </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>6.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>7.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
-                <tr>
-                  <td>8.</td>
-                  <td>4.01 . 4.01.03 . 01 . 02 . 05</td>
-                  <td>Barang</td>
-                  <td>Nama Pekerjaan</td>
-                  <td>29.969.465.200,00</td>
-                  <td>33.994.362.000,00</td>
-                  <td>(+) 4.024.896.800,00</td>
-                  <td>(+) 13,43%</td>
-                </tr>
+
+                <?php
+                    $no ++;
+                    endforeach;
+                  endif;
+                ?>
+
                 </tbody>
                 <tfoot>
                 <tr>
