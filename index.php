@@ -1,506 +1,315 @@
-<?php include 'header.php'; ?>
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
 
-	<script type="text/javascript" src="assets/js/plugins/visualization/echarts/echarts.js"></script>
-	<!-- Page header -->
-	<div class="page-header mw-200">
-		<!-- <div class="gradient-overlay">
-		</div> -->
-		<div class="img-overlay bg-gradient" style="background-image: url('assets/images/backgrounds/kantor-bupati.jpg');">
-			<div class="page-header-content">
-				<div class="page-title align-center">
-					<div class="h-50">E-PEMBANGUNAN KABUPATEN BADUNG</div>
-					<h4>
-						<i class="icon-home2 position-left"></i>
-						<span class="text-semibold">Beranda</span> - Dashboard
-					</h4>
-				</div>
-			</div>
-		</div> 
-	</div>
-	<!-- /page header -->
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+switch (ENVIRONMENT)
+{
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
 
-	<!-- Page container -->
-	<div class="page-container mt-20">
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
 
-		<!-- Page content -->
-		<div class="page-content">
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
+}
 
-			<!-- Main content -->
-			<div class="content-wrapper">
+/*
+ *---------------------------------------------------------------
+ * SYSTEM DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" directory.
+ * Set the path if it is not in the same directory as this file.
+ */
+	$system_path = 'system';
 
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-flat">
-							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Anggaran Satuan Kerja</strong></h5>
-								<div class="heading-elements">
-									<ul class="icons-list">
-                		<li><a data-action="reload"></a></li>
-                		<li><a data-action="collapse"></a></li>
-                	</ul>
-              	</div>
-							</div>
-							<div class="panel-body">
-        				<div class="chart-container">
-									<div style="height: 1200px !important;" class="chart has-fixed-height" id="basic_bars"></div>
-								</div>
-        				<div class="table-responsive mt-30">
-									<table class="table">
-										<thead>
-											<tr class="table-gradient">
-												<th>#</th>
-												<th>Organisasi Perangkat Daerah</th>
-												<th>Sebelum Perubahan (Miliar)</th>
-												<th>Setelah Perubahan (Miliar)</th>
-												<th>Selisih (Miliar)</th>
-												<th>Persentase</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1</td>	
-												<td>Barang</td>	
-												<td>Rp. 561,79 Miliar</td>	
-												<td>Rp. 578.2 Miliar</td>		
-												<td>Rp. 16,31 Miliar</td>		
-												<td>2%</td>
-											</tr>
-											<tr>
-												<td>2</td>	
-												<td>Konstruksi</td>
-												<td>Rp. 1.688,91 Miliar</td>	
-												<td>Rp. 1.670,8 Miliar</td>		
-												<td>Rp. 16.31 Miliar</td>		
-												<td>3,2%</td>													
-											</tr>
-											<tr>
-												<td>3</td>	
-												<td>Konsultasi</td>
-												<td>Rp. 51,11 Miliar</td>	
-												<td>Rp. 48,9 Miliar</td>		
-												<td>Rp. 2,21 Miliar</td>		
-												<td>1,5%</td>		
-											</tr>
-											<tr>
-												<td>4</td>	
-												<td>Jasa Lainnya</td>
-												<td>Rp. 56,18 Miliar</td>	
-												<td>Rp. 54,8 Miliar</td>		
-												<td>Rp. 2,1 Miliar</td>		
-												<td>1,3%</td>		
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * directory than the default one you can set its name here. The directory
+ * can also be renamed or relocated anywhere on your server. If you do,
+ * use an absolute (full) server path.
+ * For more info please see the user guide:
+ *
+ * https://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$application_folder = 'application';
 
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-flat">
-							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-stats-growth mr-10"></i><strong>Progres Keuangan</strong></h5>
-								<div class="heading-elements">
-									<ul class="icons-list">
-                		<li><a data-action="collapse"></a></li>
-                	</ul>
-              	</div>
-							</div>
-							<div class="panel-body">
-        				<div class="chart" id="line-chart" style="height: 300px;"></div>
-        				<div class="table-responsive mt-30">
-									<table class="table">
-										<thead>
-											<tr class="table-gradient">
-												<th>Keterangan</th>
-												<th>Tahun</th>
-												<th>B01</th>
-												<th>B02</th>
-												<th>B03</th>
-												<th>B04</th>
-												<th>B05</th>
-												<th>B06</th>
-												<th>B07</th>
-												<th>B08</th>
-												<th>B09</th>
-												<th>B010</th>
-												<th>B011</th>
-												<th>B012</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr style="text-align: center;">
-											</tr>
-											<tr>
-												<td><span class="pill-green">Target</span></td>
-												<td>2017</td>	
-												<td>8.12%</td>	
-												<td>21.05%</td>	
-												<td>34.91%</td>	
-												<td>45.02%</td>	
-												<td>49.19%</td>		
-												<td>56.44%</td>		
-												<td>67.26%</td>			
-												<td>78.512%</td>		
-												<td>86.15%</td>	
-												<td>91.62%</td>
-												<td>97.94%</td>
-												<td>100%</td>
-											</tr>
-											<tr>
-												<td><span class="pill-blue">Realisasi</span></td>
-												<td>2017</td>
-												<td>2.34%</td>
-												<td>3.67%</td>
-												<td>7.01%</td>
-												<td>8.10%</td>
-												<td>13.80%</td>
-												<td>25.77%</td>
-												<td>33.68%</td>
-												<td>39.02%</td>
-												<td>45.10%</td>
-												<td>56.43%</td>
-												<td>-</td>
-												<td>-</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-flat">
-							<div class="panel-heading">
-								<h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Progres Fisik</strong></h5>
-								<div class="heading-elements">
-									<ul class="icons-list">
-                		<li><a data-action="collapse"></a></li>
-                	</ul>
-              	</div>
-							</div>
-							<div class="panel-body">
-        				<div class="chart" id="line-chart2" style="height: 300px;"></div>
-        				<div class="table-responsive mt-30">
-									<table class="table">
-										<thead>
-											<tr class="table-gradient">
-												<th>Keterangan</th>
-												<th>Tahun</th>
-												<th>B01</th>
-												<th>B02</th>
-												<th>B03</th>
-												<th>B04</th>
-												<th>B05</th>
-												<th>B06</th>
-												<th>B07</th>
-												<th>B08</th>
-												<th>B09</th>
-												<th>B010</th>
-												<th>B011</th>
-												<th>B012</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr style="text-align: center;">
-											</tr>
-											<tr>
-												<td><span class="pill-green">Target</span></td>
-												<td>2017</td>	
-												<td>8.12%</td>	
-												<td>21.05%</td>	
-												<td>34.91%</td>	
-												<td>45.02%</td>	
-												<td>49.19%</td>		
-												<td>56.44%</td>		
-												<td>67.26%</td>			
-												<td>78.512%</td>		
-												<td>86.15%</td>	
-												<td>91.62%</td>
-												<td>97.94%</td>
-												<td>100%</td>
-											</tr>
-											<tr>
-												<td><span class="pill-blue">Realisasi</span></td>
-												<td>2017</td>
-												<td>2.34%</td>
-												<td>3.67%</td>
-												<td>7.01%</td>
-												<td>8.10%</td>
-												<td>13.80%</td>
-												<td>25.77%</td>
-												<td>33.68%</td>
-												<td>39.02%</td>
-												<td>45.10%</td>
-												<td>56.43%</td>
-												<td>-</td>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td><span class="pill-yellow">Deviasi</span></td>
-												<td>2017</td>
-												<td>2.34%</td>
-												<td>3.67%</td>
-												<td>7.01%</td>
-												<td>8.10%</td>
-												<td>13.80%</td>
-												<td>25.77%</td>
-												<td>33.68%</td>
-												<td>39.02%</td>
-												<td>45.10%</td>
-												<td>56.43%</td>
-												<td>-</td>
-												<td>-</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<!-- /main content -->
-
-		</div>
-		<!-- /page content -->
-
-	</div>
-	<!-- /page container -->
-
-  <!-- page script -->
-	<script>
-	  $(function () {
-	    "use strict";
-
-	    // LINE CHART 1
-	    var line = new Morris.Line({
-	      element: 'line-chart',
-	      resize: true,
-	      data: [
-	        {y: '2017-01', item1: 8.12, item2: 2.34},
-	        {y: '2017-02', item1: 21.05, item2: 3.67},
-	        {y: '2017-03', item1: 34.91, item2: 7.01},
-	        {y: '2017-04', item1: 45.02, item2: 8.10},
-	        {y: '2017-05', item1: 49.19, item2: 13.80},
-	        {y: '2017-06', item1: 56.44, item2: 25.77},
-	        {y: '2017-07', item1: 67.26, item2: 33.68},
-	        {y: '2017-08', item1: 78.51, item2: 39.02},
-	        {y: '2017-09', item1: 86.15, item2: 45.10},
-	        {y: '2017-10', item1: 91.62, item2: 56.43},
-	        {y: '2017-11', item1: 97.94},
-	        {y: '2017-12', item1: 100}
-	      ],
-	      xkey: 'y',
-	      ykeys: ['item1', 'item2'],
-	      labels: ['Target', 'Realisasi'],
-	      lineColors: ['#b9e0a0', '#a0d0e0'],
-	      hideHover: 'auto',
-	      postUnits: '%',
-	      xLabels : 'month'
-	    });
-
-	    // LINE CHART 2
-	    var line2 = new Morris.Line({
-	      element: 'line-chart2',
-	      resize: true,
-	      data: [
-	        {y: '2017-01', item1b: 9.31, item2b: 2.02, item3b: -7.02},
-	        {y: '2017-02', item1b: 23.93, item2b: 4.20, item3b: 7.02},
-	        {y: '2017-03', item1b: 39.80, item2b: 8.04, item3b: 10.02},
-	        {y: '2017-04', item1b: 51.46, item2b: 9.35, item3b: 10.02},
-	        {y: '2017-05', item1b: 56.58, item2b: 16.65, item3b: -7.02},
-	        {y: '2017-06', item1b: 63.72, item2b: 37.85, item3b: -7.02},
-	        {y: '2017-07', item1b: 77.66, item2b: 45.02, item3b: 8.02},
-	        {y: '2017-08', item1b: 83.86, item2b: 48.87, item3b: 9.02},
-	        {y: '2017-09', item1b: 87.75, item2b: 60.10, item3b: 20.02},
-	        {y: '2017-10', item1b: 93.31, item2b: 68.53, item3b: -2.02},
-	        {y: '2017-11', item1b: 97.89},
-	        {y: '2017-12', item1b: 100}
-	      ],
-	      xkey: 'y',
-	      ykeys: ['item1b', 'item2b', 'item3b'],
-	      labels: ['Target', 'Realisasi', 'Deviasi'],
-	      lineColors: ['#b9e0a0', '#a0d0e0', '#cddc39'],
-	      hideHover: 'auto',
-	      postUnits: '%',
-	      xLabels : 'month'
-	    });
-
-	  });
-	</script>
-	<script>
-		$(function () {
-
-		    // Set paths
-		    // ------------------------------
-
-		    require.config({
-		        paths: {
-		            echarts: 'assets/js/plugins/visualization/echarts'
-		        }
-		    });
+/*
+ *---------------------------------------------------------------
+ * VIEW DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want to move the view directory out of the application
+ * directory, set the path to it here. The directory can be renamed
+ * and relocated anywhere on your server. If blank, it will default
+ * to the standard location inside your application directory.
+ * If you do move this, use an absolute (full) server path.
+ *
+ * NO TRAILING SLASH!
+ */
+	$view_folder = '';
 
 
-		    // Configuration
-		    // ------------------------------
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here. For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT: If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller. Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ */
+	// The directory name, relative to the "controllers" directory.  Leave blank
+	// if your controller is not in a sub-directory within the "controllers" one
+	// $routing['directory'] = '';
 
-		    require(
-		        [
-		            'echarts',
-		            'echarts/theme/limitless',
-		            'echarts/chart/bar',
-		            'echarts/chart/line'
-		        ],
+	// The controller class file name.  Example:  mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
 
 
-		        // Charts setup
-		        function (ec, limitless) {
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
-		            // Initialize charts
-		            // ------------------------------
-
-		            var basic_bars = ec.init(document.getElementById('basic_bars'), limitless);
 
 
-		            // Charts setup
-		            // ------------------------------
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
 
-		            //
-		            // Basic bars options
-		            //
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
 
-		            basic_bars_options = {
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
 
-		                // Setup grid
-		                grid: {
-		                    x: 580,
-		                    x2: 10,
-		                    y: 35,
-		                    y2: 25
-		                },
+	if (($_temp = realpath($system_path)) !== FALSE)
+	{
+		$system_path = $_temp.DIRECTORY_SEPARATOR;
+	}
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = strtr(
+			rtrim($system_path, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		).DIRECTORY_SEPARATOR;
+	}
 
-		                // Add tooltip
-		                tooltip: {
-		                    trigger: 'axis',
-		                    axisPointer: {
-		                        type: 'shadow'
-		                    }
-		                },
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
 
-		                // Add legend
-		                legend: {
-		                    data: ['Induk', 'Perubahan']
-		                },
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
-		                // Enable drag recalculate
-		                calculable: true,
+	// Path to the system directory
+	define('BASEPATH', $system_path);
 
-		                // Horizontal axis
-		                xAxis: [{
-		                    type: 'value',
-		                    boundaryGap: [0, 0.01]
-		                }],
+	// Path to the front controller (this file) directory
+	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
-		                // Vertical axis
-		                yAxis: [{
-		                    type: 'category',
-		                    data: ['Dinas Pendidikan, Kepemudaan dan Olah Raga',
-		                    	'Dinas Kesehatan',
-		                    	'Rumah Sakit Umum Daerah',
-		                    	'Dinas Pekerjaan Umum dan Penataan Ruang',
-		                    	'Dinas Perumahan Rakyat dan Kawasan Permukiman',
-		                    	'Satuan Polisi Pamong Praja',
-		                    	'Badan Kesatuan Bangsa dan Politik',
-		                    	'Badan Penanggulangan Bencana Daerah',
-		                    	'Dinas Kebakaran dan Penyelamatan',
-		                    	'Dinas Sosial',
-		                    	'Dinas Lingkungan Hidup dan Kebersihan',
-		                    	'Dinas Kependudukan dan Pencatatan Sipil',
-		                    	'Dinas Pemberdayaan Masyarakat dan Desa',
-		                    	'Dinas Pengendalian Penduduk dan Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak',
-		                    	'Dinas Perhubungan',
-		                    	'Dinas Komunikasi dan Informatika',
-		                    	'Dinas Koperasi, UKM dan Perdagangan',
-		                    	'Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu',
-		                    	'Dinas Kebudayaan',
-		                    	'Dinas Kearsipan dan Perpustakaan',
-		                    	'Dinas Perikanan',
-		                    	'Dinas Pariwisata',
-		                    	'Dinas Pertanian dan Pangan',
-		                    	'Dinas Perindustrian dan Tenaga Kerja',
-		                    	'Dewan Perwakilan Rakyat Daerah (DPRD)',
-		                    	'Bupati dan Wakil Bupati',
-		                    	'Sekretariat Daerah',
-		                    	'Sekretariat DPRD',
-		                    	'Kecamatan Kuta',
-		                    	'Kecamatan Kuta Utara',
-		                    	'Kecamatan Kuta Selatan',
-		                    	'Kecamatan Mengwi',
-		                    	'Kecamatan Abiansemal',
-		                    	'Kecamatan Petang',
-		                    	'Inspektorat',
-		                    	'Badan Perencanaan Pembangunan Daerah',
-		                    	'Badan Pengelola Keuangan dan Aset Daerah',
-		                    	'Badan Pendapatan Daerah/Pasedahan Agung',
-		                    	'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia',
-		                    	'Badan Penelitian dan Pengembangan']
-		                }],
+	// Name of the "system" directory
+	define('SYSDIR', basename(BASEPATH));
 
-		                // Add series
-		                series: [
-		                    {
-		                        name: 'Induk',
-		                        type: 'bar',
-		                        itemStyle: {
-		                            normal: {
-		                                color: '#a0d0e0'
-		                            }
-		                        },
-		                        data: [56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79, 56.18, 51.11, 1688.91, 561.79]
-		                    },
-		                    {
-		                        name: 'Perubahan',
-		                        type: 'bar',
-		                        itemStyle: {
-		                            normal: {
-		                                color: '#b9e0a0'
-		                            }
-		                        },
-		                        data: [54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2, 54.8, 48.9, 1670.8, 578.2]
-		                    }
-		                ]
-		            };
+	// The path to the "application" directory
+	if (is_dir($application_folder))
+	{
+		if (($_temp = realpath($application_folder)) !== FALSE)
+		{
+			$application_folder = $_temp;
+		}
+		else
+		{
+			$application_folder = strtr(
+				rtrim($application_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+	{
+		$application_folder = BASEPATH.strtr(
+			trim($application_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
 
-		            // Apply options
-		            // ------------------------------
+	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
 
-		            basic_bars.setOption(basic_bars_options);
+	// The path to the "views" directory
+	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.'views';
+	}
+	elseif (is_dir($view_folder))
+	{
+		if (($_temp = realpath($view_folder)) !== FALSE)
+		{
+			$view_folder = $_temp;
+		}
+		else
+		{
+			$view_folder = strtr(
+				rtrim($view_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.strtr(
+			trim($view_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
 
-		            // Resize charts
-		            // ------------------------------
+	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
-		            window.onresize = function () {
-		                setTimeout(function (){
-		                    basic_bars.resize();
-		                }, 200);
-		            }
-		        }
-		    );
-		});
-
-	</script>
-	<script>
-      $(document).ready(function(){
-        $("#beranda").addClass("active");
-      });
-    </script>
-	<script type="text/javascript" src="assets/js/pages/extra_trees.js"></script>
-<?php include 'footer.php'; ?>
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
