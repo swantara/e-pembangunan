@@ -169,15 +169,15 @@
                       <tr style="text-align: center;">
                       </tr>
                       <tr>
-                        <td>1</td>  
-                        <td>4.01.03.01.02.05</td> 
-                        <td>Barang</td>
-                        <td>Pengadaan Kendaraan Dinas/Operasional</td>
-                        <td>01-04-2017</td> 
-                        <td>01-08-2017</td> 
-                        <td>90 Hari</td>  
-                        <td>Rp. 33,99 Miliar</td>   
-                        <td>Pelaksana</td>
+                        <td>-</td>  
+                        <td>-</td> 
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td> 
+                        <td>-</td> 
+                        <td>-</td>  
+                        <td>-</td>   
+                        <td>-</td>
                       </tr>
                     </tbody>
                   </table>

@@ -122,7 +122,7 @@
                   <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
                   <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>
                   <td>
-                    <a href="#">(4/6) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="#">(0/3) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                     <!-- 1. Jenis Pengadaan <i class="fa fa-check text-green ml-5"></i><br/>
                     2. Anggaran Kas <i class="fa fa-times text-red ml-5"></i><br/>
                     3. Target Fisik <i class="fa fa-check text-green ml-5"></i><br/>

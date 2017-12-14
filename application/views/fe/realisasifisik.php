@@ -173,13 +173,13 @@
                       <tr style="text-align: center;">
                       </tr>
                       <tr>
-                        <td>1</td>  
-                        <td><a href="<?=site_url('realisasifisik/detail')?>">4.01.03.01.02.05</a></td>  
-                        <td>Barang</td>
-                        <td>Pengadaan Kendaraan Dinas/Operasional</td>
-                        <td>Agustus</td>  
-                        <td>100 %</td>  
-                        <td>100 %</td>  
+                        <td>-</td>  
+                        <td><a href="<?=site_url('realisasifisik/detail')?>">-</a></td>  
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>  
+                        <td>-</td>  
+                        <td>-</td>  
                         <td>-</td>
                       </tr>
                     </tbody>

@@ -57,38 +57,32 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <?php
+                      if(is_object($kegiatan) || is_array($kegiatan)) :
+                        $no = 1;
+                        foreach ($kegiatan as $row) :
+                      ?>
                       <tr>
-                        <td>1</td>  
-                        <td>Barang</td> 
-                        <td>Rp. 561,79 Miliar</td>  
-                        <td>Rp. 578.2 Miliar</td>   
-                        <td>(+) Rp. 16,31 Miliar</td>   
-                        <td>(+) 2%</td>
+                        <td><?=$no?></td>  
+                        <td>
+                          <?php
+                            foreach ($nama_opd as $rowB) :
+                              if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                                echo $rowB->nama;
+                              endif;
+                            endforeach;
+                          ?>
+                        </td> 
+                        <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
+                        <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>  
+                        <td style="text-align: right;"><?php echo number_format(($row->total_perubahan-$row->total_induk), 0, ',', '.');?></td>
+                        <td><?php echo(($row->total_perubahan-$row->total_induk)/100);?></td>
                       </tr>
-                      <tr>
-                        <td>2</td>  
-                        <td>Konstruksi</td>
-                        <td>Rp. 1.688,91 Miliar</td>  
-                        <td>Rp. 1.670,8 Miliar</td>   
-                        <td>(-) Rp. 16.31 Miliar</td>   
-                        <td>(-) 3,2%</td>                         
-                      </tr>
-                      <tr>
-                        <td>3</td>  
-                        <td>Konsultasi</td>
-                        <td>Rp. 51,11 Miliar</td> 
-                        <td>Rp. 48,9 Miliar</td>    
-                        <td>(-) Rp. 2,21 Miliar</td>    
-                        <td>(-) 1,5%</td>   
-                      </tr>
-                      <tr>
-                        <td>4</td>  
-                        <td>Jasa Lainnya</td>
-                        <td>Rp. 56,18 Miliar</td> 
-                        <td>Rp. 58,8 Miliar</td>    
-                        <td>(+) Rp. 2,1 Miliar</td>   
-                        <td>(+) 1,3%</td>   
-                      </tr>
+                      <?php
+                          $no ++;
+                          endforeach;
+                        endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>

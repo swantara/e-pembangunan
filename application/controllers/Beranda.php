@@ -6,6 +6,9 @@ class Beranda extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('backend_model', 'backend', true);
+		$this->load->model('rask_model', 'rask', true);
+		$this->load->model('beranda_model', 'beranda', true);
 		// $this->load->model('user_model','user',TRUE);
 		// $this->load->model('villa_model','villa',TRUE);
 		// $this->load->model('photo_model','photo',TRUE);
@@ -23,7 +26,10 @@ class Beranda extends CI_Controller {
 
 	public function index()
 	{
-		$data['body'] = $this->load->view('fe/beranda', '', true);
+		$data['nama_opd'] = $this->backend->getopd();
+		$data['nama_kegiatan'] = $this->rask->getnamakegiatan();
+		$data['kegiatan'] = $this->beranda->getkegiatanbyopd();
+		$data['body'] = $this->load->view('fe/beranda', $data, true);
 		$this->load->view('fe/template', $data);
 	}
 

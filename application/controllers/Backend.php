@@ -28,6 +28,7 @@ class Backend extends CI_Controller {
 	public function detailkegiatan()
 	{
 		// echo json_encode($this->backend->getdetailkegiatan());
+		$data['nama_opd'] = $this->backend->getopd();
 		$data['kegiatan'] = $this->backend->getdetailkegiatan();
 		$data['body'] = $this->load->view('be/kegiatan_detail', $data, true);
 		$this->load->view('be/template_be', $data);

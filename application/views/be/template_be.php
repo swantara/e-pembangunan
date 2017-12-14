@@ -116,7 +116,7 @@
           <img src="<?=base_url('assets/be/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nyoman Swantara</p>
+          <p><?php echo $this->session->userdata('session')['name'];?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

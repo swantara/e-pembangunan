@@ -173,13 +173,13 @@
                       <tr style="text-align: center;">
                       </tr>
                       <tr>
-                        <td>1</td>  
-                        <td><a href="<?=site_url('realisasikeuangan/detail')?>">4.01.03.01.02.05</a></td> 
-                        <td>Barang</td>
-                        <td>Pengadaan Kendaraan Dinas/Operasional</td>
-                        <td>Agustus</td>  
-                        <td>Rp. 33,99 (Miliar)</td> 
-                        <td>Rp. 33,99 (Miliar)</td> 
+                        <td>-</td>  
+                        <td><a href="<?=site_url('realisasikeuangan/detail')?>">-</a></td> 
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>  
+                        <td>-</td> 
+                        <td>-</td> 
                         <td>-</td>
                       </tr>
                     </tbody>
