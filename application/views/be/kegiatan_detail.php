@@ -29,8 +29,8 @@
                   <hr/>
                 </div>
                 <div class="col-xs-6">
-                  <strong>Cara Pengadaan</strong>
-                  <p>Pemilihan</p>
+                  <strong>Metode Pengadaan</strong>
+                  <p>Penyedia</p>
                   <hr/>
                   <strong>Jenis Pengadaan</strong>
                   <p>Konstruksi</p>

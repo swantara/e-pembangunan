@@ -7,7 +7,8 @@
     <div class="img-overlay bg-gradient" style="background-image: url('<?=base_url("assets/images/backgrounds/kantor-bupati.jpg")?>');">
       <div class="page-header-content">
         <div class="page-title align-center">
-          <div class="h-50">E-PEMBANGUNAN KABUPATEN BADUNG</div>
+          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PENGENDALIAN PEMBANGUNAN 
+            <br/>(SIPPP) KABUPATEN BADUNG</div>
           <h4>
             <i class="icon-home2 position-left"></i>
             <span class="text-semibold">Beranda</span> - Dashboard
@@ -31,6 +32,37 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-flat">
+              <div class="panel-body">
+                <div class="row">
+                  <form class="form-vertical" action="#">
+                    <div class="form-group">
+                      <div style="margin-bottom: 10px;" class="col-md-2">
+                        <label class="control-label">Tahun</label>
+                        <select name="select" class="form-control input-xs" id="selectYear" onchange="changeYear()">
+                            <?php
+                              $getYear = $this -> input -> get('tahun');
+                              if(isset($getYear)){
+                                $tahun = $getYear;
+                              }
+                              else{
+                                $tahun = date('Y');
+                              }
+                            ?>
+                            <option <?php if($tahun==2017) echo "selected"; ?> value="2017">2017</option>
+                            <option <?php if($tahun==2018) echo "selected"; ?> value="2018">2018</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-flat">
               <div class="panel-heading">
                 <h5 class="panel-title"><i class="icon-design mr-10"></i><strong>Rencana Anggaran Satuan Kerja</strong></h5>
                 <div class="heading-elements">
@@ -50,9 +82,9 @@
                       <tr class="table-gradient">
                         <th>#</th>
                         <th>Organisasi Perangkat Daerah</th>
-                        <th>Sebelum Perubahan (Miliar)</th>
-                        <th>Setelah Perubahan (Miliar)</th>
-                        <th>Selisih (Miliar)</th>
+                        <th>Induk (Rupiah)</th>
+                        <th>Perubahan (Rupiah)</th>
+                        <th>Kenaikan/Penurunan (Rupiah)</th>
                         <th>Persentase</th>
                       </tr>
                     </thead>
@@ -65,6 +97,7 @@
                       <tr>
                         <td><?=$no?></td>  
                         <td>
+                          <a href="<?=site_url('beranda/opd/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
                           <?php
                             foreach ($nama_opd as $rowB) :
                               if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
@@ -72,11 +105,28 @@
                               endif;
                             endforeach;
                           ?>
+                          </a>
                         </td> 
                         <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
                         <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>  
-                        <td style="text-align: right;"><?php echo number_format(($row->total_perubahan-$row->total_induk), 0, ',', '.');?></td>
-                        <td><?php echo(($row->total_perubahan-$row->total_induk)/100);?></td>
+                        <td style="text-align: right;">
+                          <?php
+                            if($row->total_perubahan!=0) :
+                              echo number_format(($row->total_perubahan-$row->total_induk), 0, ',', '.');
+                            else:
+                              echo "-";
+                            endif;
+                          ?>  
+                        </td>
+                        <td>
+                          <?php 
+                            if($row->total_perubahan!=0) :
+                              echo number_format(((($row->total_perubahan-$row->total_induk)/$row->total_induk)*100), 2) . " %";
+                            else :
+                              echo "-";
+                            endif;
+                          ?>
+                        </td>
                       </tr>
                       <?php
                           $no ++;
@@ -110,54 +160,68 @@
                       <tr class="table-gradient">
                         <th>Keterangan</th>
                         <th>Tahun</th>
-                        <th>B01</th>
-                        <th>B02</th>
-                        <th>B03</th>
-                        <th>B04</th>
-                        <th>B05</th>
-                        <th>B06</th>
-                        <th>B07</th>
-                        <th>B08</th>
-                        <th>B09</th>
-                        <th>B010</th>
-                        <th>B011</th>
-                        <th>B012</th>
+                        <th>B01 (Rp.)</th>
+                        <th>B02 (Rp.)</th>
+                        <th>B03 (Rp.)</th>
+                        <th>B04 (Rp.)</th>
+                        <th>B05 (Rp.)</th>
+                        <th>B06 (Rp.)</th>
+                        <th>B07 (Rp.)</th>
+                        <th>B08 (Rp.)</th>
+                        <th>B09 (Rp.)</th>
+                        <th>B010 (Rp.)</th>
+                        <th>B011 (Rp.)</th>
+                        <th>B012 (Rp.)</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style="text-align: center;">
-                      </tr>
                       <tr>
                         <td><span class="pill-green">Target</span></td>
-                        <td>2017</td> 
-                        <td>8.12%</td>  
-                        <td>21.05%</td> 
-                        <td>34.91%</td> 
-                        <td>45.02%</td> 
-                        <td>49.19%</td>   
-                        <td>56.44%</td>   
-                        <td>67.26%</td>     
-                        <td>78.512%</td>    
-                        <td>86.15%</td> 
-                        <td>91.62%</td>
-                        <td>97.94%</td>
-                        <td>100%</td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($targetkeuangan->total_jan, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_feb, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_mar, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_apr, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_mei, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_jun, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_jul, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_agt, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_sep, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_okt, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_nop, 0, ',', '.')?></td>
+                        <td><?=number_format($targetkeuangan->total_des, 0, ',', '.')?></td>
                       </tr>
                       <tr>
                         <td><span class="pill-blue">Realisasi</span></td>
-                        <td>2017</td>
-                        <td>2.34%</td>
-                        <td>3.67%</td>
-                        <td>7.01%</td>
-                        <td>8.10%</td>
-                        <td>13.80%</td>
-                        <td>25.77%</td>
-                        <td>33.68%</td>
-                        <td>39.02%</td>
-                        <td>45.10%</td>
-                        <td>56.43%</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($realisasikeuangan->total_jan, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_feb, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_mar, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_apr, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_mei, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_jun, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_jul, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_agt, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_sep, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_okt, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_nop, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_des, 0, ',', '.')?></td>
+                      </tr>
+                      <tr>
+                        <td><span class="pill-yellow">Deviasi</span></td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($realisasikeuangan->total_jan-$targetkeuangan->total_jan, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_feb-$targetkeuangan->total_feb, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_mar-$targetkeuangan->total_mar, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_apr-$targetkeuangan->total_apr, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_mei-$targetkeuangan->total_mei, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_jun-$targetkeuangan->total_jun, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_jul-$targetkeuangan->total_jul, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_agt-$targetkeuangan->total_agt, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_sep-$targetkeuangan->total_sep, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_okt-$targetkeuangan->total_okt, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_nop-$targetkeuangan->total_nop, 0, ',', '.')?></td>
+                        <td><?=number_format($realisasikeuangan->total_des-$targetkeuangan->total_des, 0, ',', '.')?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -201,55 +265,53 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style="text-align: center;">
-                      </tr>
                       <tr>
                         <td><span class="pill-green">Target</span></td>
-                        <td>2017</td> 
-                        <td>8.12%</td>  
-                        <td>21.05%</td> 
-                        <td>34.91%</td> 
-                        <td>45.02%</td> 
-                        <td>49.19%</td>   
-                        <td>56.44%</td>   
-                        <td>67.26%</td>     
-                        <td>78.512%</td>    
-                        <td>86.15%</td> 
-                        <td>91.62%</td>
-                        <td>97.94%</td>
-                        <td>100%</td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($targetfisik->total_jan, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_feb, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_mar, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_apr, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_mei, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_jun, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_jul, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_agt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_sep, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_okt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_nop, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_des, 0, ',', '.') . "%"?></td>
                       </tr>
                       <tr>
                         <td><span class="pill-blue">Realisasi</span></td>
-                        <td>2017</td>
-                        <td>2.34%</td>
-                        <td>3.67%</td>
-                        <td>7.01%</td>
-                        <td>8.10%</td>
-                        <td>13.80%</td>
-                        <td>25.77%</td>
-                        <td>33.68%</td>
-                        <td>39.02%</td>
-                        <td>45.10%</td>
-                        <td>56.43%</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($realisasifisik->total_jan, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_feb, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mar, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_apr, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mei, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jun, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jul, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_agt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_sep, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_okt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_nop, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_des, 0, ',', '.') . "%"?></td>
                       </tr>
                       <tr>
                         <td><span class="pill-yellow">Deviasi</span></td>
-                        <td>2017</td>
-                        <td>-7.34%</td>
-                        <td>-7.67%</td>
-                        <td>-10.01%</td>
-                        <td>-10.10%</td>
-                        <td>2.80%</td>
-                        <td>4.77%</td>
-                        <td>1.68%</td>
-                        <td>1.02%</td>
-                        <td>1.10%</td>
-                        <td>-2.43%</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td><?=$tahun?></td>
+                        <td><?=number_format($realisasifisik->total_jan-$targetfisik->total_jan, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_feb-$targetfisik->total_feb, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mar-$targetfisik->total_mar, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_apr-$targetfisik->total_apr, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mei-$targetfisik->total_mei, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jun-$targetfisik->total_jun, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jul-$targetfisik->total_jul, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_agt-$targetfisik->total_agt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_sep-$targetfisik->total_sep, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_okt-$targetfisik->total_okt, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_nop-$targetfisik->total_nop, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_des-$targetfisik->total_des, 0, ',', '.') . "%"?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -268,67 +330,6 @@
   </div>
   <!-- /page container -->
 
-  <!-- page script -->
-  <script>
-    $(function () {
-      "use strict";
-
-      // LINE CHART 1
-      var line = new Morris.Line({
-        element: 'line-chart',
-        resize: true,
-        data: [
-          {y: '2017-01', item1: 8.12, item2: 2.34},
-          {y: '2017-02', item1: 21.05, item2: 3.67},
-          {y: '2017-03', item1: 34.91, item2: 7.01},
-          {y: '2017-04', item1: 45.02, item2: 8.10},
-          {y: '2017-05', item1: 49.19, item2: 13.80},
-          {y: '2017-06', item1: 56.44, item2: 25.77},
-          {y: '2017-07', item1: 67.26, item2: 33.68},
-          {y: '2017-08', item1: 78.51, item2: 39.02},
-          {y: '2017-09', item1: 86.15, item2: 45.10},
-          {y: '2017-10', item1: 91.62, item2: 56.43},
-          {y: '2017-11', item1: 97.94},
-          {y: '2017-12', item1: 100}
-        ],
-        xkey: 'y',
-        ykeys: ['item1', 'item2'],
-        labels: ['Target', 'Realisasi'],
-        lineColors: ['#b9e0a0', '#a0d0e0'],
-        hideHover: 'auto',
-        postUnits: '%',
-        xLabels : 'month'
-      });
-
-      // LINE CHART 2
-      var line2 = new Morris.Line({
-        element: 'line-chart2',
-        resize: true,
-        data: [
-          {y: '2017-01', item1b: 9.31, item2b: 2.02, item3b: -7.02},
-          {y: '2017-02', item1b: 23.93, item2b: 16.20, item3b: -7.02},
-          {y: '2017-03', item1b: 39.80, item2b: 29.04, item3b: -10.02},
-          {y: '2017-04', item1b: 51.46, item2b: 41.35, item3b: -10.02},
-          {y: '2017-05', item1b: 56.58, item2b: 58.65, item3b: 2.02},
-          {y: '2017-06', item1b: 63.72, item2b: 67.85, item3b: 4.02},
-          {y: '2017-07', item1b: 77.66, item2b: 78.02, item3b: 1.02},
-          {y: '2017-08', item1b: 83.86, item2b: 84.87, item3b: 1.01},
-          {y: '2017-09', item1b: 87.75, item2b: 88.7, item3b: 1.02},
-          {y: '2017-10', item1b: 93.31, item2b: 91.53, item3b: -2.02},
-          {y: '2017-11', item1b: 97.89},
-          {y: '2017-12', item1b: 100}
-        ],
-        xkey: 'y',
-        ykeys: ['item1b', 'item2b', 'item3b'],
-        labels: ['Target', 'Realisasi', 'Deviasi'],
-        lineColors: ['#b9e0a0', '#a0d0e0', '#cddc39'],
-        hideHover: 'auto',
-        postUnits: '%',
-        xLabels : 'month'
-      });
-
-    });
-  </script>
   <script>
     $(function () {
 
@@ -370,129 +371,295 @@
                 // Basic bars options
                 //
 
-                basic_bars_options = {
+                $.getJSON( "<?=site_url('beranda/ajaxgetsumrask/?tahun='.$tahun)?>")
+                .done(function( datax ) {
+                  if(datax != false)
+                  {
+                    var nilai = datax.rask;
 
-                    // Setup grid
-                    grid: {
-                        x: 580,
-                        x2: 10,
-                        y: 35,
-                        y2: 25
-                    },
+                    basic_bars_options = {
 
-                    // Add tooltip
-                    tooltip: {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type: 'shadow'
-                        }
-                    },
-
-                    // Add legend
-                    legend: {
-                        data: ['Induk (Miliar)', 'Perubahan (Miliar)']
-                    },
-
-                    // Enable drag recalculate
-                    calculable: true,
-
-                    // Horizontal axis
-                    xAxis: [{
-                        type: 'value',
-                        boundaryGap: [0, 0.01]
-                    }],
-
-                    // Vertical axis
-                    yAxis: [{
-                        type: 'category',
-                        data: ['Dinas Pendidikan, Kepemudaan dan Olah Raga',
-                          'Dinas Kesehatan',
-                          'Rumah Sakit Umum Daerah',
-                          'Dinas Pekerjaan Umum dan Penataan Ruang',
-                          'Dinas Perumahan Rakyat dan Kawasan Permukiman',
-                          'Satuan Polisi Pamong Praja',
-                          'Badan Kesatuan Bangsa dan Politik',
-                          'Badan Penanggulangan Bencana Daerah',
-                          'Dinas Kebakaran dan Penyelamatan',
-                          'Dinas Sosial',
-                          'Dinas Lingkungan Hidup dan Kebersihan',
-                          'Dinas Kependudukan dan Pencatatan Sipil',
-                          'Dinas Pemberdayaan Masyarakat dan Desa',
-                          'Dinas Pengendalian Penduduk dan Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak',
-                          'Dinas Perhubungan',
-                          'Dinas Komunikasi dan Informatika',
-                          'Dinas Koperasi, UKM dan Perdagangan',
-                          'Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu',
-                          'Dinas Kebudayaan',
-                          'Dinas Kearsipan dan Perpustakaan',
-                          'Dinas Perikanan',
-                          'Dinas Pariwisata',
-                          'Dinas Pertanian dan Pangan',
-                          'Dinas Perindustrian dan Tenaga Kerja',
-                          'Dewan Perwakilan Rakyat Daerah (DPRD)',
-                          'Bupati dan Wakil Bupati',
-                          'Sekretariat Daerah',
-                          'Sekretariat DPRD',
-                          'Kecamatan Kuta',
-                          'Kecamatan Kuta Utara',
-                          'Kecamatan Kuta Selatan',
-                          'Kecamatan Mengwi',
-                          'Kecamatan Abiansemal',
-                          'Kecamatan Petang',
-                          'Inspektorat',
-                          'Badan Perencanaan Pembangunan Daerah',
-                          'Badan Pengelola Keuangan dan Aset Daerah',
-                          'Badan Pendapatan Daerah/Pasedahan Agung',
-                          'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia',
-                          'Badan Penelitian dan Pengembangan']
-                    }],
-
-                    // Add series
-                    series: [
-                        {
-                            name: 'Induk (Miliar)',
-                            type: 'bar',
-                            itemStyle: {
-                                normal: {
-                                    color: '#a0d0e0'
-                                }
-                            },
-                            data: [56.18, 51.11, 80.7, 95.87, 56.18, 51.11, 61.91, 65.79, 56.18, 51.11, 72.91, 63.79, 56.18, 51.11, 55.91, 63.79, 56.18, 51.11, 59.91, 72.79, 56.18, 51.11, 62.91, 56.79, 56.18, 51.11, 59.91, 58.79, 56.18, 51.11, 68.91, 63.79, 56.18, 51.11, 68.91, 57.79, 56.18, 51.11, 72.91, 81.79]
+                        // Setup grid
+                        grid: {
+                            x: 580,
+                            x2: 10,
+                            y: 35,
+                            y2: 25
                         },
-                        {
-                            name: 'Perubahan (Miliar)',
-                            type: 'bar',
-                            itemStyle: {
-                                normal: {
-                                    color: '#b9e0a0'
-                                }
+
+                        // Add tooltip
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+
+                        // Add legend
+                        legend: {
+                            data: ['Induk (Miliar)', 'Perubahan (Miliar)']
+                        },
+
+                        // Enable drag recalculate
+                        calculable: true,
+
+                        // Horizontal axis
+                        xAxis: [{
+                            type: 'value',
+                            boundaryGap: [0, 0.01]
+                        }],
+
+                        // Vertical axis
+                        yAxis: [{
+                            type: 'category',
+                            data: [nilai[0].nama,
+                              nilai[1].nama,
+                              nilai[2].nama,
+                              nilai[3].nama,
+                              nilai[4].nama,
+                              nilai[5].nama,
+                              nilai[6].nama,
+                              nilai[7].nama,
+                              nilai[8].nama,
+                              nilai[9].nama,
+                              nilai[10].nama,
+                              nilai[11].nama,
+                              nilai[12].nama,
+                              nilai[13].nama,
+                              nilai[14].nama,
+                              nilai[15].nama,
+                              nilai[16].nama,
+                              nilai[17].nama,
+                              nilai[18].nama,
+                              nilai[19].nama,
+                              nilai[20].nama,
+                              nilai[21].nama,
+                              nilai[22].nama,
+                              nilai[23].nama,
+                              nilai[24].nama,
+                              nilai[25].nama,
+                              nilai[26].nama,
+                              nilai[27].nama,
+                              nilai[28].nama,
+                              nilai[29].nama,
+                              nilai[30].nama,
+                              nilai[31].nama,
+                              nilai[32].nama,
+                              nilai[33].nama,
+                              nilai[34].nama,
+                              nilai[35].nama,
+                              nilai[36].nama,
+                              nilai[37].nama,
+                              nilai[38].nama,
+                              nilai[39].nama,
+                              nilai[40].nama]
+                        }],
+
+                        // Add series
+                        series: [
+                            {
+                                name: 'Induk (Miliar)',
+                                type: 'bar',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#a0d0e0'
+                                    }
+                                },
+                                data: [numeral(nilai[0].total_induk).format('0.00'),
+                              numeral(nilai[1].total_induk).format('0.00'),
+                              numeral(nilai[2].total_induk).format('0.00'),
+                              numeral(nilai[3].total_induk).format('0.00'),
+                              numeral(nilai[4].total_induk).format('0.00'),
+                              numeral(nilai[5].total_induk).format('0.00'),
+                              numeral(nilai[6].total_induk).format('0.00'),
+                              numeral(nilai[7].total_induk).format('0.00'),
+                              numeral(nilai[8].total_induk).format('0.00'),
+                              numeral(nilai[9].total_induk).format('0.00'),
+                              numeral(nilai[10].total_induk).format('0.00'),
+                              numeral(nilai[11].total_induk).format('0.00'),
+                              numeral(nilai[12].total_induk).format('0.00'),
+                              numeral(nilai[13].total_induk).format('0.00'),
+                              numeral(nilai[14].total_induk).format('0.00'),
+                              numeral(nilai[15].total_induk).format('0.00'),
+                              numeral(nilai[16].total_induk).format('0.00'),
+                              numeral(nilai[17].total_induk).format('0.00'),
+                              numeral(nilai[18].total_induk).format('0.00'),
+                              numeral(nilai[19].total_induk).format('0.00'),
+                              numeral(nilai[20].total_induk).format('0.00'),
+                              numeral(nilai[21].total_induk).format('0.00'),
+                              numeral(nilai[22].total_induk).format('0.00'),
+                              numeral(nilai[23].total_induk).format('0.00'),
+                              numeral(nilai[24].total_induk).format('0.00'),
+                              numeral(nilai[25].total_induk).format('0.00'),
+                              numeral(nilai[26].total_induk).format('0.00'),
+                              numeral(nilai[27].total_induk).format('0.00'),
+                              numeral(nilai[28].total_induk).format('0.00'),
+                              numeral(nilai[29].total_induk).format('0.00'),
+                              numeral(nilai[30].total_induk).format('0.00'),
+                              numeral(nilai[31].total_induk).format('0.00'),
+                              numeral(nilai[32].total_induk).format('0.00'),
+                              numeral(nilai[33].total_induk).format('0.00'),
+                              numeral(nilai[34].total_induk).format('0.00'),
+                              numeral(nilai[35].total_induk).format('0.00'),
+                              numeral(nilai[36].total_induk).format('0.00'),
+                              numeral(nilai[37].total_induk).format('0.00'),
+                              numeral(nilai[38].total_induk).format('0.00'),
+                              numeral(nilai[39].total_induk).format('0.00'),
+                              numeral(nilai[40].total_induk).format('0.00')]
                             },
-                            data: [54.8, 48.9, 85.8, 100.2, 54.8, 48.9, 63.8, 68.2, 54.8, 48.9, 74.8, 62.2, 54.8, 69.9, 59.8, 68.2, 54.8, 48.9, 62.8, 57.2, 54.8, 48.9, 74.8, 58.2, 54.8, 48.9, 64.8, 59.2, 54.8, 48.9, 70.8, 66.2, 54.8, 48.9, 69.8, 59.2, 54.8, 48.9, 74.8, 82.2]
-                        }
-                    ]
-                };
+                            {
+                                name: 'Perubahan (Miliar)',
+                                type: 'bar',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#b9e0a0'
+                                    }
+                                },
+                                data: [numeral(nilai[0].total_perubahan).format('0.00'),
+                              numeral(nilai[1].total_perubahan).format('0.00'),
+                              numeral(nilai[2].total_perubahan).format('0.00'),
+                              numeral(nilai[3].total_perubahan).format('0.00'),
+                              numeral(nilai[4].total_perubahan).format('0.00'),
+                              numeral(nilai[5].total_perubahan).format('0.00'),
+                              numeral(nilai[6].total_perubahan).format('0.00'),
+                              numeral(nilai[7].total_perubahan).format('0.00'),
+                              numeral(nilai[8].total_perubahan).format('0.00'),
+                              numeral(nilai[9].total_perubahan).format('0.00'),
+                              numeral(nilai[10].total_perubahan).format('0.00'),
+                              numeral(nilai[11].total_perubahan).format('0.00'),
+                              numeral(nilai[12].total_perubahan).format('0.00'),
+                              numeral(nilai[13].total_perubahan).format('0.00'),
+                              numeral(nilai[14].total_perubahan).format('0.00'),
+                              numeral(nilai[15].total_perubahan).format('0.00'),
+                              numeral(nilai[16].total_perubahan).format('0.00'),
+                              numeral(nilai[17].total_perubahan).format('0.00'),
+                              numeral(nilai[18].total_perubahan).format('0.00'),
+                              numeral(nilai[19].total_perubahan).format('0.00'),
+                              numeral(nilai[20].total_perubahan).format('0.00'),
+                              numeral(nilai[21].total_perubahan).format('0.00'),
+                              numeral(nilai[22].total_perubahan).format('0.00'),
+                              numeral(nilai[23].total_perubahan).format('0.00'),
+                              numeral(nilai[24].total_perubahan).format('0.00'),
+                              numeral(nilai[25].total_perubahan).format('0.00'),
+                              numeral(nilai[26].total_perubahan).format('0.00'),
+                              numeral(nilai[27].total_perubahan).format('0.00'),
+                              numeral(nilai[28].total_perubahan).format('0.00'),
+                              numeral(nilai[29].total_perubahan).format('0.00'),
+                              numeral(nilai[30].total_perubahan).format('0.00'),
+                              numeral(nilai[31].total_perubahan).format('0.00'),
+                              numeral(nilai[32].total_perubahan).format('0.00'),
+                              numeral(nilai[33].total_perubahan).format('0.00'),
+                              numeral(nilai[34].total_perubahan).format('0.00'),
+                              numeral(nilai[35].total_perubahan).format('0.00'),
+                              numeral(nilai[36].total_perubahan).format('0.00'),
+                              numeral(nilai[37].total_perubahan).format('0.00'),
+                              numeral(nilai[38].total_perubahan).format('0.00'),
+                              numeral(nilai[39].total_perubahan).format('0.00'),
+                              numeral(nilai[40].total_perubahan).format('0.00')]
+                            }
+                        ]
+                    };
 
-                // Apply options
-                // ------------------------------
+                    // Apply options
+                    // ------------------------------
 
-                basic_bars.setOption(basic_bars_options);
+                    basic_bars.setOption(basic_bars_options);
 
-                // Resize charts
-                // ------------------------------
+                    // Resize charts
+                    // ------------------------------
 
-                window.onresize = function () {
-                    setTimeout(function (){
-                        basic_bars.resize();
-                    }, 200);
-                }
+                    window.onresize = function () {
+                        setTimeout(function (){
+                            basic_bars.resize();
+                        }, 200);
+                    }
+                  }
+                });
             }
         );
     });
 
   </script>
   <script>
-      $(document).ready(function(){
-        $("#beranda").addClass("active");
+    $(document).ready(function(){
+      "use strict";
+
+      $("#beranda").addClass("active");
+
+      // CHART 1
+      $.getJSON( "<?=site_url('beranda/ajaxgetkeuanganall/?tahun='.$tahun)?>")
+      .done(function( data1 ) {
+        if(data1 != false)
+        {
+          var value = data1.keuangan;
+          
+          var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                  {y: value[0].tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
+                  {y: value[0].tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
+                  {y: value[0].tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
+                  {y: value[0].tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
+                  {y: value[0].tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
+                  {y: value[0].tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
+                  {y: value[0].tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
+                  {y: value[0].tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
+                  {y: value[0].tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
+                  {y: value[0].tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
+                  {y: value[0].tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
+                  {y: value[0].tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
+                ],
+            xkey: 'y',
+            ykeys: ['item1', 'item2', 'item3'],
+            labels: ['Target', 'Realisasi', 'Deviasi'],
+            lineColors: ['#b9e0a0', '#a0d0e0', '#cddc39'],
+            hideHover: 'auto',
+            postUnits: ' Miliar',
+            xLabels : 'bulan'
+          });
+        }
       });
-    </script>
+
+      // CHART 2
+      $.getJSON( "<?=site_url('beranda/ajaxgetfisikall/?tahun='.$tahun)?>")
+      .done(function( data2 ) {
+        if(data2 != false)
+        {
+          var value = data2.fisik;
+          
+          var line2 = new Morris.Line({
+            element: 'line-chart2',
+            resize: true,
+            data: [
+                  {y: value[0].tahun + '-01', item1b: numeral(value[0].total_jan).format('0.0000'), item2b: numeral(value[1].total_jan).format('0.0000'), item3b: numeral(value[2].total_jan).format('0.0000')},
+                  {y: value[0].tahun + '-02', item1b: numeral(value[0].total_feb).format('0.0000'), item2b: numeral(value[1].total_feb).format('0.0000'), item3b: numeral(value[2].total_feb).format('0.0000')},
+                  {y: value[0].tahun + '-03', item1b: numeral(value[0].total_mar).format('0.0000'), item2b: numeral(value[1].total_mar).format('0.0000'), item3b: numeral(value[2].total_mar).format('0.0000')},
+                  {y: value[0].tahun + '-04', item1b: numeral(value[0].total_apr).format('0.0000'), item2b: numeral(value[1].total_apr).format('0.0000'), item3b: numeral(value[2].total_apr).format('0.0000')},
+                  {y: value[0].tahun + '-05', item1b: numeral(value[0].total_mei).format('0.0000'), item2b: numeral(value[1].total_mei).format('0.0000'), item3b: numeral(value[2].total_mei).format('0.0000')},
+                  {y: value[0].tahun + '-06', item1b: numeral(value[0].total_jun).format('0.0000'), item2b: numeral(value[1].total_jun).format('0.0000'), item3b: numeral(value[2].total_jun).format('0.0000')},
+                  {y: value[0].tahun + '-07', item1b: numeral(value[0].total_jul).format('0.0000'), item2b: numeral(value[1].total_jul).format('0.0000'), item3b: numeral(value[2].total_jul).format('0.0000')},
+                  {y: value[0].tahun + '-08', item1b: numeral(value[0].total_agt).format('0.0000'), item2b: numeral(value[1].total_agt).format('0.0000'), item3b: numeral(value[2].total_agt).format('0.0000')},
+                  {y: value[0].tahun + '-09', item1b: numeral(value[0].total_sep).format('0.0000'), item2b: numeral(value[1].total_sep).format('0.0000'), item3b: numeral(value[2].total_sep).format('0.0000')},
+                  {y: value[0].tahun + '-10', item1b: numeral(value[0].total_okt).format('0.0000'), item2b: numeral(value[1].total_okt).format('0.0000'), item3b: numeral(value[2].total_okt).format('0.0000')},
+                  {y: value[0].tahun + '-11', item1b: numeral(value[0].total_nop).format('0.0000'), item2b: numeral(value[1].total_nop).format('0.0000'), item3b: numeral(value[2].total_nop).format('0.0000')},
+                  {y: value[0].tahun + '-12', item1b: numeral(value[0].total_des).format('0.0000'), item2b: numeral(value[1].total_des).format('0.0000'), item3b: numeral(value[2].total_des).format('0.0000')}
+                ],
+            xkey: 'y',
+            ykeys: ['item1b', 'item2b', 'item3b'],
+            labels: ['Target', 'Realisasi', 'Deviasi'],
+            lineColors: ['#b9e0a0', '#a0d0e0', '#cddc39'],
+            hideHover: 'auto',
+            postUnits: ' %',
+            xLabels : 'bulan'
+          });
+        }
+      });
+    });
+
+    function changeYear() {
+        var year = document.getElementById("selectYear").value;
+        window.location.assign("http://ganeshaglobal.com/sippp/?tahun=" + year);
+    }
+  </script>
   <script type="text/javascript" src="<?=base_url('assets/js/pages/extra_trees.js')?>"></script>

@@ -1,0 +1,29 @@
+{
+ "name": "Total Anggaran - Rp. 6.172.197.577.821,05",
+ "children": [
+  {
+   "name": "Belanja Tidak Langsung - Rp. 2.995,09 M",
+   "children": [
+    {
+     "name": "Pegawai - Rp. 1.370,30 M"
+    },
+    {
+     "name": "Non Pegawai - Rp. 1.624,80 M"
+    }
+   ]
+  },
+  {
+   "name": "Belanja Langsung - Rp. 3.177,10 M",
+   "children": [
+    {"name": "Pegawai - Rp. 89,36 M"},
+    {
+     "name": "Non Pegawai - Rp. 3.087,75 M",
+     "children": [
+      {"name": "Barang/Jasa - Rp. 1.609,05 M"},
+      {"name": "Modal - Rp. 1.478,70 M"}
+     ]
+    }
+   ]
+  }
+ ]
+}

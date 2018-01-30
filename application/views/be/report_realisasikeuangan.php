@@ -194,7 +194,7 @@
   <script>
 
     $(document).ready(function() {
-      $('#user').addClass("active");
+      $('#realisasikeuangan').addClass("active");
     });
 
   </script>

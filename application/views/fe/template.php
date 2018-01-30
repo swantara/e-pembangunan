@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E-Pembangunan Kab Badung</title>
+  <title>SIPPP Kab Badung</title>
 
   <!-- Favicons -->
   <link rel="shortcut icon" href="<?=base_url('assets/images/favicon.png')?>">
@@ -52,8 +52,7 @@
   <script type="text/javascript" src="<?=base_url('assets/js/morris-min.js')?>"></script>
   <script type="text/javascript" src="<?=base_url('assets/js/plugins/tables/datatables/datatables.min.js')?>"></script>
   <!-- /theme JS files -->
-
-  <script type="text/javascript" src="<?=base_url('assets/js/plugins/forms/styling/switchery.min.js')?>"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 </head>
 
@@ -70,11 +69,20 @@
 
     <div class="navbar-collapse collapse" id="navbar-second-toggle">
       <ul class="nav navbar-nav navbar-right">
-        <li id="beranda"><a href="<?=site_url('')?>"><i class="icon-home2 position-left"></i> Beranda</a></li>
-        <li id="rask"><a href="<?=site_url('rask')?>"><i class="icon-design position-left"></i> RASK</a></li>
-        <li id="kontrak"><a href="<?=site_url('kontrak')?>"><i class="icon-versions position-left"></i> Kontrak</a></li>
-        <li id="realisasi-keuangan"><a href="<?=site_url('realisasikeuangan')?>"><i class="icon-stats-growth position-left"></i> Realisasi Keuangan</a></li>
-        <li id="realisasi-fisik"><a href="<?=site_url('realisasifisik')?>"><i class="icon-clipboard2 position-left"></i> Realisasi Fisik</a></li>
+        <?php
+          $getYear = $this -> input -> get('tahun');
+          if(isset($getYear)){
+            $tahun = $getYear;
+          }
+          else{
+            $tahun = date('Y');
+          }
+        ?>
+        <li id="beranda"><a href="<?=site_url('beranda/?tahun='.$tahun)?>"><i class="icon-home2 position-left"></i> Beranda</a></li>
+        <li id="rask"><a href="<?=site_url('rask/?tahun='.$tahun)?>"><i class="icon-design position-left"></i> RASK</a></li>
+        <li id="kontrak"><a href="<?=site_url('kontrak/?tahun='.$tahun)?>"><i class="icon-versions position-left"></i> Kontrak</a></li>
+        <li id="realisasi-keuangan"><a href="<?=site_url('realisasikeuangan/?tahun='.$tahun)?>"><i class="icon-stats-growth position-left"></i> Realisasi Keuangan</a></li>
+        <li id="realisasi-fisik"><a href="<?=site_url('realisasifisik/?tahun='.$tahun)?>"><i class="icon-clipboard2 position-left"></i> Realisasi Fisik</a></li>
         <!-- <li id="realisasi" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-statistics position-left"></i> Realisasi <span class="caret"></span>
@@ -103,6 +111,7 @@
   <?=$body?>
   
   <script type="text/javascript" src="<?=base_url('assets/js/pages/dashboard.js')?>"></script>
+  <script type="text/javascript" src="<?=base_url('assets/js/plugins/forms/styling/switchery.min.js')?>"></script>
 
   <!-- Footer -->
   <div class="footer text-muted">

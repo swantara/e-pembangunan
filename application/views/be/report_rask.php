@@ -143,13 +143,13 @@
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="width: 10px;">No</th>
-                  <th>Kode Rekening</th>
-                  <th>Jenis Pengadaan</th>
-                  <th>Nama Kegiatan</th>
-                  <th>Sebelum Perubahan</th>
-                  <th>Setelah Perubahan</th>
-                  <th>Selisih</th>
+                  <th style="width: 10px;">#</th>
+                  <th>Tahun</th>
+                  <th>Kode OPD</th>
+                  <th>Nama OPD</th>
+                  <th>Induk (Rp.)</th>
+                  <th>Perubahan (Rp.)</th>
+                  <th>Kenaikan / Penurunan (Rp.)</th>
                   <th>Persentase</th>
                 </tr>
                 </thead>
@@ -167,13 +167,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th style="width: 10px;">No</th>
-                  <th>Kode Rekening</th>
-                  <th>Jenis Pengadaan</th>
-                  <th>Nama Kegiatan</th>
-                  <th>Sebelum Perubahan</th>
-                  <th>Setelah Perubahan</th>
-                  <th>Selisih</th>
+                  <th style="width: 10px;">#</th>
+                  <th>Tahun</th>
+                  <th>Kode OPD</th>
+                  <th>Nama OPD</th>
+                  <th>Induk (Rp.)</th>
+                  <th>Perubahan (Rp.)</th>
+                  <th>Kenaikan / Penurunan (Rp.)</th>
                   <th>Persentase</th>
                 </tr>
                 </tfoot>
@@ -194,7 +194,7 @@
   <script>
 
     $(document).ready(function() {
-      $('#user').addClass("active");
+      $('#rask').addClass("active");
     });
 
   </script>

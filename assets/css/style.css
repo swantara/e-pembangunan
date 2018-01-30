@@ -197,3 +197,33 @@ a .white-link:hover{
 	background: linear-gradient(135deg, rgba(221,38,10,1) 0%, rgba(217,0,109,1) 100%);
   border-color: rgba(221,38,10,1);
 }
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  /*display: none;*/
+}
+
+.login-margin {
+	margin-top: 20px !important;
+}
+
+@media (min-width: 769px){
+	.login-margin {
+		margin-top: 140px !important;
+	}
+}
+
+@media (min-width: 1104px){
+	.login-margin {
+		margin-top: 130px !important;
+	}
+}

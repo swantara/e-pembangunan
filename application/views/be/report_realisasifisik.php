@@ -189,7 +189,7 @@
   <script>
 
     $(document).ready(function() {
-      $('#user').addClass("active");
+      $('#realisasifisik').addClass("active");
     });
 
   </script>

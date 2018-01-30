@@ -1,4 +1,4 @@
-
+  <script type="text/javascript" src="<?=base_url('assets/js/pages/datatables_realisasikeuangan.js')?>"></script>
   <!-- Page header -->
   <div class="page-header mw-200">
     <!-- <div class="gradient-overlay">
@@ -6,7 +6,8 @@
     <div class="img-overlay bg-gradient" style="background-image: url('<?=base_url("assets/images/backgrounds/kantor-bupati.jpg")?>');">
       <div class="page-header-content">
         <div class="page-title align-center">
-          <div class="h-50">E-PEMBANGUNAN KABUPATEN BADUNG</div>
+          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PENGENDALIAN PEMBANGUNAN 
+            <br/>(SIPPP) KABUPATEN BADUNG</div>
           <h4>
             <i class="icon-home2 position-left"></i>
             <a href="<?=site_url('')?>"><span class="text-semibold white-link">Beranda </span></a>
@@ -33,8 +34,39 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-flat">
+              <div class="panel-body">
+                <div class="row">
+                  <form class="form-vertical" action="#">
+                    <div class="form-group">
+                      <div style="margin-bottom: 10px;" class="col-md-2">
+                        <label class="control-label">Tahun</label>
+                        <select name="select" class="form-control input-xs" id="selectYear" onchange="changeYear()">
+                            <?php
+                              $getYear = $this -> input -> get('tahun');
+                              if(isset($getYear)){
+                                $tahun = $getYear;
+                              }
+                              else{
+                                $tahun = date('Y');
+                              }
+                            ?>
+                            <option <?php if($tahun==2017) echo "selected"; ?> value="2017">2017</option>
+                            <option <?php if($tahun==2018) echo "selected"; ?> value="2018">2018</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-flat">
               <div class="panel-heading">
-                <h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Progres Realisasi Fisik</strong></h5>
+                <h5 class="panel-title"><i class="icon-search4 mr-10"></i><strong>Progres Realisasi Keuangan</strong></h5>
                 <div class="heading-elements">
                   <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -156,32 +188,86 @@
                   </form>
                 </div>
                 <div class="table-responsive mt-30">
-                  <table class="table">
+                  <table class="table datatable-basic">
                     <thead>
                       <tr class="table-gradient">
-                        <th>#</th>
-                        <th>Kode Rekening</th>
-                        <th>Jenis Pengadaan</th>
-                        <th>Nama Kegiatan</th>
-                        <th>Bulan</th>
-                        <th>Target</th>
-                        <th>Realisasi</th>
-                        <th>Deviasi</th>
+                        <th style="width: 10px;">#</th>
+                        <th style="width: 10px;">Tahun</th>
+                        <th style="width: 200px;">Kode OPD</th>
+                        <th>Nama OPD</th>
+                        <th>Jumlah Data</th>
+                        <th>Target (Rp.)</th>
+                        <th>Realisasi (Rp.)</th>
+                        <th>Deviasi (Rp.)</th>
+                        <th>Persentase</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style="text-align: center;">
-                      </tr>
+
+                      <?php
+                        if(is_object($target) || is_array($target)) :
+                          $no = 1;
+                          foreach ($target as $row) :
+                      ?>
+
                       <tr>
-                        <td>-</td>  
-                        <td><a href="<?=site_url('realisasikeuangan/detail')?>">-</a></td> 
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>  
-                        <td>-</td> 
-                        <td>-</td> 
-                        <td>-</td>
+                        <td><?=$no?></td>
+                        <th><?=$row->tahun?></th>
+                        <td>
+                          <a href="<?=site_url('realisasikeuangan/kegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                            <?php 
+                              echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub;
+                            ?>
+                          </a>
+                        </td> 
+                        <td>
+                          <a href="<?=site_url('realisasikeuangan/kegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                            <?php         
+                              foreach ($nama_opd as $rowB) :
+                                if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                                  echo $rowB->nama;
+                                endif;
+                              endforeach;
+                            ?>
+                          </a>
+                        </td>
+                        <td><?=$row->jumlah_data?></td>
+                        <td><?php echo number_format($row->total_target, 0, ',', '.'); ?></td>
+                        <td style="text-align: right;">
+                          <?php         
+                            foreach ($realisasikeuangan as $rowC) :
+                              if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_unit == $rowC->kd_unit && $row->kd_sub == $rowC->kd_sub) :
+                                echo number_format($rowC->total_realisasi, 0, ',', '.');
+                              endif;
+                            endforeach;
+                          ?>
+                        </td>
+                        <td>
+                          <?php         
+                            foreach ($realisasikeuangan as $rowD) :
+                              if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub) :
+                                echo number_format($rowD->total_realisasi-$row->total_target, 0, ',', '.');
+                              endif;
+                            endforeach;
+                          ?>
+                        </td>
+                        <td>
+                          <?php         
+                            foreach ($realisasikeuangan as $rowE) :
+                              if($row->kd_urusan == $rowE->kd_urusan && $row->kd_bidang == $rowE->kd_bidang && $row->kd_unit == $rowE->kd_unit && $row->kd_sub == $rowE->kd_sub) :
+                                echo number_format(((($rowE->total_realisasi-$row->total_target)/$row->total_target)*100), 0, ',', '.') . "%";
+                              endif;
+                            endforeach;
+                          ?>
+                        </td>
                       </tr>
+
+                      <?php
+                          $no ++;
+                          endforeach;
+                        endif;
+                      ?>
+
                     </tbody>
                   </table>
                 </div>
@@ -204,37 +290,8 @@
     $(document).ready(function(){
       $("#realisasi-keuangan").addClass("active");
     });
+    function changeYear() {
+      var year = document.getElementById("selectYear").value;
+      window.location.assign("http://ganeshaglobal.com/sippp/realisasikeuangan/?tahun=" + year);
+    }
   </script>
-  <script>
-    $(function () {
-      "use strict";
-
-      // LINE CHART 1
-      var line = new Morris.Line({
-        element: 'line-chart',
-        resize: true,
-        data: [
-          {y: '2017-01', item1: 8.12, item2: 2.34},
-          {y: '2017-02', item1: 21.05, item2: 3.67},
-          {y: '2017-03', item1: 34.91, item2: 7.01},
-          {y: '2017-04', item1: 45.02, item2: 8.10},
-          {y: '2017-05', item1: 49.19, item2: 13.80},
-          {y: '2017-06', item1: 56.44, item2: 25.77},
-          {y: '2017-07', item1: 67.26, item2: 33.68},
-          {y: '2017-08', item1: 78.51, item2: 39.02},
-          {y: '2017-09', item1: 86.15, item2: 45.10},
-          {y: '2017-10', item1: 91.62, item2: 56.43},
-          {y: '2017-11', item1: 97.94},
-          {y: '2017-12', item1: 100}
-        ],
-        xkey: 'y',
-        ykeys: ['item1', 'item2'],
-        labels: ['Target', 'Realisasi'],
-        lineColors: ['#b9e0a0', '#a0d0e0'],
-        hideHover: 'auto',
-        postUnits: '%',
-        xLabels : 'month'
-      });
-    });
-  </script>
-  <script type="text/javascript" src="<?=base_url('assets/js/pages/extra_trees.js')?>"></script>

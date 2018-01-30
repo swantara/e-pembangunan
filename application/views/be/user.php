@@ -16,7 +16,7 @@
         <div class="col-xs-12">
           <div class="box box-danger">
             <div class="box-header with-border">
-              <a style="margin-right: 5px;" href="#" class="btn btn-default"><i class="fa fa-user-plus text-green"></i> Tambah User</a>
+              <a style="margin-right: 5px;" href="<?=site_url('user/tambah')?>" class="btn btn-default"><i class="fa fa-user-plus text-green"></i> Tambah User</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
@@ -28,28 +28,49 @@
                   <th>Username</th>
                   <th>Instansi</th>
                   <th>Role</th>
-                  <th style="max-width: 55px;">Aksi</th>
+                  <th style="width: 94px;">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                <?php
+                  if(is_object($user) || is_array($user)) :
+                    $no = 1;
+                    foreach ($user as $row) :
+                ?>
+
                 <tr>
-                  <input name='id' id='id' value='".$id."' type='hidden'>
-                  <td>1.</td>
-                  <td>Nyoman Swan</td>
-                  <td>nyomanswan</td>
-                  <td>Kesekretariatan Daerah</td>
-                  <td>Admin</td>
+                  <td><?=$no?></td>
+                  <td><?=$row->nama?></td>
+                  <td><?=$row->username?></td>
+                  <td>
+                    <?php                      
+                      foreach ($nama_opd as $rowB) :
+                        if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                          echo $rowB->nama;
+                        endif;
+                      endforeach;
+                    ?>
+                  </td>
+                  <td><?=$row->role_user?></td>
                   <td>                  
                     <div class="btn-group">
-                      <button type="button" data-toggle="tooltip" data-placement="left" title="Sunting" class="btn btn-default" onClick="">
+                      <a data-toggle="tooltip" data-placement="left" title="Sunting" class="btn btn-default" href="<?=site_url('user/edit/'.$row->id)?>">
                           <i class="fa fa-edit"></i>
-                      </button>
-                      <button type="button" data-toggle="tooltip" data-placement="left" title="Hapus" class="btn btn-danger" onClick="">
+                      </a>
+                      <a data-toggle="tooltip" data-placement="left" title="Sunting" class="btn btn-danger" href="<?=site_url('user/hapus/'.$row->id)?>">
                           <i class="fa fa-trash"></i>
-                      </button>
+                      </a>
                     </div>
                   </td>
                 </tr>
+
+                <?php
+                    $no ++;
+                    endforeach;
+                  endif;
+                ?>
+
                 </tbody>
                 <tfoot>
                 <tr>

@@ -14,7 +14,7 @@
         <div class="row">
         <form>
           <!-- /.col -->
-          <div class="col-md-9">
+          <div class="col-md-12">
             <!-- About Me Box -->
             <div class="box box-danger">
               <div class="box-header with-border">
@@ -23,113 +23,216 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-4">
-                    <div id="validation" class="form-group">
-                      <label>Kode Rekening</label>
-                      <input required id="nik" name="nik" type="number" class="form-control" placeholder="4.01 . 4.01.03 . 01 . 02 . 05" onblur="checknik(this)">
-                      <span id="help" class="help-block"></span>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Urusan</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1 - Urusan Wajib Pelayanan Dasar</option>
+                          <option value="opt3">2 - Urusan Wajib Bukan Pelayanan Dasar</option>
+                          <option value="opt4">3 - Urusan Pilihan</option>
+                          <option value="opt4">4 - Fungsi Penunjang Urusan Pemerintahan</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Bidang</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01 - Pendidikan</option>
+                          <option value="opt3">1.02 - Kesehatan</option>
+                          <option value="opt4">1.03 - Pekerjaan Umum dan Penataan Ruang</option>
+                          <option value="opt4">1.04 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Unit</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01 - Dinas Pendidikan, Kepemudaan dan Olah Raga</option>
+                          <option value="opt3">1.02.01 - Dinas Kesehatan</option>
+                          <option value="opt4">1.02.02 - Rumah Sakit Umum Daerah</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Sub-Unit</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.01 - Dinas Pendidikan, Kepemudaan dan Olah Raga</option>
+                          <option value="opt3">1.02.01.01 - Dinas Kesehatan</option>
+                          <option value="opt4">1.02.02.01 - Rumah Sakit Umum Daerah</option>
+                          <option value="opt4">1.03.01.01 - Dinas Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Program</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01 - Program Pelayanan Administrasi Perkantoran</option>
+                          <option value="opt3">1.02.01 - Program Peningkatan Sarana dan Prasarana Aparatur </option>
+                          <option value="opt4">1.02.02 - Program Peningkatan Disiplin Aparatur</option>
+                          <option value="opt4">1.03.01 - Program fasilitasi pindah/purna tugas PNS</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Kegiatan</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 1</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 1</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 2</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 3</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 4</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label class="control-label">Rek 5</label>
+                      <select name="select" class="form-control input-xs">
+                          <option value="opt1">Semua</option>
+                          <option value="opt2">1.01.01.02 - Penyediaan Jasa Komunikasi Sumber Daya Air dan listrik</option>
+                          <option value="opt3">1.01.01.07 - Penyediaan Jasa Adminstrasi Keuangan</option>
+                          <option value="opt4">1.01.01.08 - Penyediaan Jasa Penjaga Malam, dan Sopir</option>
+                          <option value="opt4">1.01.01.10 - Penyediaan Alat Tulis Kantor</option>
+                          <option value="opt4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <button class="btn btn-default btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label>Nama Kegiatan</label>
                       <input readonly name="nkk" type="text" class="form-control" value="Nama Kegiatan">
                     </div>
                   </div>
-                </div>
-                <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Jenis Kegiatan</label>
+                      <label>Metode Pengadaan</label>
                       <input readonly name="nama" type="text" class="form-control" value="Pengadaan">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Pagu Anggaran</label>
+                      <label>Jenis Pengadaan</label>
                       <input readonly name="nama" type="text" class="form-control" value="Pagu Anggaran">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
+                      <label>No Kontrak</label>
+                      <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label>Nama Pelaksana</label>
+                      <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
                       <label>Nilai Kontrak</label>
                       <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
-                      <label>Nama Pelaksana</label>
-                      <input readonly name="nama" type="text" class="form-control" value="Nama Pelaksana">
+                      <label>Tanggal Mulai</label>
+                      <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
-                      <label>Tanggal Mulai Pelaksanaan</label>
-                      <input readonly name="nama" type="text" class="form-control" value="Tanggal Mulai">
+                      <label>Tanggal Selesai</label>
+                      <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
-                      <label>Jangka Waktu</label>
-                      <input readonly name="nama" type="text" class="form-control" value="Jangka Waktu">
-                    </div>
-                  </div>
-                </div>
-
-                <br/>
-                <label>Data Awal (Hanya di-inputkan sekali)</label>
-                <hr style="margin-top: 0px; margin-bottom: 5px;" />
-                <div class="row">
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <label>NPWP Pemenang</label>
-                      <input required name="nama" type="text" class="form-control" placeholder="NPWP Pemenang">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <label>Pemenang</label>
-                      <input required name="nama" type="text" class="form-control" value="Pt Pemenang">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Nilai Kontrak (Rp.)</label>
-                      <input required name="nama" type="text" class="form-control" value="118,981,940.00">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Jangka Waktu Pekerjaan (Hari Kerja)</label>
-                      <input required name="nama" type="text" class="form-control" value="90">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Mulai Pekerjaan</label>
-                      <div class="input-group date">
-                        <div class="input-group-addon">
-                          <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control pull-right" id="datepicker-mulai">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Selesai Pekerjaan</label>
-                      <div class="input-group date">
-                        <div class="input-group-addon">
-                          <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control pull-right" id="datepicker-selesai">
-                      </div>
+                      <label>Lama Pekerjaan</label>
+                      <input readonly name="nama" type="text" class="form-control" value="Nilai Kontrak">
                     </div>
                   </div>
                 </div>
@@ -139,6 +242,67 @@
                 <br/>
                 <label>Data Laporan</label>
                 <hr style="margin-top: 0px; margin-bottom: 5px;" />
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-stripped table-hover">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px;">Ket</th>
+                          <th style="width: 10px;">Tahun</th>
+                          <th>Januari</th>
+                          <th>Pebruari</th>
+                          <th>Maret</th>
+                          <th>April</th>
+                          <th>Mei</th>
+                          <th>Juni</th>
+                          <th>Juli</th>
+                          <th>Agustus</th>
+                          <th>September</th>
+                          <th>Oktober</th>
+                          <th>Nopember</th>
+                          <th>Desember</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Target</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>Realisasi</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
@@ -151,20 +315,28 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Bulan</label>
-                      <select required name="pendidikan" class="form-control">
-                        <option value="">Nopember</option>
-                        <option value="">Bulan 1</option>
-                        <option value="">Bulan 2</option>
-                        <option value="">Bulan 3</option>
+                      <select required name="bulan" class="form-control">
+                        <option value="b_1">Januari</option>
+                        <option value="b_2">Pebruari</option>
+                        <option value="b_3">Maret</option>
+                        <option value="b_4">April</option>
+                        <option value="b_5">Mei</option>
+                        <option value="b_6">Juni</option>
+                        <option value="b_7">Juli</option>
+                        <option value="b_8">Agustus</option>
+                        <option value="b_9">September</option>
+                        <option value="b_10">Oktober</option>
+                        <option value="b_11">Nopember</option>
+                        <option value="b_12">Desember</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                     <div class="form-group">
                       <label>Target</label>
                       <input readonly name="nama" type="text" class="form-control" value="80%">
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Realisasi</label>
@@ -211,6 +383,7 @@
   <script>
 
   $(document).ready(function() {
+    $('#pelaporanfisik').addClass("active");
     //Date picker
     $('#datepicker-mulai').datepicker({
       autoclose: true
@@ -219,8 +392,6 @@
     $('#datepicker-selesai').datepicker({
       autoclose: true
     });
-    $('#data_penduduk').addClass("active");
-    $('#penduduk').addClass("active");
   });
 
   </script>

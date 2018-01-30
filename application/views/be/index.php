@@ -82,7 +82,89 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
+              <div class="row">
+                <form class="form-vertical" action="#">
+                  <div class="form-group">
+                    <div style="margin-bottom: 10px;" class="col-md-2">
+                      <label class="control-label">Tahun</label>
+                      <select name="select" class="form-control input-xs" id="selectYear" onchange="changeYear()">
+                          <?php
+                            $getYear = $this -> input -> get('tahun');
+                            if(isset($getYear)){
+                              $tahun = $getYear;
+                            }
+                            else{
+                              $tahun = date('Y');
+                            }
+                          ?>
+                          <option <?php if($tahun==2017) echo "selected"; ?> value="2017">2017</option>
+                          <option <?php if($tahun==2018) echo "selected"; ?> value="2018">2018</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <table id="example2" class="table table-hover">
+                
+                <?php
+                  if ($this->session->userdata('session')['role'] == 1) :
+                ?>
+
+                <thead>
+                <tr>
+                  <th style="width: 10px;">#</th>
+                  <th>Tahun</th>
+                  <th style="width: 150px;">Kode OPD</th>
+                  <th>Nama OPD</th>
+                  <th>Induk (Rp.)</th>
+                  <th>Perubahan (Rp.)</th>
+                  <th>Kelengkapan Data</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                  if(is_object($kegiatan) || is_array($kegiatan)) :
+                    $no = 1;
+                    foreach ($kegiatan as $row) :
+                ?>
+                <tr>
+                  <td><?=$no?></td>
+                  <th><?=$row->tahun?></th>
+                  <td>
+                    <a href="<?=site_url('backend/kegiatanbyopd/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                      <?php 
+                        echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub;
+                      ?>
+                    </a>
+                  </td>
+                  <td>
+                    <?php                      
+                      foreach ($nama_opd as $rowB) :
+                        if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                          echo $rowB->nama;
+                        endif;
+                      endforeach;
+                    ?>
+                  </td>
+                  <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
+                  <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>
+                  <td>
+                    <a href="#">(0/3) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                  </td>
+                </tr>
+
+                <?php
+                    $no ++;
+                    endforeach;
+                  endif;
+                ?>
+
+                </tbody>
+
+                <?php
+                  else :
+                ?>
+
                 <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -96,15 +178,15 @@
                 </thead>
                 <tbody>
                 <?php
-                if(is_object($kegiatan) || is_array($kegiatan)) :
-                  $no = 1;
-                  foreach ($kegiatan as $row) :
+                  if(is_object($kegiatan) || is_array($kegiatan)) :
+                    $no = 1;
+                    foreach ($kegiatan as $row) :
                 ?>
                 <tr>
                   <td><?=$no?></td>
                   <th><?=$row->tahun?></th>
                   <td>
-                    <a href="<?=site_url('backend/detailkegiatan/?kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
+                    <a href="<?=site_url('backend/detailkegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
                       <?php 
                         echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg;
                       ?>
@@ -139,6 +221,10 @@
                 ?>
 
                 </tbody>
+
+                <?php
+                  endif;
+                ?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -156,6 +242,7 @@
 
   <script>
   $(function () {
+    $('#dashboard').addClass('active');
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
@@ -167,4 +254,8 @@
       'stateSave'   : true
     });
   })
+  function changeYear() {
+      var year = document.getElementById("selectYear").value;
+      window.location.assign("http://ganeshaglobal.com/sippp/backend/?tahun=" + year);
+  }
   </script>

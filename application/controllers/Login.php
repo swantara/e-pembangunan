@@ -49,6 +49,7 @@ class Login extends CI_Controller {
 					'user_id' => $user->id,
 					'username' => $user->username,
 					'name' => $user->nama,
+					'foto' => $user->foto,
 					'kd_urusan' => $user->kd_urusan,
 					'kd_bidang' => $user->kd_bidang,
 					'kd_unit' => $user->kd_unit,

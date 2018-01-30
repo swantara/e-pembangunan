@@ -143,43 +143,88 @@
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="width: 10px;">No</th>
+                  <th style="width: 10px;">#</th>
                   <th>Kode Rekening</th>
+                  <th>OPD</th>
                   <th>Jenis Pengadaan</th>
                   <th>Nama Kegiatan</th>
                   <th>Tanggal Mulai</th>
                   <th>Tanggal Selesai</th>
                   <th>Lama Pekerjaan</th>
-                  <th>Nilai Kontrak</th>
+                  <th>Nilai Kontrak (Rp.)</th>
                   <th>Pelaksana</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody>                  
+                <?php
+                  if(is_object($kontrak) || is_array($kontrak)) :
+                    $no = 1;
+                    foreach ($kontrak as $row) :
+                ?>
                 <tr>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
+                  <td><?=$no?></td>  
+                  <td>
+                    <?php 
+                      echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg;
+                    ?>
+                  </td> 
+                  <td>
+                    <?php         
+                      foreach ($nama_opd as $rowB) :
+                        if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                          echo $rowB->nama;
+                        endif;
+                      endforeach;
+                    ?>
+                  </td>
+                  <td><?=$row->ket_jenis_pengadaan?></td>                        
+                  <td>
+                    <?php         
+                      foreach ($nama_kegiatan as $rowC) :
+                        if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_prog == $rowC->kd_prog && $row->kd_keg == $rowC->kd_keg) :
+                          echo $rowC->nama;
+                        endif;
+                      endforeach;
+                    ?>
+                  </td> 
+                  <td>
+                    <?php
+                      $date=date_create($row->tanggal_mulai);
+                      $newdate=date_format($date,"d-m-Y");
+                      echo $newdate;
+                    ?>
+                  </td> 
+                  <td>
+                    <?php
+                      $date=date_create($row->tanggal_selesai);
+                      $newdate=date_format($date,"d-m-Y");
+                      echo $newdate;
+                    ?>
+                  </td>  
+                  <td><?=$row->durasi." hari"?></td> 
+                  <td><?php echo number_format($row->nilai_kontrak, 0, ',', '.')?></td> 
+                  <td><?=$row->pelaksana?></td> 
                 </tr>
+                <?php
+                    $no ++;
+                    endforeach;
+                  endif;
+                ?>
                 </tbody>
-                <tfoot>
+                <!-- <tfoot>
                 <tr>
-                  <th style="width: 10px;">No</th>
+                  <th style="width: 10px;">#</th>
                   <th>Kode Rekening</th>
+                  <th>OPD</th>
                   <th>Jenis Pengadaan</th>
                   <th>Nama Kegiatan</th>
                   <th>Tanggal Mulai</th>
                   <th>Tanggal Selesai</th>
                   <th>Lama Pekerjaan</th>
-                  <th>Nilai Kontrak</th>
+                  <th>Nilai Kontrak (Rp.)</th>
                   <th>Pelaksana</th>
                 </tr>
-                </tfoot>
+                </tfoot> -->
               </table>
             </div>
             <!-- /.box-body -->
@@ -197,7 +242,7 @@
   <script>
 
     $(document).ready(function() {
-      $('#user').addClass("active");
+      $('#kontrak').addClass("active");
     });
 
   </script>

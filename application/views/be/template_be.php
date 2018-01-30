@@ -45,9 +45,9 @@
     <!-- Logo -->
     <a href="<?=site_url('backend')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>E</b>-P</span>
+      <span class="logo-mini"><b>SIPPP</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>E</b>-Pembangunan</span>
+      <span class="logo-lg"><b>SIPPP</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -62,13 +62,21 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?=base_url('assets/be/dist/img/user2-160x160.jpg')?>" class="user-image" alt="User Image">
+              <img 
+                <?php if($this->session->userdata('session')['foto']!=""): ?> src="<?php echo base_url() . 'assets/images/user/' . $this->session->userdata('session')['foto']?>"
+                <?php else : ?> src="<?=base_url()?>assets/images/no-image-square.jpg"
+                <?php endif; ?>
+                class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('session')['name'];?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?=base_url('assets/be/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
+                <img
+                  <?php if($this->session->userdata('session')['foto']!=""): ?> src="<?php echo base_url() . 'assets/images/user/' . $this->session->userdata('session')['foto']?>"
+                  <?php else : ?> src="<?=base_url()?>assets/images/no-image-square.jpg"
+                  <?php endif; ?>
+                  class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $this->session->userdata('session')['name'];?>
@@ -93,7 +101,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?=site_url('user/editprofile/'.$this->session->userdata('session')['user_id'])?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a onclick="return confirm('Pilih OK untuk melanjutkan.')" href="<?=site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -113,7 +121,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?=base_url('assets/be/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
+          <img 
+            <?php if($this->session->userdata('session')['foto']!=""): ?> src="<?php echo base_url() . 'assets/images/user/' . $this->session->userdata('session')['foto']?>"
+            <?php else : ?> src="<?=base_url()?>assets/images/no-image-square.jpg"
+            <?php endif; ?>
+            class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->userdata('session')['name'];?></p>
@@ -123,45 +135,42 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
+        <li id="dashboard">
           <a href="<?=site_url('backend')?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
+        <li id="rask">
           <a href="<?=site_url('backend/rask')?>">
             <i class="fa fa-institution"></i> <span>RASK</span>
           </a>
         </li>
-        <li>
+        <li id="kontrak">
           <a href="<?=site_url('backend/kontrak')?>">
             <i class="fa fa-copy"></i> <span>Kontrak</span>
           </a>
         </li>
-        <li>
+        <li id="realisasikeuangan">
           <a href="<?=site_url('backend/realisasikeuangan')?>">
             <i class="fa fa-bar-chart"></i> <span>Realisasi Keuangan</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Realisasi Fisik</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li id="realisasifisik">
+          <a href="<?=site_url('backend/realisasifisik')?>">
+            <i class="fa fa-line-chart"></i> <span>Realisasi Fisik</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="<?=site_url('backend/realisasifisik')?>"><i class="fa fa-line-chart"></i> Lihat Progress</a></li>
-            <li><a href="<?=site_url('backend/pelaporanfisik')?>"><i class="fa fa-file-text-o"></i> Pelaporan Fisik</a></li>
-          </ul>
         </li>
-        <li>
-          <a href="<?=site_url('backend/user')?>">
+        <li id="pelaporanfisik">
+          <a href="<?=site_url('backend/pelaporanfisik')?>">
+            <i class="fa fa-file-text-o"></i> <span>Pelaporan Fisik</span>
+          </a>
+        </li>
+        <li id="user">
+          <a href="<?=site_url('user')?>">
             <i class="fa fa-users"></i> <span>Kelola User</span>
           </a>
         </li>
-        <li class="header">Halaman Utama</li>
+        <li class="header">FRONT END</li>
         <li><a href="<?=site_url('')?>"><i class="fa fa-home text-green"></i> <span>Halaman Utama</span></a></li>
         <li class="header">SIGN OUT</li>
         <li><a onclick="return confirm('Pilih OK untuk melanjutkan.')" href="<?=site_url('login/logout')?>"><i class="fa fa-power-off text-red"></i> <span>Sign Out</span></a></li>
@@ -202,7 +211,7 @@
 <!-- ChartJS -->
 <script src="<?=base_url('assets/be/bower_components/Chart.js/Chart.js')?>"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?=base_url('assets/be/dist/js/pages/dashboard2.js')?>"></script>
+<!-- <script src="<?=base_url('assets/be/dist/js/pages/dashboard2.js')?>"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url('assets/be/dist/js/demo.js')?>"></script>
 </body>

@@ -11,7 +11,7 @@
         <!-- Simple login form -->
       
         <?php echo form_open('login', array('method' => 'POST', 'role' => 'form'));?>
-          <div style="margin: 90px auto auto auto; max-width: 328px;" class="panel panel-body login-form">
+          <div style="margin: 90px auto auto auto; max-width: 328px;" class="panel panel-body login-form login-margin">
             <div class="text-center">
               <div><img style="width: 100%; max-width: 88px; min-width: 40px;" src="<?=site_url('assets/images/logo-badung.png')?>" /></div>
               <h5 class="content-group">Silahkan login <small class="display-block">Masukkan username &amp; password</small></h5>

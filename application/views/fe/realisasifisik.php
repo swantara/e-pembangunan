@@ -6,7 +6,8 @@
     <div class="img-overlay bg-gradient" style="background-image: url('<?=base_url("assets/images/backgrounds/kantor-bupati.jpg")?>');">
       <div class="page-header-content">
         <div class="page-title align-center">
-          <div class="h-50">E-PEMBANGUNAN KABUPATEN BADUNG</div>
+          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PENGENDALIAN PEMBANGUNAN 
+            <br/>(SIPPP) KABUPATEN BADUNG</div>
           <h4>
             <i class="icon-home2 position-left"></i>
             <a href="<?=site_url('')?>"><span class="text-semibold white-link">Beranda </span></a>
@@ -30,6 +31,37 @@
       <!-- Main content -->
       <div class="content-wrapper">
 
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-flat">
+              <div class="panel-body">
+                <div class="row">
+                  <form class="form-vertical" action="#">
+                    <div class="form-group">
+                      <div style="margin-bottom: 10px;" class="col-md-2">
+                        <label class="control-label">Tahun</label>
+                        <select name="select" class="form-control input-xs" id="selectYear" onchange="changeYear()">
+                            <?php
+                              $getYear = $this -> input -> get('tahun');
+                              if(isset($getYear)){
+                                $tahun = $getYear;
+                              }
+                              else{
+                                $tahun = date('Y');
+                              }
+                            ?>
+                            <option <?php if($tahun==2017) echo "selected"; ?> value="2017">2017</option>
+                            <option <?php if($tahun==2018) echo "selected"; ?> value="2018">2018</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-flat">
@@ -160,28 +192,76 @@
                     <thead>
                       <tr class="table-gradient">
                         <th>#</th>
-                        <th>Kode Rekening</th>
-                        <th>Jenis Pengadaan</th>
-                        <th>Nama Kegiatan</th>
-                        <th>Bulan</th>
-                        <th>Target</th>
-                        <th>Realisasi</th>
-                        <th>Deviasi</th>
+                        <th>Tahun</th>
+                        <th>Kode OPD</th>
+                        <th>Nama OPD</th>
+                        <th>Jumlah Data</th>
+                        <th>Target (%)</th>
+                        <th>Realisasi (%)</th>
+                        <th>Deviasi (%)</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style="text-align: center;">
-                      </tr>
+
+                      <?php
+                        if(is_object($target) || is_array($target)) :
+                          $no = 1;
+                          foreach ($target as $row) :
+                      ?>
+
                       <tr>
-                        <td>-</td>  
-                        <td><a href="<?=site_url('realisasifisik/detail')?>">-</a></td>  
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>  
-                        <td>-</td>  
-                        <td>-</td>  
-                        <td>-</td>
+                        <td><?=$no?></td>  
+                        <td><?=$row->tahun?></td>
+                        <td>
+                          <a href="<?=site_url('realisasifisik/kegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                            <?php 
+                              echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub;
+                            ?>
+                          </a>
+                        </td> 
+                        <td>
+                          <a href="<?=site_url('realisasifisik/kegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                            <?php         
+                              foreach ($nama_opd as $rowB) :
+                                if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
+                                  echo $rowB->nama;
+                                endif;
+                              endforeach;
+                            ?>
+                          </a>
+                        </td>
+                        <td><?=$row->jumlah_data?></td>
+                        <td><?=$row->total_target . " %"?></td>
+                        <td>
+                          <?php         
+                            foreach ($realisasifisik as $rowC) :
+                              if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_unit == $rowC->kd_unit && $row->kd_sub == $rowC->kd_sub) :
+                                echo $rowC->total_realisasi . " %";
+                              else :
+                                echo "0 %";
+                              endif;
+                            endforeach;
+                          ?>
+                        </td>  
+                        <td>
+                          <?php         
+                            foreach ($realisasifisik as $rowD) :
+                              if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub) :
+                                echo $rowD->total_realisasi-$row->total_target . " %";
+                              else :
+                                echo 0-$row->total_target . " %";
+                              endif;
+                            endforeach;
+                          ?>
+                        </td> 
                       </tr>
+
+                      <?php
+                          $no ++;
+                          endforeach;
+                        endif;
+                      ?>
+
                     </tbody>
                   </table>
                 </div>
