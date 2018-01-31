@@ -12,7 +12,7 @@
     <!-- Main content -->
       <section class="content">
         <div class="row">  
-        <?php echo form_open('backend/laporanfisik/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id, array('method' => 'POST', 'role' => 'form'));?>
+        <?php echo form_open('backend/laporanfisik/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id, array('method' => 'POST', 'role' => 'form', 'enctype' => 'multipart/form-data'));?>
         <?php echo validation_errors();?>
           <!-- /.col -->
           <div class="col-md-12">
@@ -337,7 +337,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label>Bulan</label>
                       <select required name="bulan" class="form-control">
@@ -370,35 +370,30 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-2">
+                    <div class="box-body box-profile">
+                      <img style="margin: 0 auto;" class="img-responsive"
+                        <?php if(false): ?> src="<?php echo base_url() . 'assets/images/user/' . $data->foto?>"
+                        <?php else : ?> src="<?=base_url()?>assets/images/no-image-square.jpg"
+                        <?php endif; ?>
+                       alt="Program Picture">
+                      <hr>
+                      <lavel>Browse Foto :</lavel>
+                      <input name="foto" type="file"">
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-8">
                     <div class="form-group">
                       <label>Keterangan</label>
                       <input name="keterangan" type="text" class="form-control" placeholder="Keterangan">
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label>Foto Realisasi</label>
-                    <input name="foto[]" type="file" id="fotoArtikel">
-                  </div>
-                  <!-- <div class="col-md-3">
-                    <label>Foto Realisasi</label>
-                    <input name="foto[]" type="file" id="fotoArtikel">
-                  </div>
-                  <div class="col-md-3">
-                    <label>Foto Realisasi</label>
-                    <input name="foto[]" type="file" id="fotoArtikel">
-                  </div>
-                  <div class="col-md-3">
-                    <label>Foto Realisasi</label>
-                    <input name="foto[]" type="file" id="fotoArtikel">
-                  </div> -->
-                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="#" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
+                <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->tahun.'&kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
                 <button type="submit" class="btn btn-default pull-right"><i class="fa fa-check text-green"></i> Submit</button>
               </div>
             </div>

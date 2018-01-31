@@ -61,6 +61,10 @@
                             ?>
                             <option <?php if($tahun==2017) echo "selected"; ?> value="2017">2017</option>
                             <option <?php if($tahun==2018) echo "selected"; ?> value="2018">2018</option>
+                            <input type="hidden" id="kd_urusan" value="<?=$kd_urusan?>">
+                            <input type="hidden" id="kd_bidang" value="<?=$kd_bidang?>">
+                            <input type="hidden" id="kd_unit" value="<?=$kd_unit?>">
+                            <input type="hidden" id="kd_sub" value="<?=$kd_sub?>">
                         </select>
                       </div>
                     </div>
@@ -526,7 +530,11 @@
     });
     function changeYear() {
         var year = document.getElementById("selectYear").value;
-        window.location.assign("http://ganeshaglobal.com/sippp/?tahun=" + year);
+        var kd_urusan = document.getElementById("kd_urusan").value;
+        var kd_bidang = document.getElementById("kd_bidang").value;
+        var kd_unit = document.getElementById("kd_unit").value;
+        var kd_sub = document.getElementById("kd_sub").value;
+        window.location.assign("http://e-pembangunan.badungkab.go.id/?tahun=" + year + "&kd_urusan=" + kd_urusan + "&kd_bidang=" + kd_bidang + "&kd_unit=" + kd_unit + "&kd_sub=" + kd_sub);
     }
   </script>
   <script type="text/javascript" src="<?=base_url('assets/js/pages/extra_trees.js')?>"></script>

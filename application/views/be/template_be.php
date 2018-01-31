@@ -82,15 +82,7 @@
                   <?php echo $this->session->userdata('session')['name'];?>
                   <small>
                     <?php
-                      $kd_urusan = $this->session->userdata('session')['kd_urusan'];
-                      $kd_bidang = $this->session->userdata('session')['kd_bidang'];
-                      $kd_unit = $this->session->userdata('session')['kd_unit'];
-                      $kd_sub = $this->session->userdata('session')['kd_sub'];         
-                      foreach ($nama_opd as $row) :
-                        if($kd_urusan == $row->kd_urusan && $kd_bidang == $row->kd_bidang && $kd_unit == $row->kd_unit && $kd_sub == $row->kd_sub) :
-                          echo $row->nama;
-                        endif;
-                      endforeach;
+                      echo $this->session->userdata('session')['opd'];
                     ?>
                   </small>
                 </p>
@@ -133,38 +125,72 @@
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
+      <?php
+        $getYear = $this -> input -> get('tahun');
+        if(isset($getYear)){
+          $tahun = $getYear;
+        }
+        else{
+          $tahun = date('Y');
+        }
+      ?>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li id="dashboard">
-          <a href="<?=site_url('backend')?>">
+          <a href="<?=site_url('backend/?tahun='.$tahun)?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
         <li id="rask">
-          <a href="<?=site_url('backend/rask')?>">
+          <a href="#">
             <i class="fa fa-institution"></i> <span>RASK</span>
           </a>
         </li>
         <li id="kontrak">
-          <a href="<?=site_url('backend/kontrak')?>">
+          <a href="#">
             <i class="fa fa-copy"></i> <span>Kontrak</span>
           </a>
         </li>
         <li id="realisasikeuangan">
-          <a href="<?=site_url('backend/realisasikeuangan')?>">
+          <a href="#">
             <i class="fa fa-bar-chart"></i> <span>Realisasi Keuangan</span>
           </a>
         </li>
         <li id="realisasifisik">
-          <a href="<?=site_url('backend/realisasifisik')?>">
+          <a href="#">
             <i class="fa fa-line-chart"></i> <span>Realisasi Fisik</span>
           </a>
         </li>
         <li id="pelaporanfisik">
-          <a href="<?=site_url('backend/pelaporanfisik')?>">
+          <a href="#">
             <i class="fa fa-file-text-o"></i> <span>Pelaporan Fisik</span>
           </a>
         </li>
+        <!-- <li id="rask">
+          <a href="<?=site_url('backend/rask/?tahun='.$tahun)?>">
+            <i class="fa fa-institution"></i> <span>RASK</span>
+          </a>
+        </li>
+        <li id="kontrak">
+          <a href="<?=site_url('backend/kontrak/?tahun='.$tahun)?>">
+            <i class="fa fa-copy"></i> <span>Kontrak</span>
+          </a>
+        </li>
+        <li id="realisasikeuangan">
+          <a href="<?=site_url('backend/realisasikeuangan/?tahun='.$tahun)?>">
+            <i class="fa fa-bar-chart"></i> <span>Realisasi Keuangan</span>
+          </a>
+        </li>
+        <li id="realisasifisik">
+          <a href="<?=site_url('backend/realisasifisik/?tahun='.$tahun)?>">
+            <i class="fa fa-line-chart"></i> <span>Realisasi Fisik</span>
+          </a>
+        </li>
+        <li id="pelaporanfisik">
+          <a href="<?=site_url('backend/pelaporanfisik/?tahun='.$tahun)?>">
+            <i class="fa fa-file-text-o"></i> <span>Pelaporan Fisik</span>
+          </a>
+        </li> -->
         <li id="user">
           <a href="<?=site_url('user')?>">
             <i class="fa fa-users"></i> <span>Kelola User</span>

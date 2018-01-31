@@ -1,12 +1,24 @@
 
 <!-- Content Wrapper. Contains page content -->
+  <?php
+    $getYear = $this -> input -> get('tahun');
+    if(isset($getYear)){
+      $tahun = $getYear;
+    }
+    else{
+      $tahun = date('Y');
+    }
+    $kd_urusan = $this -> input -> get('kd_urusan');
+    $kd_bidang = $this -> input -> get('kd_bidang');
+    $kd_unit = $this -> input -> get('kd_unit');
+    $kd_sub = $this -> input -> get('kd_sub');
+    $kd_prog = $this -> input -> get('kd_prog');
+    $kd_keg = $this -> input -> get('kd_keg');
+  ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Detail Kegiatan
-        <small>E-Pembangunan</small>
-      </h1>
+      <h4><a href="<?=site_url('backend/?tahun='.$tahun)?>">Kegiatan</a> / <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg)?>">Rincian</a> / Detail  </h4> 
     </section>
 
     <!-- Main content -->

@@ -450,9 +450,7 @@
                               nilai[35].nama,
                               nilai[36].nama,
                               nilai[37].nama,
-                              nilai[38].nama,
-                              nilai[39].nama,
-                              nilai[40].nama]
+                              nilai[38].nama]
                         }],
 
                         // Add series
@@ -503,9 +501,7 @@
                               numeral(nilai[35].total_induk).format('0.00'),
                               numeral(nilai[36].total_induk).format('0.00'),
                               numeral(nilai[37].total_induk).format('0.00'),
-                              numeral(nilai[38].total_induk).format('0.00'),
-                              numeral(nilai[39].total_induk).format('0.00'),
-                              numeral(nilai[40].total_induk).format('0.00')]
+                              numeral(nilai[38].total_induk).format('0.00')]
                             },
                             {
                                 name: 'Perubahan (Miliar)',
@@ -553,9 +549,7 @@
                               numeral(nilai[35].total_perubahan).format('0.00'),
                               numeral(nilai[36].total_perubahan).format('0.00'),
                               numeral(nilai[37].total_perubahan).format('0.00'),
-                              numeral(nilai[38].total_perubahan).format('0.00'),
-                              numeral(nilai[39].total_perubahan).format('0.00'),
-                              numeral(nilai[40].total_perubahan).format('0.00')]
+                              numeral(nilai[38].total_perubahan).format('0.00')]
                             }
                         ]
                     };
@@ -659,7 +653,7 @@
 
     function changeYear() {
         var year = document.getElementById("selectYear").value;
-        window.location.assign("http://ganeshaglobal.com/sippp/?tahun=" + year);
+        window.location.assign("http://e-pembangunan.badungkab.go.id/?tahun=" + year);
     }
   </script>
   <script type="text/javascript" src="<?=base_url('assets/js/pages/extra_trees.js')?>"></script>

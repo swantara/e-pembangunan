@@ -22,6 +22,7 @@ class Realisasifisik_model extends CI_Model {
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_realisasi
 			from t_realisasi_fisik rf
 		    where rf.tahun = '$tahun'
+			and rf.kd_rek_1 = 5
 		    group by rf.kd_urusan,
 		    	rf.kd_bidang,
 		        rf.kd_unit,
@@ -51,6 +52,7 @@ class Realisasifisik_model extends CI_Model {
 				count(tf.tahun) as jumlah_data
 			from t_target_fisik tf
 			where tf.tahun = '$tahun'
+			and tf.kd_rek_1 = 5
             group by tf.kd_urusan,
             	tf.kd_bidang,
                 tf.kd_unit,
@@ -92,7 +94,8 @@ class Realisasifisik_model extends CI_Model {
 				(sum(tf.b_1)+sum(tf.b_2)+sum(tf.b_3)+sum(tf.b_4)+sum(tf.b_5)+sum(tf.b_6)+sum(tf.b_7)+sum(tf.b_8)+sum(tf.b_9)+sum(tf.b_10)+sum(tf.b_11)+sum(tf.b_12)) as total_target,
 				count(tf.tahun) as jumlah_data
 			from t_target_fisik tf
-			where tf.tahun = '$tahun'");
+			where tf.tahun = '$tahun'
+			and tf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -136,7 +139,8 @@ class Realisasifisik_model extends CI_Model {
             	and tf.kd_urusan = '$kd_urusan'
             	and tf.kd_bidang = '$kd_bidang'
             	and tf.kd_unit = '$kd_unit'
-            	and tf.kd_sub = '$kd_sub'");
+            	and tf.kd_sub = '$kd_sub'
+				and tf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -173,7 +177,8 @@ class Realisasifisik_model extends CI_Model {
             	and tf.kd_urusan = '$kd_urusan'
             	and tf.kd_bidang = '$kd_bidang'
             	and tf.kd_unit = '$kd_unit'
-            	and tf.kd_sub = '$kd_sub'");
+            	and tf.kd_sub = '$kd_sub'
+				and tf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -208,6 +213,7 @@ class Realisasifisik_model extends CI_Model {
 				and tf.kd_bidang = '$kd_bidang'
 				and tf.kd_unit = '$kd_unit'
 				and tf.kd_sub = '$kd_sub'
+				and tf.kd_rek_1 = 5
             group by tf.kd_urusan,
             	tf.kd_bidang,
                 tf.kd_unit,
@@ -250,7 +256,8 @@ class Realisasifisik_model extends CI_Model {
 				and tf.kd_unit = '$kd_unit'
 				and tf.kd_sub = '$kd_sub'
                 and tf.kd_prog = '$kd_prog'
-                and tf.kd_keg = '$kd_keg'");
+                and tf.kd_keg = '$kd_keg'
+				and tf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -348,7 +355,8 @@ class Realisasifisik_model extends CI_Model {
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_realisasi,
 				count(rf.tahun) as jumlah_data
 			from t_realisasi_fisik rf
-		    where rf.tahun = '$tahun'");
+		    where rf.tahun = '$tahun'
+				and rf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -394,7 +402,8 @@ class Realisasifisik_model extends CI_Model {
             	and rf.kd_urusan = '$kd_urusan'
             	and rf.kd_bidang = '$kd_bidang'
             	and rf.kd_unit = '$kd_unit'
-            	and rf.kd_sub = '$kd_sub'");
+            	and rf.kd_sub = '$kd_sub'
+				and rf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -432,7 +441,8 @@ class Realisasifisik_model extends CI_Model {
             	and rf.kd_urusan = '$kd_urusan'
             	and rf.kd_bidang = '$kd_bidang'
             	and rf.kd_unit = '$kd_unit'
-            	and rf.kd_sub = '$kd_sub'");
+            	and rf.kd_sub = '$kd_sub'
+				and rf.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -507,6 +517,7 @@ class Realisasifisik_model extends CI_Model {
 				and rf.kd_sub = '$kd_sub'
 				and rf.kd_prog = '$kd_prog'
 				and rf.kd_keg = '$kd_keg'
+				and rf.kd_rek_1 = 5
             group by rf.kd_urusan,
             	rf.kd_bidang,
                 rf.kd_unit,

@@ -95,6 +95,15 @@
           </ul>
         </li> -->
         <li><a href="http://lpse.badungkab.go.id/" target="_blank"><i class="icon-link2 position-left"></i> LPSE</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-link2 position-left"></i> ROPK <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu width-200">
+            <li><a href="http://ropk.badungkab.go.id" target="_blank"><i class="icon-enter"></i> Halaman Utama</a></li>
+            <li><a href="http://ropk.badungkab.go.id/app/realisasiopd/opd" target="_blank"><i class="icon-enter"></i> Realisasi Perangkat Daerah</a></li>
+          </ul>
+        </li>
         <li id="login" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-user position-left"></i> Login <span class="caret"></span>

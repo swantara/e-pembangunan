@@ -43,7 +43,7 @@ class Beranda extends CI_Controller {
 
 	public function ajaxgetkeuanganall()
 	{
-		if($this->input->is_ajax_request()){
+		// if($this->input->is_ajax_request()){
 			$data["keuangan"][0] = $this->realisasikeuangan->getsumtargetall()[0];
 			$data["keuangan"][1] = $this->realisasikeuangan->getsumrealisasiall()[0];
 			$data["keuangan"][2] = $this->realisasikeuangan->getsumrealisasiall()[0];
@@ -60,7 +60,7 @@ class Beranda extends CI_Controller {
 			$data["keuangan"][2]->total_nop = $data["keuangan"][2]->total_nop-$data["keuangan"][0]->total_nop;
 			$data["keuangan"][2]->total_des = $data["keuangan"][2]->total_des-$data["keuangan"][0]->total_des;
 			echo json_encode($data);
-		}
+		// }
 	}
 
 	public function ajaxgetfisikall()
@@ -164,90 +164,5 @@ class Beranda extends CI_Controller {
 			echo json_encode($data);
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-	public function ajaxgetrealisasikeuanganall()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasikeuangan->getrealisasiall()[0]);
-		}
-	}
-
-	public function ajaxgettargetfisikall()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->gettargetall()[0]);
-		}
-	}
-
-	public function ajaxgetrealisasifisikall()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->getrealisasiall()[0]);
-		}
-	}
-
-	public function ajaxgettargetkeuanganopd()
-	{
-		// if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasikeuangan->gettargetopd()[0]);
-		// }
-	}
-
-	public function ajaxgetrealisasikeuanganopd()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasikeuangan->getrealisasiopd()[0]);
-		}
-	}
-
-	public function ajaxgettargetfisikopd()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->gettargetopd()[0]);
-		}
-	}
-
-	public function ajaxgetrealisasifisikopd()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->getrealisasiopd()[0]);
-		}
-	}
-
-	public function ajaxgettargetkeuangantriwulan()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasikeuangan->gettargettriwulan()[0]);
-		}
-	}
-
-	public function ajaxgetrealisasikeuangantriwulan()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasikeuangan->getrealisasitriwulan()[0]);
-		}
-	}
-
-	public function ajaxgettargetfisiktriwulan()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->gettargettriwulan()[0]);
-		}
-	}
-
-	public function ajaxgetrealisasifisiktriwulan()
-	{
-		if($this->input->is_ajax_request()){
-			echo json_encode($this->realisasifisik->getrealisasitriwulan()[0]);
-		}
-	}
+	
 }

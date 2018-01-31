@@ -41,13 +41,16 @@ class Realisasikeuangan_model extends CI_Model {
 		else{
 			$tahun = date('Y');
 		}
-
+		
 		$query = $this->db->query("select *,
 				c.tgl_cair, c.nilai as dana_cair, sum(c.nilai) as total_realisasi 
 			from t_sp2d sp
 			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
 		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
 		    where spm.tahun = '$tahun'
+				and spm.kd_rek_1 = 5
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
 		    group by spm.kd_urusan,
 		    	spm.kd_bidang,
 		        spm.kd_unit,
@@ -118,6 +121,9 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
 				and spm.kd_sub = '$kd_sub'
+				and spm.kd_rek_1 = 5
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
             group by spm.kd_urusan,
             	spm.kd_bidang,
                 spm.kd_unit,
@@ -163,7 +169,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_unit = '$kd_unit'
 				and spm.kd_sub = '$kd_sub'
                 and spm.kd_prog = '$kd_prog'
-                and spm.kd_keg = '$kd_keg'");
+                and spm.kd_keg = '$kd_keg'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -188,8 +195,11 @@ class Realisasikeuangan_model extends CI_Model {
 	  	$kd_bidang = $this -> input -> get('kd_bidang');
 	  	$kd_unit = $this -> input -> get('kd_unit');
 	  	$kd_sub = $this -> input -> get('kd_sub');
+	  	$kd_prog = $this -> input -> get('kd_prog');
+	  	$kd_keg = $this -> input -> get('kd_keg');
 
-		$query = $this->db->query("select *,
+		$query = $this->db->query("select sp.*,
+				spm.kd_urusan, spm.kd_bidang, spm.kd_bidang, spm.kd_unit, spm.kd_sub, spm.kd_prog, spm.kd_keg, spm.kd_rek_1, spm.kd_rek_2, spm.kd_rek_3, spm.kd_rek_4, spm.kd_rek_5, sum(spm.nilai) as total_spm,
 				c.tgl_cair, c.nilai as dana_cair
 			from t_sp2d sp
 			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
@@ -199,12 +209,9 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
 				and spm.kd_sub = '$kd_sub'
-            group by spm.kd_urusan,
-            	spm.kd_bidang,
-                spm.kd_unit,
-                spm.kd_sub,
-                spm.kd_prog,
-                spm.kd_keg");
+				and spm.kd_prog = '$kd_prog'
+				and spm.kd_keg = '$kd_keg'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -290,6 +297,9 @@ class Realisasikeuangan_model extends CI_Model {
 				count(ra.tahun) as jumlah_data
 			from t_rencana_arsip ra
 			where ra.tahun = '$tahun'
+				and ra.kd_rek_1 = 5
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'
             group by ra.kd_urusan,
             	ra.kd_bidang,
                 ra.kd_unit,
@@ -330,7 +340,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and ra.kd_unit = '$kd_unit'
 				and ra.kd_sub = '$kd_sub'
                 and ra.kd_prog = '$kd_prog'
-                and ra.kd_keg = '$kd_keg'");
+                and ra.kd_keg = '$kd_keg'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -368,7 +379,10 @@ class Realisasikeuangan_model extends CI_Model {
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target,
 				count(ra.tahun) as jumlah_data
 			from t_rencana_arsip ra
-			where ra.tahun = '$tahun'");
+			where ra.tahun = '$tahun'
+				and ra.kd_rek_1 = 5
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'");
 
 		if($query->num_rows() > 0)
 		{
@@ -406,7 +420,10 @@ class Realisasikeuangan_model extends CI_Model {
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des))/1000000000 as total_target,
 				count(ra.tahun) as jumlah_data
 			from t_rencana_arsip ra
-			where ra.tahun = '$tahun'");
+			where ra.tahun = '$tahun'
+				and ra.kd_rek_1 = 5
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
+				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'");
 
 		if($query->num_rows() > 0)
 		{
@@ -450,7 +467,8 @@ class Realisasikeuangan_model extends CI_Model {
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
-            	and ra.kd_sub = '$kd_sub'");
+            	and ra.kd_sub = '$kd_sub'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -494,7 +512,8 @@ class Realisasikeuangan_model extends CI_Model {
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
-            	and ra.kd_sub = '$kd_sub'");
+            	and ra.kd_sub = '$kd_sub'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -531,7 +550,8 @@ class Realisasikeuangan_model extends CI_Model {
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
-            	and ra.kd_sub = '$kd_sub'");
+            	and ra.kd_sub = '$kd_sub'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -568,7 +588,8 @@ class Realisasikeuangan_model extends CI_Model {
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
-            	and ra.kd_sub = '$kd_sub'");
+            	and ra.kd_sub = '$kd_sub'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -603,6 +624,7 @@ class Realisasikeuangan_model extends CI_Model {
 				and ra.kd_bidang = '$kd_bidang'
 				and ra.kd_unit = '$kd_unit'
 				and ra.kd_sub = '$kd_sub'
+				and ra.kd_rek_1 = 5
             group by ra.kd_urusan,
             	ra.kd_bidang,
                 ra.kd_unit,
@@ -657,7 +679,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and ra.kd_unit = '$kd_unit'
 				and ra.kd_sub = '$kd_sub'
                 and ra.kd_prog = '$kd_prog'
-                and ra.kd_keg = '$kd_keg'");
+                and ra.kd_keg = '$kd_keg'
+				and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -767,7 +790,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_unit = '$kd_unit'
 				and spm.kd_sub = '$kd_sub'
 				and spm.kd_prog = '$kd_prog'
-				and spm.kd_keg = '$kd_keg'");
+				and spm.kd_keg = '$kd_keg'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -808,7 +832,10 @@ class Realisasikeuangan_model extends CI_Model {
 			from t_sp2d sp
 			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
 		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
-			where c.tahun = '$tahun'");
+			where c.tahun = '$tahun'
+				and spm.kd_rek_1 = 5
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'");
 
 		if($query->num_rows() > 0)
 		{
@@ -849,7 +876,10 @@ class Realisasikeuangan_model extends CI_Model {
 			from t_sp2d sp
 			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
 		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
-			where c.tahun = '$tahun'");
+			where c.tahun = '$tahun'
+				and spm.kd_rek_1 = 5
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
+				and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'");
 
 		if($query->num_rows() > 0)
 		{
@@ -898,7 +928,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
-				and spm.kd_sub = '$kd_sub'");
+				and spm.kd_sub = '$kd_sub'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -947,7 +978,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
-				and spm.kd_sub = '$kd_sub'");
+				and spm.kd_sub = '$kd_sub'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -988,7 +1020,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
-				and spm.kd_sub = '$kd_sub'");
+				and spm.kd_sub = '$kd_sub'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -1029,7 +1062,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
 				and spm.kd_unit = '$kd_unit'
-				and spm.kd_sub = '$kd_sub'");
+				and spm.kd_sub = '$kd_sub'
+				and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{

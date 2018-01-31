@@ -200,13 +200,16 @@ class User_model extends CI_Model {
 
 		$sess_array = array();
 		$sess_array = array(
+			'user_id' => $this->session->userdata('session')['user_id'],
 			'kd_urusan' => $this -> input -> post('kd_urusan'),
 			'kd_bidang' => $this -> input -> post('kd_bidang'),
 			'kd_unit' => $this -> input -> post('kd_unit'),
+			'foto' => $this->session->userdata('session')['foto'],
 			'kd_sub' => $this -> input -> post('kd_sub'),
 			'username' => $this -> input -> post('username'),
 			'name' => $this -> input -> post('nama'),
-			'role' => $this -> input -> post('role')
+			'role' => $this -> input -> post('role'),
+			'opd' => $this->session->userdata('session')['opd']
 			);
 		$this->session->set_userdata('session', $sess_array);
 

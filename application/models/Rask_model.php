@@ -85,6 +85,7 @@ class Rask_model extends CI_Model {
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan,
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -160,13 +161,15 @@ class Rask_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*,
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
+			count(tra.tahun) as jumlah_data
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 			and tra.kd_prog <> 0
 			and tra.kd_keg <> 0
 		group by tra.kd_urusan, 
@@ -214,6 +217,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -263,7 +267,8 @@ class Rask_model extends CI_Model {
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_prog = '$kd_prog'
-			and tra.kd_keg = '$kd_keg'");
+			and tra.kd_keg = '$kd_keg'
+			and tra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -292,7 +297,9 @@ class Rask_model extends CI_Model {
 	  	$kd_prog = $this -> input -> get('kd_prog');
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
-		$query = $this->db->query("select tra.*
+		$query = $this->db->query("select tra.*,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
@@ -302,6 +309,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '4'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -343,7 +351,9 @@ class Rask_model extends CI_Model {
 	  	$kd_prog = $this -> input -> get('kd_prog');
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
-		$query = $this->db->query("select tra.*
+		$query = $this->db->query("select tra.*,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
@@ -353,6 +363,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '6'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -402,6 +413,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '4'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 

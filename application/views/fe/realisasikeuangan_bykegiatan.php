@@ -78,13 +78,18 @@
                         </td> 
                         <td>
                           <a href="<?=site_url('realisasikeuangan/detail/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
-                            <?php         
+                            <?php     
+                              $statusB = 0;    
                               foreach ($nama_kegiatan as $rowB) :
                                 if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
                                   echo $rowB->nama;
+                                  $statusB = 1;
                                   break;
                                 endif;
                               endforeach;
+                              if($statusB!=1):
+                                echo "-";
+                              endif;
                             ?>
                           </a>
                         </td>
@@ -92,28 +97,35 @@
                         <td><?php echo number_format($row->total_target, 0, ',', '.'); ?></td>
                         <td style="text-align: right;">
                           <?php         
+                            $statusC = 0;
                             foreach ($realisasikeuangan as $rowC) :
                               if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_prog == $rowC->kd_prog && $row->kd_keg == $rowC->kd_keg) :
                                 echo number_format($rowC->total_realisasi, 0, ',', '.');
-                              else:
-                                echo "-";
+                                $statusC = 1;
                               endif;
                             endforeach;
+                            if($statusC!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                         <td>
                           <?php         
+                            $statusD = 0;
                             foreach ($realisasikeuangan as $rowD) :
                               if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_prog == $rowD->kd_prog && $row->kd_keg == $rowD->kd_keg) :
                                 echo number_format($rowD->total_realisasi-$row->total_target, 0, ',', '.');
-                              else:
-                                echo "-";
+                                $statusD = 1;
                               endif;
                             endforeach;
+                            if($statusD!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                         <td>
                           <?php         
+                            $statusE = 0;
                             foreach ($realisasikeuangan as $rowE) :
                               if($row->kd_urusan == $rowE->kd_urusan && $row->kd_bidang == $rowE->kd_bidang && $row->kd_prog == $rowE->kd_prog && $row->kd_keg == $rowE->kd_keg) :
                                 if($rowE->total_realisasi==0) :
@@ -121,10 +133,12 @@
                                 else :
                                   echo number_format(((($rowE->total_realisasi-$row->total_target)/$row->total_target)*100), 2, ',', '.') . "%";
                                 endif;
-                              else:
-                                echo "-";
+                                $statusE = 1;
                               endif;
                             endforeach;
+                            if($statusE!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                       </tr>

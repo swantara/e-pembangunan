@@ -74,7 +74,7 @@
                 </div>
               </div>
               <div class="panel-body">
-                <div class="row">
+                <!-- <div class="row">
                   <form class="form-vertical" action="#">
                     <div class="form-group">
                       <div style="margin-bottom: 10px;" class="col-md-2">
@@ -186,7 +186,7 @@
                       </div>
                     </div>
                   </form>
-                </div>
+                </div> -->
                 <div class="table-responsive mt-30">
                   <table class="table">
                     <thead>

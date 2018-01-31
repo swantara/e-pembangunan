@@ -24,19 +24,49 @@ class Backend_model extends CI_Model {
 		$kd_sub = $this->session->userdata('session')['kd_sub'];
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
 			tra.kd_sub, 
 			tra.kd_prog, 
 			tra.kd_keg");
+
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function getdatacount()
+	{
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear)){
+			$tahun = $getYear;
+		}
+		else{
+			$tahun = date('Y');
+		}
+
+		$query = $this->db->query("select 
+			count(case when tra.status = 1 then tra.tahun else 0 end) as progress_data,
+			count(tra.tahun) as total_data 
+		from t_rask_arsip as tra 
+		where tra.tahun = '$tahun'
+			and tra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -65,13 +95,16 @@ class Backend_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -108,13 +141,16 @@ class Backend_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -211,6 +247,7 @@ class Backend_model extends CI_Model {
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -256,6 +293,7 @@ class Backend_model extends CI_Model {
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -355,7 +393,8 @@ class Backend_model extends CI_Model {
 			and k.kd_unit = '$kd_unit'
 			and k.kd_sub = '$kd_sub'
 			and k.kd_prog = '$kd_prog'
-			and k.kd_keg = '$kd_keg'");
+			and k.kd_keg = '$kd_keg'
+			and k.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -386,6 +425,7 @@ class Backend_model extends CI_Model {
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -457,7 +497,8 @@ class Backend_model extends CI_Model {
 			and k.kd_unit = '$kd_unit'
 			and k.kd_sub = '$kd_sub'
 			and k.kd_prog = '$kd_prog'
-			and k.kd_keg = '$kd_keg'");
+			and k.kd_keg = '$kd_keg'
+			and k.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -778,6 +819,13 @@ class Backend_model extends CI_Model {
 				  'kd_sub' => $kd_sub,
 				  'kd_prog' => $kd_prog,
 				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id,
 				  'metode_pengadaan' => $this -> input -> post('metode_pengadaan'),
 				  'jenis_pengadaan' => $this -> input -> post('jenis_pengadaan'),
 				  'pelaksana' => $this -> input -> post('pelaksana'),
@@ -792,6 +840,28 @@ class Backend_model extends CI_Model {
 			//insert ke database
 			$this->db->insert('t_kontrak', $data);
 
+			$where = array(
+				  'tahun' => $tahun,
+				  'kd_urusan' => $kd_urusan,
+				  'kd_bidang' => $kd_bidang,
+				  'kd_unit' => $kd_unit,
+				  'kd_sub' => $kd_sub,
+				  'kd_prog' => $kd_prog,
+				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id
+				  );
+
+
+			$this->db->set('status_pengadaan', 1);
+			$this->db->where($where);
+			$this->db->update('t_rask_arsip');
+
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
 		}
@@ -805,6 +875,13 @@ class Backend_model extends CI_Model {
 				  'kd_sub' => $kd_sub,
 				  'kd_prog' => $kd_prog,
 				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id,
 				  'metode_pengadaan' => $this -> input -> post('metode_pengadaan'),
 				  'jenis_pengadaan' => null,
 				  'pelaksana' => null,
@@ -824,6 +901,13 @@ class Backend_model extends CI_Model {
 				  'kd_sub' => $kd_sub,
 				  'kd_prog' => $kd_prog,
 				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id,
 				  'metode_pengadaan' => $this -> input -> post('metode_pengadaan'),
 				  'jenis_pengadaan' => $this -> input -> post('jenis_pengadaan'),
 				  'pelaksana' => $this -> input -> post('pelaksana'),
@@ -838,6 +922,28 @@ class Backend_model extends CI_Model {
 			//insert ke database
 			$this->db->where('id', $data_kontrak->id);
 			$this->db->update('t_kontrak', $data);
+
+			$where = array(
+				  'tahun' => $tahun,
+				  'kd_urusan' => $kd_urusan,
+				  'kd_bidang' => $kd_bidang,
+				  'kd_unit' => $kd_unit,
+				  'kd_sub' => $kd_sub,
+				  'kd_prog' => $kd_prog,
+				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id
+				  );
+
+
+			$this->db->set('status_pengadaan', 1);
+			$this->db->where($where);
+			$this->db->update('t_rask_arsip');
 
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
@@ -931,6 +1037,37 @@ class Backend_model extends CI_Model {
 
 			//insert ke database
 			$this->db->insert('t_target_fisik', $data);
+			$lastid = $this->db->insert_id();
+
+			$where = array(
+				  'tahun' => $tahun,
+				  'kd_urusan' => $kd_urusan,
+				  'kd_bidang' => $kd_bidang,
+				  'kd_unit' => $kd_unit,
+				  'kd_sub' => $kd_sub,
+				  'kd_prog' => $kd_prog,
+				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id
+				  );
+
+
+			$this->db->set('status_target', 1);
+			$this->db->where($where);
+			$this->db->update('t_rask_arsip');
+
+			if($_FILES['foto']['error'] != 4)
+			{
+				//bila mengubah foto
+				
+				//upload foto
+				$this->uploadfoto($lastid);
+			}
 
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
@@ -971,6 +1108,28 @@ class Backend_model extends CI_Model {
 			//insert ke database
 			$this->db->where('id', $data_fisik->id);
 			$this->db->update('t_target_fisik', $data);
+
+			$where = array(
+				  'tahun' => $tahun,
+				  'kd_urusan' => $kd_urusan,
+				  'kd_bidang' => $kd_bidang,
+				  'kd_unit' => $kd_unit,
+				  'kd_sub' => $kd_sub,
+				  'kd_prog' => $kd_prog,
+				  'kd_keg' => $kd_keg,
+				  'kd_rek_1' => $kd_rek_1,
+				  'kd_rek_2' => $kd_rek_2,
+				  'kd_rek_3' => $kd_rek_3,
+				  'kd_rek_4' => $kd_rek_4,
+				  'kd_rek_5' => $kd_rek_5,
+				  'no_rinc' => $no_rinc,
+				  'no_id' => $no_id
+				  );
+
+
+			$this->db->set('status_target', 1);
+			$this->db->where($where);
+			$this->db->update('t_rask_arsip');
 
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
@@ -1428,6 +1587,15 @@ class Backend_model extends CI_Model {
 
 			//insert ke database
 			$this->db->insert('t_realisasi_fisik', $data);
+			$lastid = $this->db->insert_id();
+
+			if($_FILES['foto']['error'] != 4)
+			{
+				//bila mengubah foto
+				
+				//upload foto
+				$this->uploadfoto($lastid);
+			}
 
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
@@ -1703,8 +1871,50 @@ class Backend_model extends CI_Model {
 			$this->db->where('id', $data_fisik->id);
 			$this->db->update('t_realisasi_fisik', $data);
 
+			if($_FILES['foto']['error'] != 4)
+			{
+				//bila mengubah foto
+				
+				//upload foto
+				$this->uploadfoto($data_fisik->id);
+			}
+
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
 		}
+	}
+
+	private function uploadfoto($id)
+	{
+		//ambil data admin yang menginputkan data
+		$data_session = $this->session->userdata('session');
+		$id_user = $data_session['user_id'];
+
+		//proses upload foto
+
+		//mengambil data foto dan mengganti filenamenya sesuai id
+		$arrayname = explode(".", $_FILES['foto']['name']);
+		$ext = end($arrayname);
+		$newfilename = 'img-'.$id.'-'.uniqid().'.'.$ext;
+
+		//fungsi upload foto
+		$config['upload_path']      = './assets/images/laporanfisik/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['file_name']        = $newfilename;
+        $config['overwrite']        = true;
+        $this->load->library('upload');
+		$this->upload->initialize($config);
+
+		if ($this->upload->do_upload('foto'))
+        {
+        	$data = array(
+				'id_realisasi_fisik' => $id,
+				'photo' => $newfilename,
+				'created_by' => $id_user
+				);
+
+			//insert ke database
+			$this->db->insert('t_dokumentasi_fisik', $data);
+        }
 	}
 }

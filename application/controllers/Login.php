@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('user_model', 'user', true);
+		$this->load->model('backend_model', 'backend', true);
 	}
 
 	public function index()
@@ -37,13 +38,20 @@ class Login extends CI_Controller {
 		$user = $this->input->post('username');
 
 		//query the database
-		$result = $this->user->login($user);
+		$result = $this->user->login($user);		
+		$data['nama_opd'] = $this->backend->getnamaopd();
 
 		if($result)
 		{
 			$user = $result[0];
 			if(password_verify($pass, $user->password))
 			{
+				foreach ($data['nama_opd'] as $row) :
+					if($user->kd_urusan == $row->kd_urusan && $user->kd_bidang == $row->kd_bidang && $user->kd_unit == $row->kd_unit && $user->kd_sub == $row->kd_sub) :
+						$nama_opd = $row->nama;
+					endif;
+				endforeach;
+
 				$sess_array = array();
 				$sess_array = array(
 					'user_id' => $user->id,
@@ -54,7 +62,8 @@ class Login extends CI_Controller {
 					'kd_bidang' => $user->kd_bidang,
 					'kd_unit' => $user->kd_unit,
 					'kd_sub' => $user->kd_sub,
-					'role' => $user->role
+					'role' => $user->role,
+					'opd' => $nama_opd
 					);
 				$this->session->set_userdata('session', $sess_array);
 				return TRUE;

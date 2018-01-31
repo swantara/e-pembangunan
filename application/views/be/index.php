@@ -78,10 +78,6 @@
         <div class="col-xs-12">
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h4>Kegiatan</h4>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive">
               <div class="row">
                 <form class="form-vertical" action="#">
                   <div class="form-group">
@@ -104,12 +100,16 @@
                   </div>
                 </form>
               </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
               <table id="example2" class="table table-hover">
                 
                 <?php
                   if ($this->session->userdata('session')['role'] == 1) :
                 ?>
 
+                <h4>Kegiatan</h4>
                 <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -142,6 +142,7 @@
                       foreach ($nama_opd as $rowB) :
                         if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
                           echo $rowB->nama;
+                          break;
                         endif;
                       endforeach;
                     ?>
@@ -149,7 +150,7 @@
                   <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
                   <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>
                   <td>
-                    <a href="#">(0/3) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="#">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 
@@ -165,6 +166,7 @@
                   else :
                 ?>
 
+                <h4>List Kegiatan</h4>
                 <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -186,7 +188,7 @@
                   <td><?=$no?></td>
                   <th><?=$row->tahun?></th>
                   <td>
-                    <a href="<?=site_url('backend/detailkegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
+                    <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
                       <?php 
                         echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg;
                       ?>
@@ -197,6 +199,7 @@
                       foreach ($nama_kegiatan as $rowB) :
                         if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
                           echo $rowB->nama;
+                          break;
                         endif;
                       endforeach;
                     ?>
@@ -204,7 +207,7 @@
                   <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
                   <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>
                   <td>
-                    <a href="#">(0/3) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                     <!-- 1. Jenis Pengadaan <i class="fa fa-check text-green ml-5"></i><br/>
                     2. Anggaran Kas <i class="fa fa-times text-red ml-5"></i><br/>
                     3. Target Fisik <i class="fa fa-check text-green ml-5"></i><br/>

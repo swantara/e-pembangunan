@@ -8,18 +8,18 @@ class Beranda_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function test(){
-		$simda = $this->load->database('simda', TRUE);
-		$query = $simda->query("select * from m_opd");
-		if($query->num_rows() > 0)
-		{
-			return $query->result();
-		}
-		else
-		{
-			return false;
-		}
-	}
+	// public function test(){
+	// 	$simda = $this->load->database('simda', TRUE);
+	// 	$query = $simda->query("select * from m_opd");
+	// 	if($query->num_rows() > 0)
+	// 	{
+	// 		return $query->result();
+	// 	}
+	// 	else
+	// 	{
+	// 		return false;
+	// 	}
+	// }
 
 	public function getkegiatanbyopd()
 	{
@@ -33,9 +33,14 @@ class Beranda_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
+			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
+			count(tra.tahun) as total_data 
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun'
+			and tra.kd_rek_1 = 5
+			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '411' 
+			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '412'
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -68,6 +73,9 @@ class Beranda_model extends CI_Model {
 		from t_rask_arsip as tra 
 		inner join m_sub_unit msu on msu.kd_urusan = tra.kd_urusan and msu.kd_bidang = tra.kd_bidang and msu.kd_unit = tra.kd_unit and msu.kd_sub = tra.kd_sub
 		where tra.tahun = '$tahun'
+			and tra.kd_rek_1 = 5
+			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '411' 
+			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '412'
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -107,7 +115,8 @@ class Beranda_model extends CI_Model {
 				sum(nop) as total_nop,
 				sum(des) as total_des
 			from t_rencana_arsip ra
-			where ra.tahun = '$tahun'");
+			where ra.tahun = '$tahun'
+			and ra.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{
@@ -145,7 +154,8 @@ class Beranda_model extends CI_Model {
 			from t_sp2d sp
 			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
 		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
-			where spm.tahun = '$tahun'");
+			where spm.tahun = '$tahun'
+			and spm.kd_rek_1 = 5");
 
 		if($query->num_rows() > 0)
 		{

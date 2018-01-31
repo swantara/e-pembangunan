@@ -15,7 +15,61 @@ class Kontrak_model extends CI_Model {
 		from t_kontrak k
 		inner join m_jenis_pengadaan mjp on mjp.id = k.jenis_pengadaan
 		where k.tahun = 2017
-			and k.metode_pengadaan = 2");
+			and k.metode_pengadaan = 2
+			and k.kd_rek_1 = 5");
+
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function getdetailkontrak()
+	{
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear)){
+			$tahun = $getYear;
+		}
+		else{
+			$tahun = date('Y');
+		}
+
+	  	$kd_urusan = $this -> input -> get('kd_urusan');
+	  	$kd_bidang = $this -> input -> get('kd_bidang');
+	  	$kd_unit = $this -> input -> get('kd_unit');
+	  	$kd_sub = $this -> input -> get('kd_sub');
+	  	$kd_prog = $this -> input -> get('kd_prog');
+	  	$kd_keg = $this -> input -> get('kd_keg');
+	  	$kd_rek_1 = $this -> input -> get('kd_rek_1');
+	  	$kd_rek_2 = $this -> input -> get('kd_rek_2');
+	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
+	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
+	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
+	  	$no_rinc = $this -> input -> get('no_rinc');
+	  	$no_id = $this -> input -> get('no_id');
+
+		$query = $this->db->query("select k.*,
+			mjp.nama as ket_jenis_pengadaan
+		from t_kontrak k
+		inner join m_jenis_pengadaan mjp on mjp.id = k.jenis_pengadaan
+		where k.tahun = '$tahun' 
+			and k.kd_urusan = '$kd_urusan'
+			and k.kd_bidang = '$kd_bidang'
+			and k.kd_unit = '$kd_unit'
+			and k.kd_sub = '$kd_sub'
+			and k.kd_prog = '$kd_prog'
+			and k.kd_keg = '$kd_keg'
+			and k.kd_rek_1 = '$kd_rek_1'
+			and k.kd_rek_2 = '$kd_rek_2'
+			and k.kd_rek_3 = '$kd_rek_3'
+			and k.kd_rek_4 = '$kd_rek_4'
+			and k.kd_rek_5 = '$kd_rek_5'
+			and k.no_rinc = '$no_rinc'
+			and k.no_id = '$no_id'");
 
 		if($query->num_rows() > 0)
 		{
@@ -86,6 +140,7 @@ class Kontrak_model extends CI_Model {
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -124,6 +179,7 @@ class Kontrak_model extends CI_Model {
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -168,6 +224,7 @@ class Kontrak_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '4'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -212,6 +269,7 @@ class Kontrak_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '6'
+			and tra.kd_rek_1 = 5
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 

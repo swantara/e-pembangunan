@@ -54,6 +54,7 @@
                         <th style="width: 10px;">Tahun</th>
                         <th style="width: 200px;">Kode Rekening</th>
                         <th>Nama Kegiatan</th>
+                        <th>Jumlah Data</th>
                         <th>Induk (Rp.)</th>
                         <th>Perubahan (Rp.)</th>
                         <th>Kenaikan/Penurunan (Rp.)</th>
@@ -84,11 +85,13 @@
                               foreach ($nama_kegiatan as $rowB) :
                                 if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
                                   echo $rowB->nama;
+                                  break;
                                 endif;
                               endforeach;
                             ?>
                           </a>
                         </td>
+                        <td><?=$row->jumlah_data?></td>
                         <td style="text-align: right;"><?php echo number_format($row->total_induk, 0);?></td>
                         <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0);?></td>
                         <td style="text-align: right;">

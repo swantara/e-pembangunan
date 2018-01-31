@@ -342,6 +342,7 @@ class Backend extends CI_Controller {
 		
 		if($this->form_validation->run() === false)
 		{
+			$data['kontrak'] = $this->kontrak->getdetailkontrak()[0];
 			$data['induk'] = $this->rask->getrincianinduk();
 			$data['perubahan'] = $this->rask->getrincianperubahan();
 

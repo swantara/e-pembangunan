@@ -181,47 +181,64 @@
                         </th> 
                         <th>
                           <?php      
+                            $statusB = 0;
                             foreach ($rask as $rowB) :
                               if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg && $row->kd_rek_1 == $rowB->kd_rek_1 && $row->kd_rek_2 == $rowB->kd_rek_2 && $row->kd_rek_3 == $rowB->kd_rek_3 && $row->kd_rek_4 == $rowB->kd_rek_4 && $row->kd_rek_5 == $rowB->kd_rek_5) :
                                   echo $rowB->keterangan_rinc;
-                              break;
+                                  $statusB = 1;
+                                break;
                               endif;
                             endforeach;
+                            if($statusB!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </th>
                         <th>
                           <?php      
+                            $statusC = 0;
                             foreach ($realisasikeuangan as $rowC) :
                               if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_unit == $rowC->kd_unit && $row->kd_sub == $rowC->kd_sub && $row->kd_prog == $rowC->kd_prog && $row->kd_keg == $rowC->kd_keg && $row->kd_rek_1 == $rowC->kd_rek_1 && $row->kd_rek_2 == $rowC->kd_rek_2 && $row->kd_rek_3 == $rowC->kd_rek_3 && $row->kd_rek_4 == $rowC->kd_rek_4 && $row->kd_rek_5 == $rowC->kd_rek_5) :
                                   echo $rowC->no_sp2d;
-                              else :
-                                echo "-";
+                                  $statusC = 1;
+                                  break;
                               endif;
                             endforeach;
+                            if($statusC!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </th>
                         <th>
                           <?php      
+                            $statusD = 0;
                             foreach ($realisasikeuangan as $rowD) :
                               if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub && $row->kd_prog == $rowD->kd_prog && $row->kd_keg == $rowD->kd_keg && $row->kd_rek_1 == $rowD->kd_rek_1 && $row->kd_rek_2 == $rowD->kd_rek_2 && $row->kd_rek_3 == $rowD->kd_rek_3 && $row->kd_rek_4 == $rowD->kd_rek_4 && $row->kd_rek_5 == $rowD->kd_rek_5) :
                                   $date=date_create($rowD->tgl_cair);
                                   $newdate=date_format($date,"d-m-Y");
                                   echo $newdate;
-                              else :
-                                echo "-";
+                                  $statusD = 1;
+                                  break;
                               endif;
                             endforeach;
+                            if($statusD!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </th>
                         <th style="text-align: right;">
                           <?php      
-                            foreach ($realisasikeuangan as $rowD) :
-                              if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub && $row->kd_prog == $rowD->kd_prog && $row->kd_keg == $rowD->kd_keg && $row->kd_rek_1 == $rowD->kd_rek_1 && $row->kd_rek_2 == $rowD->kd_rek_2 && $row->kd_rek_3 == $rowD->kd_rek_3 && $row->kd_rek_4 == $rowD->kd_rek_4 && $row->kd_rek_5 == $rowD->kd_rek_5) :
-                                  echo number_format($rowD->nilai, 0, ',', '.');
-                              else :
-                                echo "-";
+                            $statusE = 0;
+                            foreach ($realisasikeuangan as $rowE) :
+                              if($row->kd_urusan == $rowE->kd_urusan && $row->kd_bidang == $rowE->kd_bidang && $row->kd_unit == $rowE->kd_unit && $row->kd_sub == $rowE->kd_sub && $row->kd_prog == $rowE->kd_prog && $row->kd_keg == $rowE->kd_keg && $row->kd_rek_1 == $rowE->kd_rek_1 && $row->kd_rek_2 == $rowE->kd_rek_2 && $row->kd_rek_3 == $rowE->kd_rek_3 && $row->kd_rek_4 == $rowE->kd_rek_4 && $row->kd_rek_5 == $rowE->kd_rek_5) :
+                                  echo number_format($rowE->dana_cair, 0, ',', '.');
+                                  $statusE = 1;
+                                  break;
                               endif;
                             endforeach;
+                            if($statusE!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </th>
                       </tr>

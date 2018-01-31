@@ -74,7 +74,7 @@
                 </div>
               </div>
               <div class="panel-body">
-                <div class="row">
+                <!-- <div class="row">
                   <form class="form-vertical" action="#">
                     <div class="form-group">
                       <div style="margin-bottom: 10px;" class="col-md-2">
@@ -186,7 +186,7 @@
                       </div>
                     </div>
                   </form>
-                </div>
+                </div> -->
                 <div class="table-responsive mt-30">
                   <table class="table datatable-basic">
                     <thead>
@@ -222,42 +222,62 @@
                         </td> 
                         <td>
                           <a href="<?=site_url('realisasikeuangan/kegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
-                            <?php         
+                            <?php       
+                              $statusB = 0;   
                               foreach ($nama_opd as $rowB) :
                                 if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
-                                  echo $rowB->nama;
+                                  echo $rowB->nama. "aa";
+                                  $statusB = 1;
                                 endif;
                               endforeach;
+                              if($statusB!=1):
+                                echo "-";
+                              endif;
                             ?>
                           </a>
                         </td>
                         <td><?=$row->jumlah_data?></td>
                         <td><?php echo number_format($row->total_target, 0, ',', '.'); ?></td>
                         <td style="text-align: right;">
-                          <?php         
+                          <?php        
+                              $statusC = 0;  
                             foreach ($realisasikeuangan as $rowC) :
                               if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_unit == $rowC->kd_unit && $row->kd_sub == $rowC->kd_sub) :
                                 echo number_format($rowC->total_realisasi, 0, ',', '.');
+                                $statusC = 1;
                               endif;
                             endforeach;
+                            if($statusC!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                         <td>
-                          <?php         
+                          <?php     
+                            $statusD = 0;     
                             foreach ($realisasikeuangan as $rowD) :
                               if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub) :
                                 echo number_format($rowD->total_realisasi-$row->total_target, 0, ',', '.');
+                                $statusD = 1;
                               endif;
                             endforeach;
+                            if($statusD!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                         <td>
-                          <?php         
+                          <?php    
+                            $statusE = 0;      
                             foreach ($realisasikeuangan as $rowE) :
                               if($row->kd_urusan == $rowE->kd_urusan && $row->kd_bidang == $rowE->kd_bidang && $row->kd_unit == $rowE->kd_unit && $row->kd_sub == $rowE->kd_sub) :
                                 echo number_format(((($rowE->total_realisasi-$row->total_target)/$row->total_target)*100), 0, ',', '.') . "%";
+                                $statusE = 1;
                               endif;
                             endforeach;
+                            if($statusE!=1):
+                              echo "-";
+                            endif;
                           ?>
                         </td>
                       </tr>
@@ -292,6 +312,6 @@
     });
     function changeYear() {
       var year = document.getElementById("selectYear").value;
-      window.location.assign("http://ganeshaglobal.com/sippp/realisasikeuangan/?tahun=" + year);
+      window.location.assign("http://e-pembangunan.badungkab.go.id/?tahun=" + year);
     }
   </script>

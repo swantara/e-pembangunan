@@ -9,6 +9,16 @@
       </h1>
     </section>
 
+    <?php
+      $getYear = $this -> input -> get('tahun');
+      if(isset($getYear)){
+        $tahun = $getYear;
+      }
+      else{
+        $tahun = date('Y');
+      }
+    ?>
+
     <!-- Main content -->
     <section class="content">
 
@@ -30,6 +40,7 @@
                   <th>Perubahan (Rp.)</th>
                   <th>Kelengkapan Data</th>
                 </tr>
+                <h4><a href="<?=site_url('backend/?tahun='.$tahun)?>">Kegiatan</a> / Rincian</h4> 
                 </thead>
                 <tbody>
 
@@ -75,7 +86,7 @@
                     ?>
                   </td>
                   <td>
-                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg.'&kd_rek_1='.$row->kd_rek_1.'&kd_rek_2='.$row->kd_rek_2.'&kd_rek_3='.$row->kd_rek_3.'&kd_rek_4='.$row->kd_rek_4.'&kd_rek_5='.$row->kd_rek_5.'&no_rinc='.$row->no_rinc.'&no_id='.$row->no_id)?>">(0/3) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg.'&kd_rek_1='.$row->kd_rek_1.'&kd_rek_2='.$row->kd_rek_2.'&kd_rek_3='.$row->kd_rek_3.'&kd_rek_4='.$row->kd_rek_4.'&kd_rek_5='.$row->kd_rek_5.'&no_rinc='.$row->no_rinc.'&no_id='.$row->no_id)?>">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 

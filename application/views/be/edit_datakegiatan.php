@@ -1,12 +1,24 @@
 
 <!-- Content Wrapper. Contains page content -->
+  <?php
+    $getYear = $this -> input -> get('tahun');
+    if(isset($getYear)){
+      $tahun = $getYear;
+    }
+    else{
+      $tahun = date('Y');
+    }
+    $kd_urusan = $this -> input -> get('kd_urusan');
+    $kd_bidang = $this -> input -> get('kd_bidang');
+    $kd_unit = $this -> input -> get('kd_unit');
+    $kd_sub = $this -> input -> get('kd_sub');
+    $kd_prog = $this -> input -> get('kd_prog');
+    $kd_keg = $this -> input -> get('kd_keg');
+  ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Edit Data Kegiatan
-        <small>E-Pembangunan</small>
-      </h1>
+      <h4><a href="<?=site_url('backend/?tahun='.$tahun)?>">Kegiatan</a> / <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg)?>">Rincian</a> / Detail  </h4> 
     </section>
 
     <!-- Main content -->
@@ -183,7 +195,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-              <a href="<?=site_url('backend/detailkegiatanbyopd/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
+              <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->tahun.'&kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
               <button type="submit" class="btn btn-default pull-right"><i class="fa fa-check text-green"></i> Submit</button>
             </div>
             </form>

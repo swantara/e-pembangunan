@@ -41,6 +41,7 @@
                             <option value="3">3 - Urusan Pilihan</option>
                             <option value="4">4 - Fungsi Penunjang Urusan Pemerintahan</option>
                         </select>
+                        <input name="kd_urusan" type="hidden" value="<?=$data->kd_urusan?>">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -59,6 +60,7 @@
                             <option value="3">1.03 - Pekerjaan Umum dan Penataan Ruang</option>
                             <option value="4">1.04 - Perumahan Rakyat dan Kawasan Permukiman</option>
                         </select>
+                        <input name="kd_bidang" type="hidden" value="<?=$data->kd_bidang?>">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -77,6 +79,7 @@
                             <option value="3">1.02.02 - Rumah Sakit Umum Daerah</option>
                             <option value="4">1.03.01 - Perumahan Rakyat dan Kawasan Permukiman</option>
                         </select>
+                        <input name="kd_unit" type="hidden" value="<?=$data->kd_unit?>">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -95,6 +98,7 @@
                             <option value="3">1.02.02.01 - Rumah Sakit Umum Daerah</option>
                             <option value="4">1.03.01.01 - Dinas Perumahan Rakyat dan Kawasan Permukiman</option>
                         </select>
+                        <input name="kd_sub" type="hidden" value="<?=$data->kd_sub?>">
                       </div>
                     </div>
                   </div>
@@ -109,7 +113,7 @@
                            alt="Program Picture">
                           <hr>
                           <lavel>Browse Foto :</lavel>
-                          <input required name="foto" type="file"">
+                          <input name="foto" type="file"">
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -151,6 +155,7 @@
                           ?>
 
                         </select>
+                        <input name="role" type="hidden" value="<?=$data->role?>">
                       </div>
                     </div>   
                     <div class="col-md-6">
