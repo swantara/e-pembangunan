@@ -43,7 +43,7 @@ class Beranda extends CI_Controller {
 
 	public function ajaxgetkeuanganall()
 	{
-		// if($this->input->is_ajax_request()){
+		if($this->input->is_ajax_request()){
 			$data["keuangan"][0] = $this->realisasikeuangan->getsumtargetall()[0];
 			$data["keuangan"][1] = $this->realisasikeuangan->getsumrealisasiall()[0];
 			$data["keuangan"][2] = $this->realisasikeuangan->getsumrealisasiall()[0];
@@ -60,7 +60,7 @@ class Beranda extends CI_Controller {
 			$data["keuangan"][2]->total_nop = $data["keuangan"][2]->total_nop-$data["keuangan"][0]->total_nop;
 			$data["keuangan"][2]->total_des = $data["keuangan"][2]->total_des-$data["keuangan"][0]->total_des;
 			echo json_encode($data);
-		// }
+		}
 	}
 
 	public function ajaxgetfisikall()

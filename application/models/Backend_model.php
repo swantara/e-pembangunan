@@ -1056,19 +1056,6 @@ class Backend_model extends CI_Model {
 				  'no_id' => $no_id
 				  );
 
-
-			$this->db->set('status_target', 1);
-			$this->db->where($where);
-			$this->db->update('t_rask_arsip');
-
-			if($_FILES['foto']['error'] != 4)
-			{
-				//bila mengubah foto
-				
-				//upload foto
-				$this->uploadfoto($lastid);
-			}
-
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');
 		}
