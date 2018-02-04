@@ -475,11 +475,12 @@
             element: 'line-chart3',
             resize: true,
             data: [
-                  {y: value[0].tahun + '-01', item1c: numeral(value[0].triwulan_1).format('0.00'), item2c: numeral(value[1].triwulan_1).format('0.00'), item3c: numeral(value[2].triwulan_1).format('0.00')},
-                  {y: value[0].tahun + '-02', item1c: numeral(value[0].triwulan_2).format('0.00'), item2c: numeral(value[1].triwulan_2).format('0.00'), item3c: numeral(value[2].triwulan_2).format('0.00')},
-                  {y: value[0].tahun + '-03', item1c: numeral(value[0].triwulan_3).format('0.00'), item2c: numeral(value[1].triwulan_3).format('0.00'), item3c: numeral(value[2].triwulan_3).format('0.00')},
-                  {y: value[0].tahun + '-04', item1c: numeral(value[0].triwulan_4).format('0.00'), item2c: numeral(value[1].triwulan_4).format('0.00'), item3c: numeral(value[2].triwulan_4).format('0.00')}
+                  {y: 'Triwulan 1', item1c: numeral(value[0].triwulan_1).format('0.00'), item2c: numeral(value[1].triwulan_1).format('0.00'), item3c: numeral(value[2].triwulan_1).format('0.00')},
+                  {y: 'Triwulan 2', item1c: numeral(value[0].triwulan_2).format('0.00'), item2c: numeral(value[1].triwulan_2).format('0.00'), item3c: numeral(value[2].triwulan_2).format('0.00')},
+                  {y: 'Triwulan 3', item1c: numeral(value[0].triwulan_3).format('0.00'), item2c: numeral(value[1].triwulan_3).format('0.00'), item3c: numeral(value[2].triwulan_3).format('0.00')},
+                  {y: 'Triwulan 4', item1c: numeral(value[0].triwulan_4).format('0.00'), item2c: numeral(value[1].triwulan_4).format('0.00'), item3c: numeral(value[2].triwulan_4).format('0.00')}
                 ],
+            parseTime : false,
             xkey: 'y',
             ykeys: ['item1c', 'item2c', 'item3c'],
             labels: ['Target', 'Realisasi', 'Deviasi'],

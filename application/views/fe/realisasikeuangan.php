@@ -226,7 +226,7 @@
                               $statusB = 0;   
                               foreach ($nama_opd as $rowB) :
                                 if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
-                                  echo $rowB->nama. "aa";
+                                  echo $rowB->nama;
                                   $statusB = 1;
                                 endif;
                               endforeach;
