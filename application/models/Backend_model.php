@@ -34,6 +34,8 @@ class Backend_model extends CI_Model {
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_rek_1 = 5
+			and tra.kd_prog <> 0
+			and tra.kd_keg <> 0
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -105,6 +107,8 @@ class Backend_model extends CI_Model {
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_rek_1 = 5
+			and tra.kd_prog <> 0
+			and tra.kd_keg <> 0
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -332,8 +336,6 @@ class Backend_model extends CI_Model {
 	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
 	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
-	  	$no_rinc = $this -> input -> get('no_rinc');
-	  	$no_id = $this -> input -> get('no_id');
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
@@ -350,9 +352,7 @@ class Backend_model extends CI_Model {
 			and tra.kd_rek_2 = '$kd_rek_2'
 			and tra.kd_rek_3 = '$kd_rek_3'
 			and tra.kd_rek_4 = '$kd_rek_4'
-			and tra.kd_rek_5 = '$kd_rek_5'
-			and tra.no_rinc = '$no_rinc'
-			and tra.no_id = '$no_id'");
+			and tra.kd_rek_5 = '$kd_rek_5'");
 
 		if($query->num_rows() > 0)
 		{
@@ -1055,6 +1055,11 @@ class Backend_model extends CI_Model {
 				  'no_rinc' => $no_rinc,
 				  'no_id' => $no_id
 				  );
+
+
+			$this->db->set('status_target', 1);
+			$this->db->where($where);
+			$this->db->update('t_rask_arsip');
 
 			$this->session->set_flashdata('alert','update');
 			redirect('backend/detailrincianbykegiatan/?tahun='.$tahun.'&kd_urusan='.$kd_urusan.'&kd_bidang='.$kd_bidang.'&kd_unit='.$kd_unit.'&kd_sub='.$kd_sub.'&kd_prog='.$kd_prog.'&kd_keg='.$kd_keg.'&kd_rek_1='.$kd_rek_1.'&kd_rek_2='.$kd_rek_2.'&kd_rek_3='.$kd_rek_3.'&kd_rek_4='.$kd_rek_4.'&kd_rek_5='.$kd_rek_5.'&no_rinc='.$no_rinc.'&no_id='.$no_id,'refresh');

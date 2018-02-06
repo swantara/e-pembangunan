@@ -234,24 +234,38 @@
                         <td><?=$row->total_target . " %"?></td>
                         <td>
                           <?php         
+                            $statusC = 0;
+                            if(!is_array($realisasifisik)) :
+                              echo "-";
+                            else:
                             foreach ($realisasifisik as $rowC) :
                               if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_unit == $rowC->kd_unit && $row->kd_sub == $rowC->kd_sub) :
                                 echo $rowC->total_realisasi . " %";
-                              else :
-                                echo "0 %";
+                                break;
                               endif;
                             endforeach;
+                            if($statusC!=1):
+                              echo "-";
+                            endif;
+                          endif;
                           ?>
                         </td>  
                         <td>
-                          <?php         
+                          <?php        
+                            $statusD = 0;
+                            if(!is_array($realisasifisik)) :
+                              echo "-";
+                            else:   
                             foreach ($realisasifisik as $rowD) :
                               if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_unit == $rowD->kd_unit && $row->kd_sub == $rowD->kd_sub) :
                                 echo $rowD->total_realisasi-$row->total_target . " %";
-                              else :
-                                echo 0-$row->total_target . " %";
+                                break;
                               endif;
                             endforeach;
+                            if($statusD!=1):
+                              echo "-";
+                            endif;
+                          endif;
                           ?>
                         </td> 
                       </tr>

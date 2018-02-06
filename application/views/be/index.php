@@ -150,7 +150,7 @@
                   <td style="text-align: right;"><?php echo number_format($row->total_induk, 0, ',', '.');?></td>
                   <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0, ',', '.');?></td>
                   <td>
-                    <a href="#">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/kegiatanbyopd/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 
@@ -249,7 +249,7 @@
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false,

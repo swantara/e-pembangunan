@@ -39,7 +39,7 @@ class Backend extends CI_Controller {
 	public function kegiatanbyopd()
 	{
 		// echo json_encode($this->backend->getdetailkegiatan());
-		$data['nama_kegiatan'] = $this->backend->getnamakegiatan();
+		$data['nama_kegiatan'] = $this->rask->getnamakegiatanall();
 		$data['kegiatan'] = $this->backend->getlistkegiatanbyopd();
 		$data['body'] = $this->load->view('be/kegiatanbyopd_list', $data, true);
 		$this->load->view('be/template_be', $data);
@@ -82,7 +82,7 @@ class Backend extends CI_Controller {
 					{
 						$data['real'][$i]->jml_satuan_i = $perubahan->jml_satuan;
 						$data['real'][$i]->nilai_rp_i = $perubahan->nilai_rp;
-						$data['real'][$i]->total_i = $perubahan->total;
+						$data['real'][$i]->total_i = $perubahan->total_anggaran;
 					}
 				}
 			}
@@ -122,7 +122,7 @@ class Backend extends CI_Controller {
 					$data['real'][$counter] = $data['induk'][$i];
 					$data['real'][$counter]->jml_satuan_i = $data['real'][$counter]->jml_satuan;
 					$data['real'][$counter]->nilai_rp_i = $data['real'][$counter]->nilai_rp;
-					$data['real'][$counter]->total_i = $data['real'][$counter]->total;
+					$data['real'][$counter]->total_i = $data['real'][$counter]->total_anggaran;
 					$data['real'][$counter]->jml_satuan = 0;
 					$data['real'][$counter]->nilai_rp = 0;
 					$data['real'][$counter]->total = 0;
@@ -230,7 +230,7 @@ class Backend extends CI_Controller {
 		$data['kontrak_keuangan'] = $this->backend->gettargetkeuangankontrak()[0];
 		$data['kontrak_fisik'] = $this->backend->gettargetfisikkontrak()[0];
 		$data['realisasi_keuangan'] = $this->realisasikeuangan->getrincianrealisasikeuangan()[0];
-			$data['realisasi_fisik'] = $this->backend->getrealisasifisik()[0];
+		$data['realisasi_fisik'] = $this->backend->getrealisasifisik()[0];
 		$data['body'] = $this->load->view('be/rincianbykegiatan_detail', $data, true);
 		$this->load->view('be/template_be', $data);
 	}

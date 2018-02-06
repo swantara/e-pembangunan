@@ -37,11 +37,11 @@
               <hr/>
               <div class="row">
                 <div class="col-xs-4">
-                  <strong>OPD</strong>
-                  <p><?=$nama_opd->nama?></p>
+                  <strong>Keterangan Rincian</strong>
+                  <p><?=$data_kegiatan->keterangan_rinc?></p>
                   <hr/>
-                  <strong>Nama Kegiatan</strong>
-                  <p><?=$nama_kegiatan->nama;?></p>
+                  <strong>Anggaran Induk | Anggaran Perubahan</strong>
+                  <p><?="Rp. " . number_format($data_kegiatan->total_induk, 0 , ',', '.') . " | Rp. " . number_format($data_kegiatan->total_perubahan, 0 , ',', '.');?></p>
                   <hr/>
                   <strong>Tahun</strong>
                   <p><?=$data_kegiatan->tahun?></p>
@@ -71,7 +71,7 @@
                   <p><?=$data_kontrak->pelaksana?></p>
                   <hr/>
                   <strong>Nilai Kontrak</strong>
-                  <p><?=$data_kontrak->nilai_kontrak?></p>
+                  <p><?=number_format($data_kontrak->nilai_kontrak, 0, ',', '.')?></p>
                   <hr/>
                   <?php endif; ?>
                 </div>
@@ -193,17 +193,6 @@
                 ?>
 
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th style="width: 10px;">#</th>
-                  <th>Tahun</th>
-                  <th>Kode Rekening</th>
-                  <th>Uraian</th>
-                  <th>Induk (Rp.)</th>
-                  <th>Perubahan (Rp.)</th>
-                  <th>Kenaikan / Penurunan (Rp.)</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -313,18 +302,18 @@
                       <tr>
                         <td>Target</td>
                         <td><?=$target_fisik->tahun?></td>
-                        <td><?php echo number_format($target_fisik->b_1, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_2, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_3, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_4, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_5, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_6, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_7, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_8, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_9, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_10, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_11, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->b_12, 0, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_1, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_2, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_3, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_4, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_5, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_6, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_7, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_8, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_9, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_10, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_11, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->b_12, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($target_fisik->total_fisik, 0, ',', '.') . "%";?></td>
                       </tr>
                     <?php else : ?>
@@ -350,18 +339,18 @@
                       <tr>
                         <td>Realisasi</td>
                         <td><?=$realisasi_fisik->tahun?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_1, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_2, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_3, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_4, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_5, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_6, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_7, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_8, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_9, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_10, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_11, 0, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->b_12, 0, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_1, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_2, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_3, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_4, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_5, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_6, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_7, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_8, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_9, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_10, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_11, 5, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->b_12, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($realisasi_fisik->total_fisik, 0, ',', '.') . "%";?></td>
                       </tr>
                     <?php else : ?>

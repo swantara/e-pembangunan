@@ -299,7 +299,8 @@ class Rask_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*,
 			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
-			count(tra.tahun) as total_data 
+			count(tra.tahun) as total_data,
+			sum(tra.total) as total_anggaran
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
@@ -320,9 +321,7 @@ class Rask_model extends CI_Model {
 			tra.kd_rek_2,
 			tra.kd_rek_3, 
 			tra.kd_rek_4,
-            tra.kd_rek_5,
-            tra.no_rinc,
-            tra.no_id");
+            tra.kd_rek_5");
 
 		if($query->num_rows() > 0)
 		{
@@ -353,7 +352,8 @@ class Rask_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*,
 			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
-			count(tra.tahun) as total_data 
+			count(tra.tahun) as total_data,
+			sum(tra.total) as total_anggaran
 		from t_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
@@ -374,9 +374,7 @@ class Rask_model extends CI_Model {
 			tra.kd_rek_2,
 			tra.kd_rek_3, 
 			tra.kd_rek_4,
-            tra.kd_rek_5,
-            tra.no_rinc,
-            tra.no_id");
+            tra.kd_rek_5");
 
 		if($query->num_rows() > 0)
 		{
@@ -467,8 +465,6 @@ class Rask_model extends CI_Model {
 			and tra.kd_rek_3 = '$kd_rek_3'
 			and tra.kd_rek_4 = '$kd_rek_4'
 			and tra.kd_rek_5 = '$kd_rek_5'
-			and tra.no_rinc = '$no_rinc'
-			and tra.no_id = '$no_id'
 			and tra.kd_perubahan = '4'");
 
 		if($query->num_rows() > 0)
@@ -519,8 +515,6 @@ class Rask_model extends CI_Model {
 			and tra.kd_rek_3 = '$kd_rek_3'
 			and tra.kd_rek_4 = '$kd_rek_4'
 			and tra.kd_rek_5 = '$kd_rek_5'
-			and tra.no_rinc = '$no_rinc'
-			and tra.no_id = '$no_id'
 			and tra.kd_perubahan = '6'");
 
 		if($query->num_rows() > 0)

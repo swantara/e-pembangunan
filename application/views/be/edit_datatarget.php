@@ -66,153 +66,177 @@
                 <h4>Target Fisik</h4>
                 <?php if((is_object($target_fisik) || is_array($target_fisik)) && !is_null($target_fisik->b_1)) :?>
                 <div class="row">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 1 (%)</label>
-                      <input required name="fisik1" type="text" class="form-control" value="<?=$target_fisik->b_1?>" placeholder="Bulan 1">
-                    </div>
-                  </div>   
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 2 (%)</label>
-                      <input required name="fisik2" type="text" class="form-control" value="<?=$target_fisik->b_2?>" placeholder="Bulan 2">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 3 (%)</label>
-                      <input required name="fisik3" type="text" class="form-control" value="<?=$target_fisik->b_3?>" placeholder="Bulan 3">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 4 (%)</label>
-                      <input required name="fisik4" type="text" class="form-control" value="<?=$target_fisik->b_4?>" placeholder="Bulan 4">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 5 (%)</label>
-                      <input required name="fisik5" type="text" class="form-control" value="<?=$target_fisik->b_5?>" placeholder="Bulan 5">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 6 (%)</label>
-                      <input required name="fisik6" type="text" class="form-control" value="<?=$target_fisik->b_6?>" placeholder="Bulan 6">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 7 (%)</label>
-                      <input required name="fisik7" type="text" class="form-control" value="<?=$target_fisik->b_7?>" placeholder="Bulan 7">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 1</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 1 (%)</label>
+                          <input required name="fisik1" type="text" class="form-control" value="<?=$target_fisik->b_1?>" placeholder="0.000000">
+                        </div>
+                      </div>   
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 2 (%)</label>
+                          <input required name="fisik2" type="text" class="form-control" value="<?=$target_fisik->b_2?>" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 3 (%)</label>
+                          <input required name="fisik3" type="text" class="form-control" value="<?=$target_fisik->b_3?>" placeholder="0.000000">
+                        </div>
+                      </div> 
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 8 (%)</label>
-                      <input required name="fisik8" type="text" class="form-control" value="<?=$target_fisik->b_8?>" placeholder="Bulan 8">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 2</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 4 (%)</label>
+                          <input required name="fisik4" type="text" class="form-control" value="<?=$target_fisik->b_4?>" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 5 (%)</label>
+                          <input required name="fisik5" type="text" class="form-control" value="<?=$target_fisik->b_5?>" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 6 (%)</label>
+                          <input required name="fisik6" type="text" class="form-control" value="<?=$target_fisik->b_6?>" placeholder="0.000000">
+                        </div>
+                      </div>  
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 9 (%)</label>
-                      <input required name="fisik9" type="text" class="form-control" value="<?=$target_fisik->b_9?>" placeholder="Bulan 9">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 3</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 7 (%)</label>
+                          <input required name="fisik7" type="text" class="form-control" value="<?=$target_fisik->b_7?>" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 8 (%)</label>
+                          <input required name="fisik8" type="text" class="form-control" value="<?=$target_fisik->b_8?>" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 9 (%)</label>
+                          <input required name="fisik9" type="text" class="form-control" value="<?=$target_fisik->b_9?>" placeholder="0.000000">
+                        </div>
+                      </div>
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 10 (%)</label>
-                      <input required name="fisik10" type="text" class="form-control" value="<?=$target_fisik->b_10?>" placeholder="Bulan 10">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 4</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 10 (%)</label>
+                          <input required name="fisik10" type="text" class="form-control" value="<?=$target_fisik->b_10?>" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 11 (%)</label>
+                          <input required name="fisik11" type="text" class="form-control" value="<?=$target_fisik->b_11?>" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 12 (%)</label>
+                          <input required name="fisik12" type="text" class="form-control" value="<?=$target_fisik->b_12?>" placeholder="0.000000">
+                        </div>
+                      </div>  
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 11 (%)</label>
-                      <input required name="fisik11" type="text" class="form-control" value="<?=$target_fisik->b_11?>" placeholder="Bulan 11">
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 12 (%)</label>
-                      <input required name="fisik12" type="text" class="form-control" value="<?=$target_fisik->b_12?>" placeholder="Bulan 12">
-                    </div>
-                  </div>          
                 </div>
                 <?php else : ?>
                 <div class="row">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 1 (%)</label>
-                      <input required name="fisik1" type="text" class="form-control" value="" placeholder="Bulan 1">
-                    </div>
-                  </div>   
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 2 (%)</label>
-                      <input required name="fisik2" type="text" class="form-control" value="" placeholder="Bulan 2">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 3 (%)</label>
-                      <input required name="fisik3" type="text" class="form-control" value="" placeholder="Bulan 3">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 4 (%)</label>
-                      <input required name="fisik4" type="text" class="form-control" value="" placeholder="Bulan 4">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 5 (%)</label>
-                      <input required name="fisik5" type="text" class="form-control" value="" placeholder="Bulan 5">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 6 (%)</label>
-                      <input required name="fisik6" type="text" class="form-control" value="" placeholder="Bulan 6">
-                    </div>
-                  </div>  
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 7 (%)</label>
-                      <input required name="fisik7" type="text" class="form-control" value="" placeholder="Bulan 7">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 1</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 1 (%)</label>
+                          <input required name="fisik1" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>   
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 2 (%)</label>
+                          <input required name="fisik2" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 3 (%)</label>
+                          <input required name="fisik3" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>  
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 8 (%)</label>
-                      <input required name="fisik8" type="text" class="form-control" value="" placeholder="Bulan 8">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 2</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 4 (%)</label>
+                          <input required name="fisik4" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 5 (%)</label>
+                          <input required name="fisik5" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>  
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 6 (%)</label>
+                          <input required name="fisik6" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>  
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 9 (%)</label>
-                      <input required name="fisik9" type="text" class="form-control" value="" placeholder="Bulan 9">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 3</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 7 (%)</label>
+                          <input required name="fisik7" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 8 (%)</label>
+                          <input required name="fisik8" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 9 (%)</label>
+                          <input required name="fisik9" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 10 (%)</label>
-                      <input required name="fisik10" type="text" class="form-control" value="" placeholder="Bulan 10">
-                    </div>
+                  <div class="col-md-6">
+                      <h5>Triwulan 4</h5>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 10 (%)</label>
+                          <input required name="fisik10" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 11 (%)</label>
+                          <input required name="fisik11" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Bulan 12 (%)</label>
+                          <input required name="fisik12" type="text" class="form-control" value="" placeholder="0.000000">
+                        </div>
+                      </div>    
                   </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 11 (%)</label>
-                      <input required name="fisik11" type="text" class="form-control" value="" placeholder="Bulan 11">
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Bulan 12 (%)</label>
-                      <input required name="fisik12" type="text" class="form-control" value="" placeholder="Bulan 12">
-                    </div>
-                  </div>          
                 </div>
                 <?php endif;?>
               </div>

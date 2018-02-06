@@ -77,38 +77,60 @@
                         </td> 
                         <td>
                           <a href="<?=site_url('realisasifisik/detail/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">
-                            <?php         
+                            <?php           
+                              $statusB = 0;
+                              if(!is_array($nama_kegiatan)) :
+                                echo "-";
+                              else:
                               foreach ($nama_kegiatan as $rowB) :
                                 if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
                                   echo $rowB->nama;
                                   break;
                                 endif;
                               endforeach;
+                              if($statusB!=1):
+                                echo "-";
+                              endif;
+                            endif;
                             ?>
                           </a>
                         </td>
                         <td><?php echo $row->jumlah_data;?></td>
                         <td><?php echo $row->total_target . " %";?></td>
                         <td>
-                          <?php         
+                          <?php        
+                            $statusC = 0;
+                            if(!is_array($realisasifisik)) :
+                              echo "-";
+                            else:      
                             foreach ($realisasifisik as $rowC) :
                               if($row->kd_urusan == $rowC->kd_urusan && $row->kd_bidang == $rowC->kd_bidang && $row->kd_prog == $rowC->kd_prog && $row->kd_keg == $rowC->kd_keg) :
                                 echo $rowC->total_realisasi . " %";
-                              else :
-                                echo "0 %";
+                                break;
                               endif;
                             endforeach;
+                              if($statusC!=1):
+                                echo "-";
+                              endif;
+                            endif;
                           ?>
                         </td>
                         <td>
-                          <?php         
+                          <?php      
+                            $statusC = 0;
+                            if(!is_array($realisasifisik)) :
+                              echo "-";
+                            else:      
                             foreach ($realisasifisik as $rowD) :
                               if($row->kd_urusan == $rowD->kd_urusan && $row->kd_bidang == $rowD->kd_bidang && $row->kd_prog == $rowD->kd_prog && $row->kd_keg == $rowD->kd_keg) :
                                 echo $rowD->total_realisasi-$row->total_target . " %";
-                              else :
-                                echo 0-$row->total_target . " %";
+                                break;
                               endif;
                             endforeach;
+                              if($statusC!=1):
+                                echo "-";
+                              endif;
+                            endif;
                           ?>
                         </td>
                       </tr>

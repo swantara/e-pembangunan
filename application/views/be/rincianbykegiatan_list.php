@@ -58,14 +58,14 @@
                       echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg. " . 0" . $row->kd_rek_1. " . 0" . $row->kd_rek_2. " . 0" . $row->kd_rek_3. " . 0" . $row->kd_rek_4. " . 0" . $row->kd_rek_5. " . 0" . $row->no_rinc;
                     ?>
                   </td>
-                  <td><?php echo $row->keterangan?></td>
+                  <td><?php echo $row->keterangan_rinc?></td>
                   <td style="text-align: right;">
                     <?php
                       if(!isset($row->jml_satuan_i) && !isset($row->nilai_rp_i) && !isset($row->total_i)) :
-                        echo "(" . $row->jml_satuan . " " . $row->satuan123 . " x " . number_format($row->nilai_rp, 0)  . ")<br/>= " . number_format($row->total, 0);
+                        echo number_format($row->total_anggaran, 0, ',', '.');
                       else :
                         if($row->jml_satuan_i != 0 && $row->nilai_rp_i !=0 && $row->total_i !=0) : 
-                          echo "(" . $row->jml_satuan_i . " " . $row->satuan123 . " x " . number_format($row->nilai_rp_i, 0)  . ")<br/>= " . number_format($row->total_i, 0);
+                          echo number_format($row->total_i, 0, ',', '.');
                         else :
                           echo "0";
                         endif;
@@ -86,7 +86,7 @@
                     ?>
                   </td>
                   <td>
-                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg.'&kd_rek_1='.$row->kd_rek_1.'&kd_rek_2='.$row->kd_rek_2.'&kd_rek_3='.$row->kd_rek_3.'&kd_rek_4='.$row->kd_rek_4.'&kd_rek_5='.$row->kd_rek_5.'&no_rinc='.$row->no_rinc.'&no_id='.$row->no_id)?>">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg.'&kd_rek_1='.$row->kd_rek_1.'&kd_rek_2='.$row->kd_rek_2.'&kd_rek_3='.$row->kd_rek_3.'&kd_rek_4='.$row->kd_rek_4.'&kd_rek_5='.$row->kd_rek_5)?>">(<?=$row->progress_data."/1"?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 
@@ -136,7 +136,7 @@
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false,

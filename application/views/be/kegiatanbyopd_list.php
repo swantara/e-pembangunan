@@ -52,6 +52,7 @@
                       foreach ($nama_kegiatan as $rowB) :
                         if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
                           echo $rowB->nama;
+                          break;
                         endif;
                       endforeach;
                     ?>
@@ -109,7 +110,7 @@
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false,
