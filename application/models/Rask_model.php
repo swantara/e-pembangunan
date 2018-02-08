@@ -26,7 +26,7 @@ class Rask_model extends CI_Model {
 			sum(case when tra.kd_perubahan = 4 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 <> 1 then tra.total else 0 end) / 1000000000 as langsung_non,
 			sum(case when tra.kd_perubahan = 4 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 = 2 then tra.total else 0 end) / 1000000000 as barangjasa,
 			sum(case when tra.kd_perubahan = 4 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 = 3 then tra.total else 0 end) / 1000000000 as modal
-		from t_rask_arsip tra
+		from ta_rask_arsip tra
 	    where tra.tahun = '$tahun'");
 
 		if($query->num_rows() > 0)
@@ -57,7 +57,7 @@ class Rask_model extends CI_Model {
 			sum(case when tra.kd_perubahan = 6 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 <> 1 then tra.total else 0 end) / 1000000000 as langsung_non,
 			sum(case when tra.kd_perubahan = 6 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 = 2 then tra.total else 0 end) / 1000000000 as barangjasa,
 			sum(case when tra.kd_perubahan = 6 and tra.kd_rek_1 = 5 and tra.kd_rek_2 = 2 and tra.kd_rek_3 = 3 then tra.total else 0 end) / 1000000000 as modal
-		from t_rask_arsip tra
+		from ta_rask_arsip tra
 	    where tra.tahun = '$tahun'");
 
 		if($query->num_rows() > 0)
@@ -83,9 +83,10 @@ class Rask_model extends CI_Model {
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 		group by tra.kd_urusan,
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -105,8 +106,17 @@ class Rask_model extends CI_Model {
 
 	public function getnamakegiatanall()
 	{
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear)){
+			$tahun = $getYear;
+		}
+		else{
+			$tahun = date('Y');
+		}
+
 		$query = $this->db->query("select tk.*, tk.ket_kegiatan as nama
-		from t_kegiatan tk");
+		from ta_kegiatan tk
+		where tahun = '$tahun'");
 
 		if($query->num_rows() > 0)
 		{
@@ -120,14 +130,22 @@ class Rask_model extends CI_Model {
 
 	public function getnamakegiatan()
 	{
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear)){
+			$tahun = $getYear;
+		}
+		else{
+			$tahun = date('Y');
+		}
 	  	$kd_urusan = $this -> input -> get('kd_urusan');
 	  	$kd_bidang = $this -> input -> get('kd_bidang');
 	  	$kd_prog = $this -> input -> get('kd_prog');
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
 		$query = $this->db->query("select tk.*, tk.ket_kegiatan as nama
-		from t_kegiatan tk
-		where tk.kd_urusan = '$kd_urusan'
+		from ta_kegiatan tk
+		where tahun = '$tahun'
+			and tk.kd_urusan = '$kd_urusan'
 			and tk.kd_bidang = '$kd_bidang'
 			and tk.kd_prog = '$kd_prog'
 			and tk.kd_keg = '$kd_keg'");
@@ -163,13 +181,14 @@ class Rask_model extends CI_Model {
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
 			count(tra.tahun) as jumlah_data
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 			and tra.kd_prog <> 0
 			and tra.kd_keg <> 0
 		group by tra.kd_urusan, 
@@ -209,7 +228,7 @@ class Rask_model extends CI_Model {
 		$query = $this->db->query("select tra.*,
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -218,6 +237,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -260,7 +280,7 @@ class Rask_model extends CI_Model {
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
 		$query = $this->db->query("select tra.*
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -268,7 +288,8 @@ class Rask_model extends CI_Model {
 			and tra.kd_sub = '$kd_sub'
 			and tra.kd_prog = '$kd_prog'
 			and tra.kd_keg = '$kd_keg'
-			and tra.kd_rek_1 = 5");
+			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -298,10 +319,8 @@ class Rask_model extends CI_Model {
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
 		$query = $this->db->query("select tra.*,
-			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
-			count(tra.tahun) as total_data,
 			sum(tra.total) as total_anggaran
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -311,6 +330,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '4'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -351,10 +371,8 @@ class Rask_model extends CI_Model {
 	  	$kd_keg = $this -> input -> get('kd_keg');
 
 		$query = $this->db->query("select tra.*,
-			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
-			count(tra.tahun) as total_data,
 			sum(tra.total) as total_anggaran
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -364,6 +382,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '6'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -402,7 +421,7 @@ class Rask_model extends CI_Model {
 	  	$kd_sub = $this -> input -> get('kd_sub');
 
 		$query = $this->db->query("select tra.*
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -412,6 +431,7 @@ class Rask_model extends CI_Model {
 			and tra.kd_keg = '$kd_keg'
 			and tra.kd_perubahan = '4'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 		group by tra.kd_urusan, 
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -452,7 +472,7 @@ class Rask_model extends CI_Model {
 	  	$no_id = $this -> input -> get('no_id');
 
 		$query = $this->db->query("select tra.*
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -502,7 +522,7 @@ class Rask_model extends CI_Model {
 	  	$no_id = $this -> input -> get('no_id');
 
 		$query = $this->db->query("select tra.*
-		from t_rask_arsip as tra 
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun' 
 			and tra.kd_urusan = '$kd_urusan'
 			and tra.kd_bidang = '$kd_bidang'
@@ -535,7 +555,7 @@ class Rask_model extends CI_Model {
 	  	$kd_sub = $this -> input -> get('kd_sub');
 
 		$query = $this->db->query("select msu.*
-		from m_sub_unit msu
+		from ref_sub_unit msu
 		where msu.kd_urusan = '$kd_urusan'
 			and msu.kd_bidang = '$kd_bidang'
 			and msu.kd_unit = '$kd_unit'
@@ -544,6 +564,118 @@ class Rask_model extends CI_Model {
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function syncrask()
+	{
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear))
+		{
+			$tahun = $getYear;
+		}
+		else
+		{
+			$tahun = date('Y');
+		}
+
+	  	$dbPmb = $this->load->database('pmb', TRUE);
+		$query = $dbPmb->query("select tra.* 
+		from t_rask_arsip tra
+		where tra.tahun = '$tahun'");
+
+		if($query->num_rows() > 0)
+		{
+			$datakontrak = $query->result();
+			foreach ($datakontrak as $row) :
+				$queryB = $dbPmb->query("select kd.* 
+				from t_kelengkapan_data kd
+				where kd.tahun = '$row->tahun'
+					and kd.kd_urusan = '$row->kd_urusan'
+					and kd.kd_bidang = '$row->kd_bidang'
+					and kd.kd_unit = '$row->kd_unit'
+					and kd.kd_sub = '$row->kd_sub'
+					and kd.kd_rek_1 = '$row->kd_rek_1'
+					and kd.kd_rek_2 = '$row->kd_rek_2'
+					and kd.kd_rek_3 = '$row->kd_rek_3'
+					and kd.kd_rek_4 = '$row->kd_rek_4'
+					and kd.kd_rek_5 = '$row->kd_rek_5'");
+
+				if($queryB->result())
+				{
+			  		$kelengkapandata = $queryB->result();
+			  		foreach ($kelengkapandata as $rowB) :
+			  			if($row->status_pengadaan == 1) {
+				  			$where = array(
+							  	'tahun' => $row->tahun,
+								'kd_urusan' => $row->kd_urusan,
+								'kd_bidang' => $row->kd_bidang,
+								'kd_unit' => $row->kd_unit,
+								'kd_sub' => $row->kd_sub,
+								'kd_prog' => $row->kd_prog,
+								'kd_keg' => $row->kd_keg,
+								'kd_rek_1' => $row->kd_rek_1,
+								'kd_rek_2' => $row->kd_rek_2,
+								'kd_rek_3' => $row->kd_rek_3,
+								'kd_rek_4' => $row->kd_rek_4,
+								'kd_rek_5' => $row->kd_rek_5
+							  );
+
+							$dbPmb->set('status_pengadaan', 1);
+							$dbPmb->where($where);
+							$dbPmb->update('t_kelengkapan_data');
+						}
+						if($row->status_target == 1) {
+				  			$where = array(
+							  	'tahun' => $row->tahun,
+								'kd_urusan' => $row->kd_urusan,
+								'kd_bidang' => $row->kd_bidang,
+								'kd_unit' => $row->kd_unit,
+								'kd_sub' => $row->kd_sub,
+								'kd_prog' => $row->kd_prog,
+								'kd_keg' => $row->kd_keg,
+								'kd_rek_1' => $row->kd_rek_1,
+								'kd_rek_2' => $row->kd_rek_2,
+								'kd_rek_3' => $row->kd_rek_3,
+								'kd_rek_4' => $row->kd_rek_4,
+								'kd_rek_5' => $row->kd_rek_5
+							  );
+
+							$dbPmb->set('status_target', 1);
+							$dbPmb->where($where);
+							$dbPmb->update('t_kelengkapan_data');
+						}
+			  		endforeach;
+			  	}
+			  	else
+			  	{
+		  			$data = array(
+						'tahun' => $row->tahun,
+						'kd_urusan' => $row->kd_urusan,
+						'kd_bidang' => $row->kd_bidang,
+						'kd_unit' => $row->kd_unit,
+						'kd_sub' => $row->kd_sub,
+						'kd_prog' => $row->kd_prog,
+						'kd_keg' => $row->kd_keg,
+						'kd_rek_1' => $row->kd_rek_1,
+						'kd_rek_2' => $row->kd_rek_2,
+						'kd_rek_3' => $row->kd_rek_3,
+						'kd_rek_4' => $row->kd_rek_4,
+						'kd_rek_5' => $row->kd_rek_5,
+						'status_pengadaan' => $row->status_pengadaan,
+						'status_target' => $row->status_target
+						);
+
+					//insert ke database
+					$dbPmb->insert('t_kelengkapan_data', $data);
+			  	}
+			endforeach;
+
+			return true;
 		}
 		else
 		{

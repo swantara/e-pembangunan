@@ -52,13 +52,13 @@
 
                 <tr>
                   <td><?=$no?></td>
-                  <td><?=$row->tahun?></td>
+                  <td><?=$row->Tahun?></td>
                   <td>
                     <?php 
-                      echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg. " . 0" . $row->kd_rek_1. " . 0" . $row->kd_rek_2. " . 0" . $row->kd_rek_3. " . 0" . $row->kd_rek_4. " . 0" . $row->kd_rek_5. " . 0" . $row->no_rinc;
+                      echo $row->Kd_Urusan . " . 0" . $row->Kd_Bidang . " . 0" . $row->Kd_Unit . " . 0" . $row->Kd_Sub . " . 0" . $row->Kd_Prog . " . 0" . $row->Kd_Keg. " . 0" . $row->Kd_Rek_1. " . 0" . $row->Kd_Rek_2. " . 0" . $row->Kd_Rek_3. " . 0" . $row->Kd_Rek_4. " . 0" . $row->Kd_Rek_5;
                     ?>
                   </td>
-                  <td><?php echo $row->keterangan_rinc?></td>
+                  <td><?php echo $row->Keterangan_Rinc?></td>
                   <td style="text-align: right;">
                     <?php
                       if(!isset($row->jml_satuan_i) && !isset($row->nilai_rp_i) && !isset($row->total_i)) :
@@ -86,7 +86,7 @@
                     ?>
                   </td>
                   <td>
-                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg.'&kd_rek_1='.$row->kd_rek_1.'&kd_rek_2='.$row->kd_rek_2.'&kd_rek_3='.$row->kd_rek_3.'&kd_rek_4='.$row->kd_rek_4.'&kd_rek_5='.$row->kd_rek_5)?>">(<?=$row->progress_data."/1"?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub.'&kd_prog='.$row->Kd_Prog.'&kd_keg='.$row->Kd_Keg.'&kd_rek_1='.$row->Kd_Rek_1.'&kd_rek_2='.$row->Kd_Rek_2.'&kd_rek_3='.$row->Kd_Rek_3.'&kd_rek_4='.$row->Kd_Rek_4.'&kd_rek_5='.$row->Kd_Rek_5)?>">(x/1) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 

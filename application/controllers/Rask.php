@@ -276,4 +276,11 @@ class Rask extends CI_Controller {
 		$data['perubahan'] = $this->rask->getsumanggaranperubahan();	
 		echo json_encode($data);
 	}
+
+	public function sync()
+	{
+		ini_set('memory_limit', '-1');
+		$data['sync'] = $this->rask->syncrask();
+		echo json_encode($data['sync']);
+	}
 }

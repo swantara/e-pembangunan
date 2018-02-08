@@ -24,6 +24,7 @@ class Beranda extends CI_Controller {
 		$data['kegiatan'] = $this->beranda->getkegiatanbyopd();
 		$data['body'] = $this->load->view('fe/beranda', $data, true);
 		$this->load->view('fe/template', $data);
+		// echo json_encode($data['kegiatan']);
 	}
 
 	public function opd()

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Pembangunan Kabupaten Badung</title>
+  <title>SIPPP Kabupaten Badung</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Favicons -->
@@ -141,7 +141,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li id="rask">
+        <!-- <li id="rask">
           <a href="#">
             <i class="fa fa-institution"></i> <span>RASK</span>
           </a>
@@ -165,7 +165,7 @@
           <a href="#">
             <i class="fa fa-file-text-o"></i> <span>Pelaporan Fisik</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li id="rask">
           <a href="<?=site_url('backend/rask/?tahun='.$tahun)?>">
             <i class="fa fa-institution"></i> <span>RASK</span>
@@ -191,11 +191,14 @@
             <i class="fa fa-file-text-o"></i> <span>Pelaporan Fisik</span>
           </a>
         </li> -->
-        <li id="user">
+        <!-- <li id="user">
           <a href="<?=site_url('user')?>">
             <i class="fa fa-users"></i> <span>Kelola User</span>
           </a>
-        </li>
+        </li> -->
+        <li class="header">FRONT END</li>
+        <li><a href="http://ropk.badungkab.go.id"><i class="fa fa-institution"></i> <span>Halaman Utama</span></a></li>
+        <li><a href="http://ropk.badungkab.go.id/app/realisasiopd/opd"><i class="fa fa-file-text-o"></i> <span>Realisasi Perangkat Daerah</span></a></li>
         <li class="header">FRONT END</li>
         <li><a href="<?=site_url('')?>"><i class="fa fa-home text-green"></i> <span>Halaman Utama</span></a></li>
         <li class="header">SIGN OUT</li>

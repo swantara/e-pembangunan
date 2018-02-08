@@ -35,7 +35,14 @@ class Backend extends CI_Controller {
 			$this->load->view('be/template_be', $data);			
 		}
 	}
-
+    
+    public function test()
+    {
+        $data['test'] = $this->backend->test();
+        
+        echo json_encode($data['test']);
+    }
+    
 	public function kegiatanbyopd()
 	{
 		// echo json_encode($this->backend->getdetailkegiatan());
@@ -132,6 +139,7 @@ class Backend extends CI_Controller {
 
 		$data['nama_kegiatan'] = $this->backend->getnamakegiatan();
 		$data['rincian'] = $this->backend->getlistrincianbykegiatan();
+		$data['kelengkapan_data'] = $this->backend->getkelengkapanrekening();
 		$data['body'] = $this->load->view('be/rincianbykegiatan_list', $data, true);
 		$this->load->view('be/template_be', $data);
 	}
@@ -227,8 +235,6 @@ class Backend extends CI_Controller {
 		$data['data_kontrak'] = $this->backend->getdatadetailkontrak()[0];
 		$data['target_keuangan'] = $this->realisasikeuangan->getrinciantarget()[0];
 		$data['target_fisik'] = $this->backend->gettargetfisik()[0];
-		$data['kontrak_keuangan'] = $this->backend->gettargetkeuangankontrak()[0];
-		$data['kontrak_fisik'] = $this->backend->gettargetfisikkontrak()[0];
 		$data['realisasi_keuangan'] = $this->realisasikeuangan->getrincianrealisasikeuangan()[0];
 		$data['realisasi_fisik'] = $this->backend->getrealisasifisik()[0];
 		$data['body'] = $this->load->view('be/rincianbykegiatan_detail', $data, true);

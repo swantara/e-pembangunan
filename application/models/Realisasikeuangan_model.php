@@ -14,9 +14,9 @@ class Realisasikeuangan_model extends CI_Model {
 	// 			spm.kd_urusan, spm.kd_bidang, spm.kd_unit, spm.kd_sub,
 	// 		    chek.no_cek, chek.tgl_cair, chek.nilai,
  //                sum(chek.nilai) as total_realisasi
-	// 		from t_sp2d sp2d
+	// 		from ta_sp2d sp2d
 	// 	    inner join t_spm spm on spm.no_spm = sp2d.no_spm
-	//     	inner join t_cheque chek on chek.no_sp2d = sp2d.no_sp2d
+	//     	inner join ta_cheque chek on chek.no_sp2d = sp2d.no_sp2d
 	// 	    group by spm.kd_urusan, 
 	// 	    	spm.kd_bidang, 
 	// 	    	spm.kd_unit, 
@@ -46,11 +46,12 @@ class Realisasikeuangan_model extends CI_Model {
 		    sp.*,
 		        c.tgl_cair, sum(spm.nilai) as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
 	    group by spm.kd_urusan,
@@ -79,9 +80,9 @@ class Realisasikeuangan_model extends CI_Model {
 	// 	$query = $this->db->query("select sp2d.*,
 	// 			spm.kd_urusan, spm.kd_bidang, spm.kd_unit, spm.kd_sub,
 	// 		    chek.no_cek, chek.tgl_cair, chek.nilai
-	// 		from t_sp2d sp2d
+	// 		from ta_sp2d sp2d
 	// 	    inner join t_spm spm on spm.no_spm = sp2d.no_spm
-	//     	inner join t_cheque chek on chek.no_sp2d = sp2d.no_sp2d
+	//     	inner join ta_cheque chek on chek.no_sp2d = sp2d.no_sp2d
 	// 		where sp2d.tahun = '2017' 
 	// 			and spm.kd_urusan = '$kd_urusan'
 	// 			and spm.kd_bidang = '$kd_bidang'
@@ -116,15 +117,16 @@ class Realisasikeuangan_model extends CI_Model {
 		    sp.*,
 		        c.tgl_cair, sum(spm.nilai) as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 			and spm.kd_urusan = '$kd_urusan'
 			and spm.kd_bidang = '$kd_bidang'
 			and spm.kd_unit = '$kd_unit'
 			and spm.kd_sub = '$kd_sub'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
         group by spm.kd_urusan,
@@ -163,9 +165,9 @@ class Realisasikeuangan_model extends CI_Model {
 		$query = $this->db->query("select sp.*,
 				spm.*,
 				c.tgl_cair, c.nilai as dana_cair, c.keterangan as keterangan_realisasi
-			from t_sp2d sp
-			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
-		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
+			from ta_sp2d sp
+			inner join ta_cheque c on sp.no_sp2d = c.no_sp2d
+		    inner join ta_spm_rinc spm on sp.no_spm = spm.no_spm
 			where spm.tahun = '$tahun'
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
@@ -173,7 +175,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_sub = '$kd_sub'
                 and spm.kd_prog = '$kd_prog'
                 and spm.kd_keg = '$kd_keg'
-				and spm.kd_rek_1 = 5");
+				and spm.kd_rek_1 = 5
+				and spm.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -205,9 +208,9 @@ class Realisasikeuangan_model extends CI_Model {
 		    sp.*,
 		        c.tgl_cair, sum(spm.nilai) as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun' 
 			and spm.kd_urusan = '$kd_urusan'
 			and spm.kd_bidang = '$kd_bidang'
@@ -216,6 +219,7 @@ class Realisasikeuangan_model extends CI_Model {
 			and spm.kd_prog = '$kd_prog'
 			and spm.kd_keg = '$kd_keg'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
         group by spm.kd_urusan,
@@ -274,9 +278,9 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 10 then c.nilai else 0 end) as total_okt,
 				sum(case when month(c.tgl_cair) = 11 then c.nilai else 0 end) as total_nop,
 				sum(case when month(c.tgl_cair) = 12 then c.nilai else 0 end) as total_des
-			from t_sp2d sp
-			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
-		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
+			from ta_sp2d sp
+			inner join ta_cheque c on sp.no_sp2d = c.no_sp2d
+		    inner join ta_spm_rinc spm on sp.no_spm = spm.no_spm
 			where spm.tahun = '$tahun' 
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
@@ -312,9 +316,10 @@ class Realisasikeuangan_model extends CI_Model {
 		$query = $this->db->query("select ra.*,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'
 				and ra.kd_perubahan = 4
@@ -351,7 +356,7 @@ class Realisasikeuangan_model extends CI_Model {
 
 		$query = $this->db->query("select ra.*,
 				(ra.jan+ra.feb+ra.mar+ra.apr+ra.mei+ra.jun+ra.jul+ra.agt+ra.sep+ra.okt+ra.nop+ra.des) as total_target
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
 				and ra.kd_urusan = '$kd_urusan'
 				and ra.kd_bidang = '$kd_bidang'
@@ -360,6 +365,7 @@ class Realisasikeuangan_model extends CI_Model {
                 and ra.kd_prog = '$kd_prog'
                 and ra.kd_keg = '$kd_keg'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4");
 
 		if($query->num_rows() > 0)
@@ -397,9 +403,10 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.des) as total_des,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'
 				and ra.kd_perubahan = 4");
@@ -439,9 +446,10 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.des)/1000000000 as total_des,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des))/1000000000 as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '411' 
 				and concat(ra.kd_urusan, ra.kd_bidang, ra.kd_unit) <> '412'
 				and ra.kd_perubahan = 4");
@@ -483,13 +491,14 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.nop) as total_nop,
                 sum(ra.des) as total_des,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
             	and ra.kd_sub = '$kd_sub'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4");
 
 		if($query->num_rows() > 0)
@@ -529,13 +538,14 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.nop)/1000000 as total_nop,
                 sum(ra.des)/1000000 as total_des,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des))/1000000 as total_target
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
             	and ra.kd_sub = '$kd_sub'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4");
 
 		if($query->num_rows() > 0)
@@ -568,13 +578,14 @@ class Realisasikeuangan_model extends CI_Model {
                 (sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as triwulan_4,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
             	and ra.kd_sub = '$kd_sub'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4");
 
 		if($query->num_rows() > 0)
@@ -607,13 +618,14 @@ class Realisasikeuangan_model extends CI_Model {
                 (sum(ra.okt)+sum(ra.nop)+sum(ra.des))/1000000 as triwulan_4,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des))/1000000 as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
             	and ra.kd_urusan = '$kd_urusan'
             	and ra.kd_bidang = '$kd_bidang'
             	and ra.kd_unit = '$kd_unit'
             	and ra.kd_sub = '$kd_sub'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4");
 
 		if($query->num_rows() > 0)
@@ -643,13 +655,14 @@ class Realisasikeuangan_model extends CI_Model {
 		$query = $this->db->query("select ra.*,
 				(sum(ra.jan)+sum(ra.feb)+sum(ra.mar)+sum(ra.apr)+sum(ra.mei)+sum(ra.jun)+sum(ra.jul)+sum(ra.agt)+sum(ra.sep)+sum(ra.okt)+sum(ra.nop)+sum(ra.des)) as total_target,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun' 
 				and ra.kd_urusan = '$kd_urusan'
 				and ra.kd_bidang = '$kd_bidang'
 				and ra.kd_unit = '$kd_unit'
 				and ra.kd_sub = '$kd_sub'
 				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2
 				and ra.kd_perubahan = 4
             group by ra.kd_urusan,
             	ra.kd_bidang,
@@ -698,7 +711,7 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.nop) as total_nop,
                 sum(ra.des) as total_des,
 				count(ra.tahun) as jumlah_data
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun' 
 				and ra.kd_urusan = '$kd_urusan'
 				and ra.kd_bidang = '$kd_bidang'
@@ -706,7 +719,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and ra.kd_sub = '$kd_sub'
                 and ra.kd_prog = '$kd_prog'
                 and ra.kd_keg = '$kd_keg'
-				and ra.kd_rek_1 = 5");
+				and ra.kd_rek_1 = 5
+				and ra.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -753,7 +767,7 @@ class Realisasikeuangan_model extends CI_Model {
                 sum(ra.nop) as total_nop,
                 sum(ra.des) as total_des,
                 (ra.jan+ra.feb+ra.mar+ra.apr+ra.mei+ra.jun+ra.jul+ra.agt+ra.sep+ra.okt+ra.nop+ra.des) as total_keuangan
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun' 
 				and ra.kd_urusan = '$kd_urusan'
 				and ra.kd_bidang = '$kd_bidang'
@@ -807,9 +821,9 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 10 then c.nilai else 0 end) as total_okt,
 				sum(case when month(c.tgl_cair) = 11 then c.nilai else 0 end) as total_nop,
 				sum(case when month(c.tgl_cair) = 12 then c.nilai else 0 end) as total_des
-			from t_sp2d sp
-			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
-		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
+			from ta_sp2d sp
+			inner join ta_cheque c on sp.no_sp2d = c.no_sp2d
+		    inner join ta_spm_rinc spm on sp.no_spm = spm.no_spm
 			where spm.tahun = '$tahun' 
 				and spm.kd_urusan = '$kd_urusan'
 				and spm.kd_bidang = '$kd_bidang'
@@ -817,7 +831,8 @@ class Realisasikeuangan_model extends CI_Model {
 				and spm.kd_sub = '$kd_sub'
 				and spm.kd_prog = '$kd_prog'
 				and spm.kd_keg = '$kd_keg'
-				and spm.kd_rek_1 = 5");
+				and spm.kd_rek_1 = 5
+				and spm.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -856,11 +871,12 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end) as total_des,
 				(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)) as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'");
 
@@ -901,11 +917,12 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)/1000000000 as total_des,
 				(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end))/1000000000 as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'");
 
@@ -950,11 +967,12 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end) as total_des,
 				(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)) as total_realisasi,
 				count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 			and spm.kd_urusan = '$kd_urusan'
 			and spm.kd_bidang = '$kd_bidang'
 			and spm.kd_unit = '$kd_unit'
@@ -1001,11 +1019,12 @@ class Realisasikeuangan_model extends CI_Model {
 			sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)/1000000000 as total_des,
 			(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end))/1000000000 as total_realisasi,
 			count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 			and spm.kd_urusan = '$kd_urusan'
 			and spm.kd_bidang = '$kd_bidang'
 			and spm.kd_unit = '$kd_unit'
@@ -1044,11 +1063,12 @@ class Realisasikeuangan_model extends CI_Model {
 			(sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)) as triwulan_4,
 			(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end)) as total_realisasi,
 			count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
 			and spm.kd_urusan = '$kd_urusan'
@@ -1089,11 +1109,12 @@ class Realisasikeuangan_model extends CI_Model {
 			(sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end))/1000000000 as triwulan_4,
 			(sum(case when month(c.tgl_cair) = 1 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 2 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 3 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 4 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 5 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 6 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 7 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 8 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 9 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 10 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 11 then spm.nilai else 0 end)+sum(case when month(c.tgl_cair) = 12 then spm.nilai else 0 end))/1000000000 as total_realisasi,
 			count(c.tahun) as jumlah_data
-		from t_spm_rinc spm
-		inner join t_sp2d sp on sp.no_spm = spm.no_spm
-		inner join t_cheque c on c.no_sp2d = sp.no_sp2d
+		from ta_spm_rinc spm
+		inner join ta_sp2d sp on sp.no_spm = spm.no_spm
+		inner join ta_cheque c on c.no_sp2d = sp.no_sp2d
 		where spm.tahun = '$tahun'
 		    and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2
 		    and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '411' 
 			and concat(spm.kd_urusan, spm.kd_bidang, spm.kd_unit) <> '412'
 			and spm.kd_urusan = '$kd_urusan'

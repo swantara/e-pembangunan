@@ -30,21 +30,22 @@
             <div class="box-body">
               <h4 style="display: inline;">
                 <?php
-                  echo $nama_opd->nama . " - " . $nama_kegiatan->nama;
+                  echo $nama_opd->Nm_Sub_Unit . " - " . $nama_kegiatan->nama;
                 ?> 
               </h4>
-              <a style="margin-left: 20px;" href="<?=site_url('backend/editdatakegiatan/?tahun='.$data_kegiatan->tahun.'&kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit</a>
+              <a style="margin-left: 20px;" href="<?=site_url('backend/editdatakegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit</a>
+              <a style="margin-left: 20px;" href="<?=site_url('cetak/cetak_kegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Cetak</a>
               <hr/>
               <div class="row">
                 <div class="col-xs-4">
                   <strong>Keterangan Rincian</strong>
-                  <p><?=$data_kegiatan->keterangan_rinc?></p>
+                  <p><?=$data_kegiatan->Keterangan_Rinc?></p>
                   <hr/>
                   <strong>Anggaran Induk | Anggaran Perubahan</strong>
                   <p><?="Rp. " . number_format($data_kegiatan->total_induk, 0 , ',', '.') . " | Rp. " . number_format($data_kegiatan->total_perubahan, 0 , ',', '.');?></p>
                   <hr/>
                   <strong>Tahun</strong>
-                  <p><?=$data_kegiatan->tahun?></p>
+                  <p><?=$data_kegiatan->Tahun?></p>
                   <hr/>
                 </div>
                 <div class="col-xs-2">
@@ -142,20 +143,20 @@
 
                 <tr>
                   <td><?=$no?></td>
-                  <td><?=$row->tahun?></td>
+                  <td><?=$row->Tahun?></td>
                   <td>
                     <?php 
-                      echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg. " . " . $row->kd_rek_1. " . " . $row->kd_rek_2. " . " . $row->kd_rek_3. " . " . $row->kd_rek_4. " . " . $row->kd_rek_5. " . " . $row->no_rinc;
+                      echo $row->Kd_Urusan . " . 0" . $row->Kd_Bidang . " . 0" . $row->Kd_Unit . " . 0" . $row->Kd_Sub . " . 0" . $row->Kd_Prog . " . 0" . $row->Kd_Keg. " . " . $row->Kd_Rek_1. " . " . $row->Kd_Rek_2. " . " . $row->Kd_Rek_3. " . " . $row->Kd_Rek_4. " . " . $row->Kd_Rek_5;
                     ?>
                   </td>
-                  <td><?php echo $row->keterangan?></td>
+                  <td><?php echo $row->Keterangan?></td>
                   <td style="text-align: right;">
                     <?php
                       if(!isset($row->jml_satuan_i) && !isset($row->nilai_rp_i) && !isset($row->total_i)) :
-                        echo "(" . $row->jml_satuan . " " . $row->satuan123 . " x " . number_format($row->nilai_rp, 0)  . ")<br/>= " . number_format($row->total, 0);
+                        echo "(" . $row->Jml_Satuan . " " . $row->Satuan123 . " x " . number_format($row->Nilai_Rp, 0)  . ")<br/>= " . number_format($row->Total, 0);
                       else :
                         if($row->jml_satuan_i != 0 && $row->nilai_rp_i !=0 && $row->total_i !=0) : 
-                          echo "(" . $row->jml_satuan_i . " " . $row->satuan123 . " x " . number_format($row->nilai_rp_i, 0)  . ")<br/>= " . number_format($row->total_i, 0);
+                          echo "(" . $row->jml_satuan_i . " " . $row->Satuan123 . " x " . number_format($row->nilai_rp_i, 0)  . ")<br/>= " . number_format($row->total_i, 0);
                         else :
                           echo "0";
                         endif;
@@ -167,8 +168,8 @@
                       if(!isset($row->jml_satuan_i) && !isset($row->nilai_rp_i) && !isset($row->total_i)) :
                         echo "-";
                       else :
-                        if($row->jml_satuan != 0 && $row->nilai_rp !=0 && $row->total !=0) : 
-                          echo "(" . $row->jml_satuan . " " . $row->satuan123 . " x " . number_format($row->nilai_rp, 0)  . ")<br/>= " . number_format($row->total, 0);
+                        if($row->Jml_Satuan != 0 && $row->Nilai_Rp !=0 && $row->Total !=0) : 
+                          echo "(" . $row->Jml_Satuan . " " . $row->Satuan123 . " x " . number_format($row->Nilai_Rp, 0)  . ")<br/>= " . number_format($row->Total, 0);
                         else :
                           echo "0";
                         endif;
@@ -180,7 +181,7 @@
                       if(!isset($row->total_i)) : 
                         echo "-";
                       else :
-                        echo number_format(($row->total - $row->total_i),0);
+                        echo number_format(($row->Total - $row->total_i),0);
                       endif;
                     ?>    
                   </td>
@@ -234,7 +235,7 @@
                   <tbody>
                     <tr>
                       <td>Target</td>
-                      <td><?=$target_keuangan->tahun?></td>
+                      <td><?=$target_keuangan->Tahun?></td>
                       <td><?php echo "Rp." . number_format($target_keuangan->total_jan, 0, ',', '.');?></td>
                       <td><?php echo "Rp." . number_format($target_keuangan->total_feb, 0, ',', '.');?></td>
                       <td><?php echo "Rp." . number_format($target_keuangan->total_mar, 0, ',', '.');?></td>
@@ -252,7 +253,7 @@
                     </tr>
                     <tr>
                       <td>Realisasi</td>
-                      <td><?=$realisasi_keuangan->tahun?></td>
+                      <td><?=$realisasi_keuangan->Tahun?></td>
                       <td><?php echo "Rp." . number_format($realisasi_keuangan->total_jan, 0, ',', '.');?></td>
                       <td><?php echo "Rp." . number_format($realisasi_keuangan->total_feb, 0, ',', '.');?></td>
                       <td><?php echo "Rp." . number_format($realisasi_keuangan->total_mar, 0, ',', '.');?></td>
@@ -273,8 +274,8 @@
               <hr/>
               <br/>
               <h4 style="display: inline;">Realisasi Fisik</h4>
-              <a style="margin-left: 20px;" href="<?=site_url('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit</a>
-              <a style="margin-left: 10px;" href="<?=site_url('backend/laporanfisik/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-primary btn"><i style="margin-right: 5px;" class="fa fa-file-text-o"></i> Lapor Realisasi</a>
+              <a style="margin-left: 20px;" href="<?=site_url('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit Target Fisik</a>
+              <a style="margin-left: 10px;" href="<?=site_url('backend/laporanfisik/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-primary btn"><i style="margin-right: 5px;" class="fa fa-file-text-o"></i> Lapor Realisasi Fisik</a>
               <hr/>
               <div class="table-responsive">
                 <table class="table table-stripped table-hover">
@@ -314,7 +315,7 @@
                         <td><?php echo number_format($target_fisik->b_10, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($target_fisik->b_11, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($target_fisik->b_12, 5, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($target_fisik->total_fisik, 0, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($target_fisik->total_fisik, 5, ',', '.') . "%";?></td>
                       </tr>
                     <?php else : ?>
                       <tr>
@@ -351,7 +352,7 @@
                         <td><?php echo number_format($realisasi_fisik->b_10, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($realisasi_fisik->b_11, 5, ',', '.') . "%";?></td>
                         <td><?php echo number_format($realisasi_fisik->b_12, 5, ',', '.') . "%";?></td>
-                        <td><?php echo number_format($realisasi_fisik->total_fisik, 0, ',', '.') . "%";?></td>
+                        <td><?php echo number_format($realisasi_fisik->total_fisik, 5, ',', '.') . "%";?></td>
                       </tr>
                     <?php else : ?>
                       <tr>

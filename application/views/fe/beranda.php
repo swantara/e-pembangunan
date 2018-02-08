@@ -97,11 +97,11 @@
                       <tr>
                         <td><?=$no?></td>  
                         <td>
-                          <a href="<?=site_url('beranda/opd/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                          <a href="<?=site_url('beranda/opd/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub)?>">
                           <?php
                             foreach ($nama_opd as $rowB) :
-                              if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
-                                echo $rowB->nama;
+                              if($row->Kd_Urusan == $rowB->Kd_Urusan && $row->Kd_Bidang == $rowB->Kd_Bidang && $row->Kd_Unit == $rowB->Kd_Unit && $row->Kd_Sub == $rowB->Kd_Sub) :
+                                echo $rowB->Nm_Sub_Unit;
                               endif;
                             endforeach;
                           ?>
@@ -412,45 +412,44 @@
                         // Vertical axis
                         yAxis: [{
                             type: 'category',
-                            data: [nilai[0].nama,
-                              nilai[1].nama,
-                              nilai[2].nama,
-                              nilai[3].nama,
-                              nilai[4].nama,
-                              nilai[5].nama,
-                              nilai[6].nama,
-                              nilai[7].nama,
-                              nilai[8].nama,
-                              nilai[9].nama,
-                              nilai[10].nama,
-                              nilai[11].nama,
-                              nilai[12].nama,
-                              nilai[13].nama,
-                              nilai[14].nama,
-                              nilai[15].nama,
-                              nilai[16].nama,
-                              nilai[17].nama,
-                              nilai[18].nama,
-                              nilai[19].nama,
-                              nilai[20].nama,
-                              nilai[21].nama,
-                              nilai[22].nama,
-                              nilai[23].nama,
-                              nilai[24].nama,
-                              nilai[25].nama,
-                              nilai[26].nama,
-                              nilai[27].nama,
-                              nilai[28].nama,
-                              nilai[29].nama,
-                              nilai[30].nama,
-                              nilai[31].nama,
-                              nilai[32].nama,
-                              nilai[33].nama,
-                              nilai[34].nama,
-                              nilai[35].nama,
-                              nilai[36].nama,
-                              nilai[37].nama,
-                              nilai[38].nama]
+                            data: [nilai[0].nm_sub_unit,
+                              nilai[1].nm_sub_unit,
+                              nilai[2].nm_sub_unit,
+                              nilai[3].nm_sub_unit,
+                              nilai[4].nm_sub_unit,
+                              nilai[5].nm_sub_unit,
+                              nilai[6].nm_sub_unit,
+                              nilai[7].nm_sub_unit,
+                              nilai[8].nm_sub_unit,
+                              nilai[9].nm_sub_unit,
+                              nilai[10].nm_sub_unit,
+                              nilai[11].nm_sub_unit,
+                              nilai[12].nm_sub_unit,
+                              nilai[13].nm_sub_unit,
+                              nilai[14].nm_sub_unit,
+                              nilai[15].nm_sub_unit,
+                              nilai[16].nm_sub_unit,
+                              nilai[17].nm_sub_unit,
+                              nilai[18].nm_sub_unit,
+                              nilai[19].nm_sub_unit,
+                              nilai[20].nm_sub_unit,
+                              nilai[21].nm_sub_unit,
+                              nilai[22].nm_sub_unit,
+                              nilai[23].nm_sub_unit,
+                              nilai[24].nm_sub_unit,
+                              nilai[25].nm_sub_unit,
+                              nilai[26].nm_sub_unit,
+                              nilai[27].nm_sub_unit,
+                              nilai[28].nm_sub_unit,
+                              nilai[29].nm_sub_unit,
+                              nilai[30].nm_sub_unit,
+                              nilai[31].nm_sub_unit,
+                              nilai[32].nm_sub_unit,
+                              nilai[33].nm_sub_unit,
+                              nilai[34].nm_sub_unit,
+                              nilai[35].nm_sub_unit,
+                              nilai[36].nm_sub_unit,
+                              nilai[37].nm_sub_unit]
                         }],
 
                         // Add series
@@ -591,18 +590,18 @@
             element: 'line-chart',
             resize: true,
             data: [
-                  {y: value[0].tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
-                  {y: value[0].tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
-                  {y: value[0].tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
-                  {y: value[0].tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
-                  {y: value[0].tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
-                  {y: value[0].tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
-                  {y: value[0].tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
-                  {y: value[0].tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
-                  {y: value[0].tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
-                  {y: value[0].tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
-                  {y: value[0].tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
-                  {y: value[0].tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
+                  {y: value[0].Tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
+                  {y: value[0].Tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
+                  {y: value[0].Tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
+                  {y: value[0].Tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
+                  {y: value[0].Tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
+                  {y: value[0].Tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
+                  {y: value[0].Tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
+                  {y: value[0].Tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
+                  {y: value[0].Tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
+                  {y: value[0].Tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
+                  {y: value[0].Tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
+                  {y: value[0].Tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
                 ],
             xkey: 'y',
             ykeys: ['item1', 'item2', 'item3'],

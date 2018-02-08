@@ -32,7 +32,7 @@
           <div class="col-lg-12">
             <div class="panel panel-flat">
               <div class="panel-heading">
-                <h5 class="panel-title"><i class="icon-stats-growth mr-10"></i><strong>Progres Keuangan - <?=$nama_opd->nama?></strong></h5>
+                <h5 class="panel-title"><i class="icon-stats-growth mr-10"></i><strong>Progres Keuangan - <?=$nama_opd->Nm_Sub_Unit?></strong></h5>
                 <div class="heading-elements">
                   <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -165,7 +165,7 @@
           <div class="col-lg-12">
             <div class="panel panel-flat">
               <div class="panel-heading">
-                <h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Progres Fisik - <?=$nama_opd->nama?></strong></h5>
+                <h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Progres Fisik - <?=$nama_opd->Nm_Sub_Unit?></strong></h5>
                 <div class="heading-elements">
                   <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -259,7 +259,7 @@
           <div class="col-lg-12">
             <div class="panel panel-flat">
               <div class="panel-heading">
-                <h5 class="panel-title"><i class="icon-stats-growth mr-10"></i><strong>Progres Keuangan Triwulan - <?=$nama_opd->nama?></strong></h5>
+                <h5 class="panel-title"><i class="icon-stats-growth mr-10"></i><strong>Progres Keuangan Triwulan - <?=$nama_opd->Nm_Sub_Unit?></strong></h5>
                 <div class="heading-elements">
                   <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -321,7 +321,7 @@
           <div class="col-lg-12">
             <div class="panel panel-flat">
               <div class="panel-heading">
-                <h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Progres Fisik Triwulan - <?=$nama_opd->nama?></strong></h5>
+                <h5 class="panel-title"><i class="icon-clipboard2 mr-10"></i><strong>Progres Fisik Triwulan - <?=$nama_opd->Nm_Sub_Unit?></strong></h5>
                 <div class="heading-elements">
                   <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -405,18 +405,18 @@
             element: 'line-chart',
             resize: true,
             data: [
-                  {y: value[0].tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
-                  {y: value[0].tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
-                  {y: value[0].tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
-                  {y: value[0].tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
-                  {y: value[0].tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
-                  {y: value[0].tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
-                  {y: value[0].tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
-                  {y: value[0].tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
-                  {y: value[0].tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
-                  {y: value[0].tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
-                  {y: value[0].tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
-                  {y: value[0].tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
+                  {y: value[0].Tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
+                  {y: value[0].Tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
+                  {y: value[0].Tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
+                  {y: value[0].Tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
+                  {y: value[0].Tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
+                  {y: value[0].Tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
+                  {y: value[0].Tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
+                  {y: value[0].Tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
+                  {y: value[0].Tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
+                  {y: value[0].Tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
+                  {y: value[0].Tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
+                  {y: value[0].Tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
                 ],
             xkey: 'y',
             ykeys: ['item1', 'item2', 'item3'],
@@ -535,7 +535,7 @@
         var kd_bidang = document.getElementById("kd_bidang").value;
         var kd_unit = document.getElementById("kd_unit").value;
         var kd_sub = document.getElementById("kd_sub").value;
-        window.location.assign("http://e-pembangunan.badungkab.go.id/?tahun=" + year + "&kd_urusan=" + kd_urusan + "&kd_bidang=" + kd_bidang + "&kd_unit=" + kd_unit + "&kd_sub=" + kd_sub);
+        window.location.assign("http://e-pembangunan.badungkab.go.id/beranda/opd/?tahun=" + year + "&kd_urusan=" + kd_urusan + "&kd_bidang=" + kd_bidang + "&kd_unit=" + kd_unit + "&kd_sub=" + kd_sub);
     }
   </script>
   <script type="text/javascript" src="<?=base_url('assets/js/pages/extra_trees.js')?>"></script>

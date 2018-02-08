@@ -12,7 +12,7 @@
     <!-- Main content -->
       <section class="content">
         <div class="row">  
-        <?php echo form_open('backend/laporanfisik/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id, array('method' => 'POST', 'role' => 'form', 'enctype' => 'multipart/form-data'));?>
+        <?php echo form_open('backend/laporanfisik/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5, array('method' => 'POST', 'role' => 'form', 'enctype' => 'multipart/form-data'));?>
         <?php echo validation_errors();?>
           <!-- /.col -->
           <div class="col-md-12">
@@ -185,7 +185,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>OPD</label>
-                      <input readonly type="text" class="form-control" value="<?=$opd->nama?>">
+                      <input readonly type="text" class="form-control" value="<?=$opd->Nm_Sub_Unit?>">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -197,7 +197,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label>Tahun</label>
-                      <input readonly  type="text" class="form-control" value="<?=$data_kegiatan->tahun?>">
+                      <input readonly  type="text" class="form-control" value="<?=$data_kegiatan->Tahun?>">
                     </div>
                   </div>
                 </div>
@@ -205,13 +205,13 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>No Rekening</label>
-                      <input readonly type="text" class="form-control" value="<?php echo $data_kegiatan->kd_urusan . " . 0" . $data_kegiatan->kd_bidang . " . 0" . $data_kegiatan->kd_unit . " . 0" . $data_kegiatan->kd_sub . " . 0" . $data_kegiatan->kd_prog . " . 0" . $data_kegiatan->kd_keg. " . " . $data_kegiatan->kd_rek_1. " . " . $data_kegiatan->kd_rek_2. " . " . $data_kegiatan->kd_rek_3. " . " . $data_kegiatan->kd_rek_4. " . " . $data_kegiatan->kd_rek_5. " . " . $data_kegiatan->no_rinc; ?>">
+                      <input readonly type="text" class="form-control" value="<?php echo $data_kegiatan->Kd_Urusan . " . 0" . $data_kegiatan->Kd_Bidang . " . 0" . $data_kegiatan->Kd_Unit . " . 0" . $data_kegiatan->Kd_Sub . " . 0" . $data_kegiatan->Kd_Prog . " . 0" . $data_kegiatan->Kd_Keg. " . " . $data_kegiatan->Kd_Rek_1. " . " . $data_kegiatan->Kd_Rek_2. " . " . $data_kegiatan->Kd_Rek_3. " . " . $data_kegiatan->Kd_Rek_4. " . " . $data_kegiatan->Kd_Rek_5; ?>">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Uraian</label>
-                      <input readonly type="text" class="form-control" value="<?php echo $data_kegiatan->keterangan?>">
+                      <label>Keterangan</label>
+                      <input readonly type="text" class="form-control" value="<?php echo $data_kegiatan->Keterangan_Rinc?>">
                     </div>
                   </div>
                 </div>
@@ -237,103 +237,105 @@
                 <hr style="margin-top: 0px; margin-bottom: 5px;" />
                 <div class="row">
                   <div class="col-md-12">
-                    <table class="table table-stripped table-hover">
-                      <thead>
-                        <tr>
-                          <th style="width: 10px;">Ket</th>
-                          <th style="width: 10px;">Tahun</th>
-                          <th>Januari</th>
-                          <th>Pebruari</th>
-                          <th>Maret</th>
-                          <th>April</th>
-                          <th>Mei</th>
-                          <th>Juni</th>
-                          <th>Juli</th>
-                          <th>Agustus</th>
-                          <th>September</th>
-                          <th>Oktober</th>
-                          <th>Nopember</th>
-                          <th>Desember</th>
-                          <th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php if((is_object($target_fisik) || is_array($target_fisik)) && !is_null($target_fisik->b_1)) :?>
-                        <tr>
-                          <td>Target</td>
-                          <td><?=$target_fisik->tahun?></td>
-                          <td><?php echo number_format($target_fisik->b_1, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_2, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_3, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_4, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_5, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_6, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_7, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_8, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_9, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_10, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_11, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->b_12, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($target_fisik->total_fisik, 0, ',', '.') . "%";?></td>
-                        </tr>
-                      <?php else : ?>
-                        <tr>
-                          <td>Target</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                        </tr>
-                      <?php endif; ?>
-                      <?php if((is_object($realisasi_fisik) || is_array($realisasi_fisik))) :?>
-                        <tr>
-                          <td>Realisasi</td>
-                          <td><?=$realisasi_fisik->tahun?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_1, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_2, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_3, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_4, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_5, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_6, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_7, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_8, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_9, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_10, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_11, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->b_12, 5, '.', ',') . "%";?></td>
-                          <td><?php echo number_format($realisasi_fisik->total_fisik, 0, ',', '.') . "%";?></td>
-                        </tr>
-                      <?php else : ?>
-                        <tr>
-                          <td>Realisasi</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                        </tr>
-                      <?php endif; ?>
-                      </tbody>
-                    </table>
+                    <div class="table-responsive">
+                      <table class="table table-stripped table-hover">
+                        <thead>
+                          <tr>
+                            <th style="width: 10px;">Ket</th>
+                            <th style="width: 10px;">Tahun</th>
+                            <th>Januari</th>
+                            <th>Pebruari</th>
+                            <th>Maret</th>
+                            <th>April</th>
+                            <th>Mei</th>
+                            <th>Juni</th>
+                            <th>Juli</th>
+                            <th>Agustus</th>
+                            <th>September</th>
+                            <th>Oktober</th>
+                            <th>Nopember</th>
+                            <th>Desember</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php if((is_object($target_fisik) || is_array($target_fisik)) && !is_null($target_fisik->b_1)) :?>
+                          <tr>
+                            <td>Target</td>
+                            <td><?=$target_fisik->tahun?></td>
+                            <td><?php echo number_format($target_fisik->b_1, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_2, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_3, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_4, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_5, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_6, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_7, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_8, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_9, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_10, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_11, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->b_12, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($target_fisik->total_fisik, 5, ',', '.') . "%";?></td>
+                          </tr>
+                        <?php else : ?>
+                          <tr>
+                            <td>Target</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </tr>
+                        <?php endif; ?>
+                        <?php if((is_object($realisasi_fisik) || is_array($realisasi_fisik))) :?>
+                          <tr>
+                            <td>Realisasi</td>
+                            <td><?=$realisasi_fisik->tahun?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_1, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_2, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_3, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_4, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_5, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_6, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_7, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_8, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_9, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_10, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_11, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->b_12, 5, '.', ',') . "%";?></td>
+                            <td><?php echo number_format($realisasi_fisik->total_fisik, 5, ',', '.') . "%";?></td>
+                          </tr>
+                        <?php else : ?>
+                          <tr>
+                            <td>Realisasi</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </tr>
+                        <?php endif; ?>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -393,7 +395,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->tahun.'&kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
+                <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
                 <button type="submit" class="btn btn-default pull-right"><i class="fa fa-check text-green"></i> Submit</button>
               </div>
             </div>
