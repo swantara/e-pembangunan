@@ -117,9 +117,15 @@ $db['sippp'] = array(
 $db['pmb'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'root',
 	'password' => '',
 	'database' => 'sippp',
+=======
+	'username' => 'epembang_admin',
+	'password' => 'pmb2017badung',
+	'database' => 'epembang_db',
+>>>>>>> master
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

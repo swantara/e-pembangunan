@@ -88,6 +88,7 @@ class Realisasifisik_model extends CI_Model {
 		$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
 		$query = $dbPmb->query("select tf.*,
+<<<<<<< HEAD
 				sum(tf.b_1) as total_jan,
 				(sum(tf.b_1)+sum(tf.b_2)) as total_feb,
 				(sum(tf.b_1)+sum(tf.b_2)+sum(tf.b_3)) as total_mar,
@@ -130,6 +131,8 @@ class Realisasifisik_model extends CI_Model {
 		$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
 		$query = $dbPmb->query("select tf.*,
+=======
+>>>>>>> master
 				sum(tf.b_1) as total_jan,
 				(sum(tf.b_1)+sum(tf.b_2)) as total_feb,
 				(sum(tf.b_1)+sum(tf.b_2)+sum(tf.b_3)) as total_mar,
@@ -168,6 +171,7 @@ class Realisasifisik_model extends CI_Model {
 		else{
 			$tahun = date('Y');
 		}
+<<<<<<< HEAD
 	  	$kd_urusan = $this -> input -> get('kd_urusan');
 	  	$kd_bidang = $this -> input -> get('kd_bidang');
 	  	$kd_unit = $this -> input -> get('kd_unit');
@@ -222,6 +226,12 @@ class Realisasifisik_model extends CI_Model {
 	  	$kd_bidang = $this -> input -> get('kd_bidang');
 	  	$kd_unit = $this -> input -> get('kd_unit');
 	  	$kd_sub = $this -> input -> get('kd_sub');
+=======
+		$kd_urusan = $this->session->userdata('session')['kd_urusan'];
+		$kd_bidang = $this->session->userdata('session')['kd_bidang'];
+		$kd_unit = $this->session->userdata('session')['kd_unit'];
+		$kd_sub = $this->session->userdata('session')['kd_sub'];
+>>>>>>> master
 
 		$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
@@ -268,10 +278,17 @@ class Realisasifisik_model extends CI_Model {
 		else{
 			$tahun = date('Y');
 		}
+<<<<<<< HEAD
 	  	$kd_urusan = $this -> input -> get('kd_urusan');
 	  	$kd_bidang = $this -> input -> get('kd_bidang');
 	  	$kd_unit = $this -> input -> get('kd_unit');
 	  	$kd_sub = $this -> input -> get('kd_sub');
+=======
+		$kd_urusan = $this->session->userdata('session')['kd_urusan'];
+		$kd_bidang = $this->session->userdata('session')['kd_bidang'];
+		$kd_unit = $this->session->userdata('session')['kd_unit'];
+		$kd_sub = $this->session->userdata('session')['kd_sub'];
+>>>>>>> master
 
 		$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
@@ -459,6 +476,7 @@ class Realisasifisik_model extends CI_Model {
 		$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
 		$query = $dbPmb->query("select *,
+<<<<<<< HEAD
 				(sum(rf.b_1)) as total_jan,
 				(sum(rf.b_1)+sum(rf.b_2)) as total_feb,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)) as total_mar,
@@ -471,12 +489,27 @@ class Realisasifisik_model extends CI_Model {
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)) as total_okt,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)) as total_nop,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_des,
+=======
+				sum(rf.b_1) as total_jan,
+				sum(rf.b_2) as total_feb,
+				sum(rf.b_3) as total_mar,
+				sum(rf.b_4) as total_apr,
+				sum(rf.b_5) as total_mei,
+				sum(rf.b_6) as total_jun,
+				sum(rf.b_7) as total_jul,
+				sum(rf.b_8) as total_agt,
+				sum(rf.b_9) as total_sep,
+				sum(rf.b_10) as total_okt,
+				sum(rf.b_11) as total_nop,
+				sum(rf.b_12) as total_des,
+>>>>>>> master
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_realisasi,
 				count(rf.tahun) as jumlah_data
 			from t_realisasi_fisik rf
 		    where rf.tahun = '$tahun'
 				and rf.kd_rek_1 = 5
 				and rf.kd_rek_2 = 2");
+<<<<<<< HEAD
 
 		if($query->num_rows() > 0)
 		{
@@ -519,6 +552,8 @@ class Realisasifisik_model extends CI_Model {
 		    where rf.tahun = '$tahun'
 				and rf.kd_rek_1 = 5
 				and rf.kd_rek_2 = 2");
+=======
+>>>>>>> master
 
 		if($query->num_rows() > 0)
 		{
@@ -547,6 +582,7 @@ class Realisasifisik_model extends CI_Model {
 	  	$dbPmb = $this->load->database('pmb', TRUE);
         // $dbPmb->query
 		$query = $dbPmb->query("select *,
+<<<<<<< HEAD
 				(sum(rf.b_1)) as total_jan,
 				(sum(rf.b_1)+sum(rf.b_2)) as total_feb,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)) as total_mar,
@@ -559,6 +595,20 @@ class Realisasifisik_model extends CI_Model {
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)) as total_okt,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)) as total_nop,
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_des,
+=======
+				sum(rf.b_1) as total_jan,
+				sum(rf.b_2) as total_feb,
+				sum(rf.b_3) as total_mar,
+				sum(rf.b_4) as total_apr,
+				sum(rf.b_5) as total_mei,
+				sum(rf.b_6) as total_jun,
+				sum(rf.b_7) as total_jul,
+				sum(rf.b_8) as total_agt,
+				sum(rf.b_9) as total_sep,
+				sum(rf.b_10) as total_okt,
+				sum(rf.b_11) as total_nop,
+				sum(rf.b_12) as total_des,
+>>>>>>> master
 				(sum(rf.b_1)+sum(rf.b_2)+sum(rf.b_3)+sum(rf.b_4)+sum(rf.b_5)+sum(rf.b_6)+sum(rf.b_7)+sum(rf.b_8)+sum(rf.b_9)+sum(rf.b_10)+sum(rf.b_11)+sum(rf.b_12)) as total_realisasi,
 				count(rf.tahun) as jumlah_data
 			from t_realisasi_fisik rf
@@ -569,6 +619,7 @@ class Realisasifisik_model extends CI_Model {
             	and rf.kd_sub = '$kd_sub'
 				and rf.kd_rek_1 = 5
 				and rf.kd_rek_2 = 2");
+<<<<<<< HEAD
 
 		if($query->num_rows() > 0)
 		{
@@ -619,6 +670,8 @@ class Realisasifisik_model extends CI_Model {
             	and rf.kd_sub = '$kd_sub'
 				and rf.kd_rek_1 = 5
 				and rf.kd_rek_2 = 2");
+=======
+>>>>>>> master
 
 		if($query->num_rows() > 0)
 		{
@@ -764,7 +817,11 @@ class Realisasifisik_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> master
 	public function synckelengkapantarget()
 	{
 		$getYear = $this -> input -> get('tahun');
@@ -853,4 +910,8 @@ class Realisasifisik_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

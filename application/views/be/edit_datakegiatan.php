@@ -58,6 +58,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Rincian</label>
+<<<<<<< HEAD
                         <input readonly name="nama_kegiatan" type="text" class="form-control" value="<?php
                             foreach ($uraian as $rowD) :
                               if($data_kegiatan->Kd_Rek_1 == $rowD->Kd_Rek_1 && $data_kegiatan->Kd_Rek_2 == $rowD->Kd_Rek_2 && $data_kegiatan->Kd_Rek_3 == $rowD->Kd_Rek_3 && $data_kegiatan->Kd_Rek_4 == $rowD->Kd_Rek_4 && $data_kegiatan->Kd_Rek_5 == $rowD->Kd_Rek_5) :
@@ -66,6 +67,9 @@
                             endforeach;
                           ?> 
                         " placeholder="Rincian">
+=======
+                        <input readonly name="nama_kegiatan" type="text" class="form-control" value="<?=$rincian->Keterangan_Rinc?>" placeholder="Rincian">
+>>>>>>> master
                       </div>
                     </div>                
                   </div>
@@ -85,7 +89,12 @@
                     <div class="col-md-3">
                       <div class="form-group">
                         <label>Anggaran Perubahan</label>
+<<<<<<< HEAD
                         <input readonly name="opd" type="text" class="form-control" value="<?php
+=======
+                        <input readonly name="opd" type="text" class="form-control" value="
+                        <?php
+>>>>>>> master
                             if(!isset($rincian->total_i)){
                               echo "-";
                             }

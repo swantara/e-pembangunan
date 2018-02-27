@@ -22,6 +22,7 @@ class Backend_model extends CI_Model {
         $query = $dbPmb->query("select k.*
         from ta_kegiatan k
         where k.tahun = '$tahun'");
+<<<<<<< HEAD
 
 		if($query->num_rows() > 0)
 		{
@@ -37,6 +38,8 @@ class Backend_model extends CI_Model {
 	{
 		$query = $this->db->query("select r5.* 
 	    from ref_rek_5 r5");
+=======
+>>>>>>> master
 
 		if($query->num_rows() > 0)
 		{
@@ -46,7 +49,11 @@ class Backend_model extends CI_Model {
 		{
 			return false;
 		}
+<<<<<<< HEAD
 	}
+=======
+    }
+>>>>>>> master
     
 	public function getkegiatan()
 	{
@@ -789,6 +796,45 @@ class Backend_model extends CI_Model {
 		}
 	}
 
+	public function getkelengkapanrekening(){
+		$getYear = $this -> input -> get('tahun');
+		if(isset($getYear)){
+			$tahun = $getYear;
+		}
+		else{
+			$tahun = date('Y');
+		}
+
+	  	$kd_urusan = $this -> input -> get('kd_urusan');
+	  	$kd_bidang = $this -> input -> get('kd_bidang');
+	  	$kd_unit = $this -> input -> get('kd_unit');
+	  	$kd_sub = $this -> input -> get('kd_sub');
+	  	$kd_prog = $this -> input -> get('kd_prog');
+	  	$kd_keg = $this -> input -> get('kd_keg');
+
+	  	$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select kd.*,
+			count(case when kd.status_pengadaan = 1 and kd.status_target = 1 then kd.tahun else 0 end) as progress_data
+		from t_kelengkapan_data kd
+		where kd.tahun = '$tahun' 
+			and kd.kd_urusan = '$kd_urusan'
+			and kd.kd_bidang = '$kd_bidang'
+			and kd.kd_unit = '$kd_unit'
+			and kd.kd_sub = '$kd_sub'
+			and kd.kd_prog = '$kd_prog'
+			and kd.kd_keg = '$kd_keg'");
+
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public function editdatakegiatan()
 	{
 		//ambil data admin yang menginputkan data
@@ -815,7 +861,10 @@ class Backend_model extends CI_Model {
 	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
 	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
+<<<<<<< HEAD
 	  	$no_rinc = $this -> input -> get('no_rinc');
+=======
+>>>>>>> master
 
 	  	$dbPmb = $this->load->database('pmb', TRUE);
 	  	$query = $dbPmb->query("select k.* 
@@ -1021,7 +1070,10 @@ class Backend_model extends CI_Model {
 	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
 	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
+<<<<<<< HEAD
 	  	$no_rinc = $this -> input -> get('no_rinc');
+=======
+>>>>>>> master
 
 	  	$dbPmb = $this->load->database('pmb', TRUE);
 		$query = $dbPmb->query("select tf.* 
@@ -1185,7 +1237,10 @@ class Backend_model extends CI_Model {
 	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
 	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
+<<<<<<< HEAD
 	  	$no_rinc = $this -> input -> get('no_rinc');
+=======
+>>>>>>> master
 
 
 	  	$bulan = $this -> input -> post('bulan');
@@ -1427,7 +1482,10 @@ class Backend_model extends CI_Model {
 					'kd_rek_3' => $kd_rek_3,
 					'kd_rek_4' => $kd_rek_4,
 					'kd_rek_5' => $kd_rek_5,
+<<<<<<< HEAD
 				    'no_rinc' => $no_rinc,
+=======
+>>>>>>> master
 					'jenis' => 1,
 					'b_11' => $this -> input -> post('realisasi'),
 					'keterangan' => $this -> input -> post('keterangan'),

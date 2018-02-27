@@ -43,6 +43,7 @@
                     <p><?=$nama_kegiatan->nama;?></p>
                     <hr/>
                     <strong>Rincian</strong>
+<<<<<<< HEAD
                     <p>
                       <?php
                         foreach ($uraian as $rowD) :
@@ -52,6 +53,9 @@
                         endforeach;
                       ?>     
                     </p>
+=======
+                    <p><?=$data_kegiatan->Keterangan_Rinc;?></p>
+>>>>>>> master
                     <hr/>
                   </div>
                   <div class="col-xs-4">

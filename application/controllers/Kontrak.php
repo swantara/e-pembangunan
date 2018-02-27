@@ -33,10 +33,19 @@ class Kontrak extends CI_Controller {
 		$data['body'] = $this->load->view('fe/kontrak', $data, true);
 		$this->load->view('fe/template', $data);
 	}
+<<<<<<< HEAD
     
     public function sync()
+=======
+
+	public function sync()
+>>>>>>> master
 	{
 		$data['sync'] = $this->kontrak->synckelengkapanpengadaan();
 		echo json_encode($data['sync']);
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

@@ -45,8 +45,13 @@ class Realisasifisik extends CI_Controller {
 		$data['body'] = $this->load->view('fe/realisasifisik_detail', $data, true);
 		$this->load->view('fe/template', $data);
 	}
+<<<<<<< HEAD
     
     public function sync()
+=======
+
+	public function sync()
+>>>>>>> master
 	{
 		$data['sync'] = $this->realisasifisik->synckelengkapantarget();
 		echo json_encode($data['sync']);

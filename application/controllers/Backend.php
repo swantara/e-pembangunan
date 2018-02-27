@@ -43,6 +43,16 @@ class Backend extends CI_Controller {
 		}
 	}
     
+<<<<<<< HEAD
+=======
+    public function test()
+    {
+        $data['test'] = $this->backend->test();
+        
+        echo json_encode($data['test']);
+    }
+    
+>>>>>>> master
 	public function kegiatanbyopd()
 	{
 		// echo json_encode($this->backend->getdetailkegiatan());
@@ -139,7 +149,11 @@ class Backend extends CI_Controller {
 
 		$data['nama_kegiatan'] = $this->backend->getnamakegiatan();
 		$data['rincian'] = $this->backend->getlistrincianbykegiatan();
+<<<<<<< HEAD
 		$data['uraian'] = $this->backend->geturaian();
+=======
+		$data['kelengkapan_data'] = $this->backend->getkelengkapanrekening();
+>>>>>>> master
 		$data['body'] = $this->load->view('be/rincianbykegiatan_list', $data, true);
 		$this->load->view('be/template_be', $data);
         // echo json_encode($data['uraian']);

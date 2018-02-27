@@ -160,11 +160,16 @@ class Rask_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
+<<<<<<< HEAD
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan
+=======
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan 
+>>>>>>> master
 		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun'
 			and tra.kd_rek_1 = 5
 			and tra.kd_rek_2 = 2
+<<<<<<< HEAD
 		group by tra.kd_urusan,
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -251,6 +256,8 @@ class Rask_model extends CI_Model {
 			and tra.kd_bidang = '$kd_bidang'
 			and tra.kd_unit = '$kd_unit'
 			and tra.kd_sub = '$kd_sub'
+=======
+>>>>>>> master
 		group by tra.kd_urusan,
 			tra.kd_bidang, 
 			tra.kd_unit, 
@@ -734,7 +741,11 @@ class Rask_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> master
 	public function syncrask()
 	{
 		$getYear = $this -> input -> get('tahun');
@@ -750,8 +761,12 @@ class Rask_model extends CI_Model {
 	  	$dbPmb = $this->load->database('pmb', TRUE);
 		$query = $dbPmb->query("select tra.* 
 		from t_rask_arsip tra
+<<<<<<< HEAD
 		where tra.tahun = '$tahun'
 		limit 60000, 10000");
+=======
+		where tra.tahun = '$tahun'");
+>>>>>>> master
 
 		if($query->num_rows() > 0)
 		{
@@ -774,6 +789,7 @@ class Rask_model extends CI_Model {
 				{
 			  		$kelengkapandata = $queryB->result();
 			  		foreach ($kelengkapandata as $rowB) :
+<<<<<<< HEAD
 			  			$data = array(
 							'status_pengadaan' => $row->status_pengadaan,
 							'status_target' => $row->status_target
@@ -797,10 +813,53 @@ class Rask_model extends CI_Model {
 						$dbPmb->set($data);
 						$dbPmb->where($where);
 						$dbPmb->update('t_kelengkapan_data');
+=======
+			  			if($row->status_pengadaan == 1) {
+				  			$where = array(
+							  	'tahun' => $row->tahun,
+								'kd_urusan' => $row->kd_urusan,
+								'kd_bidang' => $row->kd_bidang,
+								'kd_unit' => $row->kd_unit,
+								'kd_sub' => $row->kd_sub,
+								'kd_prog' => $row->kd_prog,
+								'kd_keg' => $row->kd_keg,
+								'kd_rek_1' => $row->kd_rek_1,
+								'kd_rek_2' => $row->kd_rek_2,
+								'kd_rek_3' => $row->kd_rek_3,
+								'kd_rek_4' => $row->kd_rek_4,
+								'kd_rek_5' => $row->kd_rek_5
+							  );
+
+							$dbPmb->set('status_pengadaan', 1);
+							$dbPmb->where($where);
+							$dbPmb->update('t_kelengkapan_data');
+						}
+						if($row->status_target == 1) {
+				  			$where = array(
+							  	'tahun' => $row->tahun,
+								'kd_urusan' => $row->kd_urusan,
+								'kd_bidang' => $row->kd_bidang,
+								'kd_unit' => $row->kd_unit,
+								'kd_sub' => $row->kd_sub,
+								'kd_prog' => $row->kd_prog,
+								'kd_keg' => $row->kd_keg,
+								'kd_rek_1' => $row->kd_rek_1,
+								'kd_rek_2' => $row->kd_rek_2,
+								'kd_rek_3' => $row->kd_rek_3,
+								'kd_rek_4' => $row->kd_rek_4,
+								'kd_rek_5' => $row->kd_rek_5
+							  );
+
+							$dbPmb->set('status_target', 1);
+							$dbPmb->where($where);
+							$dbPmb->update('t_kelengkapan_data');
+						}
+>>>>>>> master
 			  		endforeach;
 			  	}
 			  	else
 			  	{
+<<<<<<< HEAD
 			  	    if($row->status_pengadaan == 1 && $row->status_target == 1)
 			  	    {
     		  			$data = array(
@@ -869,6 +928,27 @@ class Rask_model extends CI_Model {
 					        $dbPmb->insert('t_kelengkapan_data', $data);
 			  	        }
 			  	    }
+=======
+		  			$data = array(
+						'tahun' => $row->tahun,
+						'kd_urusan' => $row->kd_urusan,
+						'kd_bidang' => $row->kd_bidang,
+						'kd_unit' => $row->kd_unit,
+						'kd_sub' => $row->kd_sub,
+						'kd_prog' => $row->kd_prog,
+						'kd_keg' => $row->kd_keg,
+						'kd_rek_1' => $row->kd_rek_1,
+						'kd_rek_2' => $row->kd_rek_2,
+						'kd_rek_3' => $row->kd_rek_3,
+						'kd_rek_4' => $row->kd_rek_4,
+						'kd_rek_5' => $row->kd_rek_5,
+						'status_pengadaan' => $row->status_pengadaan,
+						'status_target' => $row->status_target
+						);
+
+					//insert ke database
+					$dbPmb->insert('t_kelengkapan_data', $data);
+>>>>>>> master
 			  	}
 			endforeach;
 
@@ -879,6 +959,7 @@ class Rask_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
 	
 	public function getlaporanopd()
 	{
@@ -916,4 +997,6 @@ class Rask_model extends CI_Model {
 			return false;
 		}
 	}
+=======
+>>>>>>> master
 }

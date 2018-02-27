@@ -71,6 +71,7 @@
                       echo $row->Kd_Urusan . " . 0" . $row->Kd_Bidang . " . 0" . $row->Kd_Unit . " . 0" . $row->Kd_Sub . " . 0" . $row->Kd_Prog . " . 0" . $row->Kd_Keg. " . 0" . $row->Kd_Rek_1. " . 0" . $row->Kd_Rek_2. " . 0" . $row->Kd_Rek_3. " . 0" . $row->Kd_Rek_4. " . 0" . $row->Kd_Rek_5;
                     ?>
                   </td>
+<<<<<<< HEAD
                   <td>
                       <?php
                         foreach ($uraian as $rowD) :
@@ -80,6 +81,9 @@
                         endforeach;
                       ?>    
                   </td>
+=======
+                  <td><?php echo $row->Keterangan_Rinc?></td>
+>>>>>>> master
                   <td style="text-align: right;">
                     <?php
                       if(!isset($row->jml_satuan_i) && !isset($row->nilai_rp_i) && !isset($row->total_i)) :
@@ -107,7 +111,11 @@
                     ?>
                   </td>
                   <td>
+<<<<<<< HEAD
                     <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub.'&kd_prog='.$row->Kd_Prog.'&kd_keg='.$row->Kd_Keg.'&kd_rek_1='.$row->Kd_Rek_1.'&kd_rek_2='.$row->Kd_Rek_2.'&kd_rek_3='.$row->Kd_Rek_3.'&kd_rek_4='.$row->Kd_Rek_4.'&kd_rek_5='.$row->Kd_Rek_5.'&no_rinc='.$row->No_Rinc)?>">(x/x) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+=======
+                    <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub.'&kd_prog='.$row->Kd_Prog.'&kd_keg='.$row->Kd_Keg.'&kd_rek_1='.$row->Kd_Rek_1.'&kd_rek_2='.$row->Kd_Rek_2.'&kd_rek_3='.$row->Kd_Rek_3.'&kd_rek_4='.$row->Kd_Rek_4.'&kd_rek_5='.$row->Kd_Rek_5)?>">(x/1) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+>>>>>>> master
                   </td>
                 </tr>
 

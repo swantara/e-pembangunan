@@ -196,7 +196,11 @@
             <i class="fa fa-users"></i> <span>Kelola User</span>
           </a>
         </li> -->
+<<<<<<< HEAD
         <li class="header">Aplikasi ROPK</li>
+=======
+        <li class="header">FRONT END</li>
+>>>>>>> master
         <li><a href="http://ropk.badungkab.go.id"><i class="fa fa-institution"></i> <span>Halaman Utama</span></a></li>
         <li><a href="http://ropk.badungkab.go.id/app/realisasiopd/opd"><i class="fa fa-file-text-o"></i> <span>Realisasi Perangkat Daerah</span></a></li>
         <li class="header">FRONT END</li>

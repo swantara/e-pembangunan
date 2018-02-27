@@ -44,11 +44,16 @@
                 ?> 
               </h4>
               <a style="margin-left: 20px;" href="<?=site_url('backend/editdatakegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit</a>
+<<<<<<< HEAD
               <!--<a style="margin-left: 20px;" href="<?=site_url('cetak/cetak_kegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Cetak</a>-->
+=======
+              <a style="margin-left: 20px;" href="<?=site_url('cetak/cetak_kegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Cetak</a>
+>>>>>>> master
               <hr/>
               <div class="row">
                 <div class="col-xs-4">
                   <strong>Keterangan Rincian</strong>
+<<<<<<< HEAD
                   <p>
                   <?php
                     foreach ($uraian as $rowD) :
@@ -58,6 +63,9 @@
                     endforeach;
                   ?>  
                   </p>
+=======
+                  <p><?=$data_kegiatan->Keterangan_Rinc?></p>
+>>>>>>> master
                   <hr/>
                   <strong>Anggaran Induk | Anggaran Perubahan</strong>
                   <p><?="Rp. " . number_format($data_kegiatan->total_induk, 0 , ',', '.') . " | Rp. " . number_format($data_kegiatan->total_perubahan, 0 , ',', '.');?></p>
@@ -292,8 +300,13 @@
               <hr/>
               <br/>
               <h4 style="display: inline;">Realisasi Fisik</h4>
+<<<<<<< HEAD
               <a style="margin-left: 20px;" href="<?=site_url('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5.'&no_rinc='.$data_kegiatan->No_Rinc)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit Target Fisik</a>
               <a style="margin-left: 10px;" href="<?=site_url('backend/laporanfisik/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5.'&no_rinc='.$data_kegiatan->No_Rinc)?>" class="btn btn-primary btn"><i style="margin-right: 5px;" class="fa fa-file-text-o"></i> Lapor Realisasi Fisik</a>
+=======
+              <a style="margin-left: 20px;" href="<?=site_url('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default btn"><i style="margin-right: 5px;" class="fa fa-edit text-green"></i> Edit Target Fisik</a>
+              <a style="margin-left: 10px;" href="<?=site_url('backend/laporanfisik/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-primary btn"><i style="margin-right: 5px;" class="fa fa-file-text-o"></i> Lapor Realisasi Fisik</a>
+>>>>>>> master
               <hr/>
               <div class="table-responsive">
                 <table class="table table-stripped table-hover">

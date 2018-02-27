@@ -326,7 +326,11 @@ class Kontrak_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> master
 	public function synckelengkapanpengadaan()
 	{
 		$getYear = $this -> input -> get('tahun');
@@ -415,4 +419,8 @@ class Kontrak_model extends CI_Model {
 			return false;
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

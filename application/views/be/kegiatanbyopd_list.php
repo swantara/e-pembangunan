@@ -50,7 +50,11 @@
                   <td>
                     <?php         
                       foreach ($nama_kegiatan as $rowB) :
+<<<<<<< HEAD
                         if($row->Kd_Urusan == $rowB->Kd_Urusan && $row->Kd_Bidang == $rowB->Kd_Bidang && $row->Kd_Unit == $rowB->Kd_Unit && $row->Kd_Sub == $rowB->Kd_Sub && $row->Kd_Prog == $rowB->Kd_Prog && $row->Kd_Keg == $rowB->Kd_Keg) :
+=======
+                        if($row->Kd_Urusan == $rowB->Kd_Urusan && $row->Kd_Bidang == $rowB->Kd_Bidang && $row->Kd_Prog == $rowB->Kd_Prog && $row->Kd_Keg == $rowB->Kd_Keg) :
+>>>>>>> master
                           echo $rowB->nama;
                           break;
                         endif;

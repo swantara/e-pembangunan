@@ -211,6 +211,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Keterangan</label>
+<<<<<<< HEAD
                       <input readonly type="text" class="form-control" value="<?php
                         foreach ($uraian as $rowD) :
                           if($data_kegiatan->Kd_Rek_1 == $rowD->Kd_Rek_1 && $data_kegiatan->Kd_Rek_2 == $rowD->Kd_Rek_2 && $data_kegiatan->Kd_Rek_3 == $rowD->Kd_Rek_3 && $data_kegiatan->Kd_Rek_4 == $rowD->Kd_Rek_4 && $data_kegiatan->Kd_Rek_5 == $rowD->Kd_Rek_5) :
@@ -218,6 +219,9 @@
                           endif;
                         endforeach;
                       ?>">
+=======
+                      <input readonly type="text" class="form-control" value="<?php echo $data_kegiatan->Keterangan_Rinc?>">
+>>>>>>> master
                     </div>
                   </div>
                 </div>

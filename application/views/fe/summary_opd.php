@@ -390,6 +390,7 @@
             element: 'line-chart',
             resize: true,
             data: [
+<<<<<<< HEAD
                   {y: value[0].Tahun + '-01', item1: value[0].total_jan, item2: value[1].total_jan, item3: value[2].total_jan},
                   {y: value[0].Tahun + '-02', item1: value[0].total_feb, item2: value[1].total_feb, item3: value[2].total_feb},
                   {y: value[0].Tahun + '-03', item1: value[0].total_mar, item2: value[1].total_mar, item3: value[2].total_mar},
@@ -402,6 +403,20 @@
                   {y: value[0].Tahun + '-10', item1: value[0].total_okt, item2: value[1].total_okt, item3: value[2].total_okt},
                   {y: value[0].Tahun + '-11', item1: value[0].total_nop, item2: value[1].total_nop, item3: value[2].total_nop},
                   {y: value[0].Tahun + '-12', item1: value[0].total_des, item2: value[1].total_des, item3: value[2].total_des}
+=======
+                  {y: value[0].Tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
+                  {y: value[0].Tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
+                  {y: value[0].Tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
+                  {y: value[0].Tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
+                  {y: value[0].Tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
+                  {y: value[0].Tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
+                  {y: value[0].Tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
+                  {y: value[0].Tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
+                  {y: value[0].Tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
+                  {y: value[0].Tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
+                  {y: value[0].Tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
+                  {y: value[0].Tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
+>>>>>>> master
                 ],
             xkey: 'y',
             ykeys: ['item1', 'item2', 'item3'],

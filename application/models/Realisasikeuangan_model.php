@@ -8,6 +8,7 @@ class Realisasikeuangan_model extends CI_Model {
 		parent::__construct();
 	}
 
+<<<<<<< HEAD
 	public function test()
 	{
 		$getYear = $this -> input -> get('tahun');
@@ -28,6 +29,21 @@ class Realisasikeuangan_model extends CI_Model {
 	  	$kd_rek_3 = $this -> input -> get('kd_rek_3');
 	  	$kd_rek_4 = $this -> input -> get('kd_rek_4');
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
+=======
+	// public function getrealisasikeuanganbyopd()
+	// {
+	// 	$query = $this->db->query("select sp2d.*,
+	// 			spm.kd_urusan, spm.kd_bidang, spm.kd_unit, spm.kd_sub,
+	// 		    chek.no_cek, chek.tgl_cair, chek.nilai,
+ //                sum(chek.nilai) as total_realisasi
+	// 		from ta_sp2d sp2d
+	// 	    inner join t_spm spm on spm.no_spm = sp2d.no_spm
+	//     	inner join ta_cheque chek on chek.no_sp2d = sp2d.no_sp2d
+	// 	    group by spm.kd_urusan, 
+	// 	    	spm.kd_bidang, 
+	// 	    	spm.kd_unit, 
+	// 	    	spm.kd_sub");
+>>>>>>> master
 
 		$query = $this->db->query("select sp.*,
 				sum(case when month(sp.tgl_sp2d) = 1 then spm.nilai else 0 end) as total_jan,
@@ -301,6 +317,7 @@ class Realisasikeuangan_model extends CI_Model {
 	  	$kd_rek_5 = $this -> input -> get('kd_rek_5');
 
 		$query = $this->db->query("select sp.*,
+<<<<<<< HEAD
 				sum(case when month(sp.tgl_sp2d) = 1 then spm.nilai else 0 end) as total_jan,
 				sum(case when month(sp.tgl_sp2d) = 2 then spm.nilai else 0 end) as total_feb,
 				sum(case when month(sp.tgl_sp2d) = 3 then spm.nilai else 0 end) as total_mar,
@@ -314,6 +331,22 @@ class Realisasikeuangan_model extends CI_Model {
 				sum(case when month(sp.tgl_sp2d) = 11 then spm.nilai else 0 end) as total_nop,
 				sum(case when month(sp.tgl_sp2d) = 12 then spm.nilai else 0 end) as total_des
 			from ta_sp2d sp
+=======
+				sum(case when month(c.tgl_cair) = 1 then c.nilai else 0 end) as total_jan,
+				sum(case when month(c.tgl_cair) = 2 then c.nilai else 0 end) as total_feb,
+				sum(case when month(c.tgl_cair) = 3 then c.nilai else 0 end) as total_mar,
+				sum(case when month(c.tgl_cair) = 4 then c.nilai else 0 end) as total_apr,
+				sum(case when month(c.tgl_cair) = 5 then c.nilai else 0 end) as total_mei,
+				sum(case when month(c.tgl_cair) = 6 then c.nilai else 0 end) as total_jun,
+				sum(case when month(c.tgl_cair) = 7 then c.nilai else 0 end) as total_jul,
+				sum(case when month(c.tgl_cair) = 8 then c.nilai else 0 end) as total_agt,
+				sum(case when month(c.tgl_cair) = 9 then c.nilai else 0 end) as total_sep,
+				sum(case when month(c.tgl_cair) = 10 then c.nilai else 0 end) as total_okt,
+				sum(case when month(c.tgl_cair) = 11 then c.nilai else 0 end) as total_nop,
+				sum(case when month(c.tgl_cair) = 12 then c.nilai else 0 end) as total_des
+			from ta_sp2d sp
+			inner join ta_cheque c on sp.no_sp2d = c.no_sp2d
+>>>>>>> master
 		    inner join ta_spm_rinc spm on sp.no_spm = spm.no_spm
 			where spm.tahun = '$tahun' 
 				and spm.kd_urusan = '$kd_urusan'
