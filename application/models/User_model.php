@@ -15,7 +15,9 @@ class User_model extends CI_Model {
 	 */
 	public function login($username)
   	{
-		$query = $this->db->query("select * from t_user u where u.username='$username' and u.status <> 0");
+  		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select * from t_user u where u.username='$username' and u.status <> 0");
 
 		if($query -> num_rows() == 1)
 		{
@@ -29,7 +31,9 @@ class User_model extends CI_Model {
 
 	public function getuser()
 	{
-		$query = $this->db->query("select u.*,
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select u.*,
 			r.nama as role_user
 		from t_user u
 		inner join m_role r on r.id = u.role
@@ -47,7 +51,9 @@ class User_model extends CI_Model {
 
 	public function getrole()
 	{
-		$query = $this->db->query("select * from m_role r");
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select * from m_role r");
 
 		if($query->num_rows() > 0)
 		{
@@ -61,7 +67,7 @@ class User_model extends CI_Model {
 
 	public function geturusan()
 	{
-		$query = $this->db->query("select * from m_urusan u");
+		$query = $this->db->query("select * from ref_urusan u");
 
 		if($query->num_rows() > 0)
 		{
@@ -75,7 +81,7 @@ class User_model extends CI_Model {
 
 	public function getbidang()
 	{
-		$query = $this->db->query("select * from m_bidang b");
+		$query = $this->db->query("select * from ref_bidang b");
 
 		if($query->num_rows() > 0)
 		{
@@ -89,7 +95,7 @@ class User_model extends CI_Model {
 
 	public function getunit()
 	{
-		$query = $this->db->query("select * from m_unit u");
+		$query = $this->db->query("select * from ref_unit u");
 
 		if($query->num_rows() > 0)
 		{
@@ -103,7 +109,7 @@ class User_model extends CI_Model {
 
 	public function getsub()
 	{
-		$query = $this->db->query("select * from m_sub_unit s");
+		$query = $this->db->query("select * from ref_sub_unit s");
 
 		if($query->num_rows() > 0)
 		{
@@ -117,7 +123,9 @@ class User_model extends CI_Model {
 
 	public function getdetailuser($id)
 	{
-		$query = $this->db->query("select u.*,
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select u.*,
 			r.nama as role_user
 		from t_user u
 		inner join m_role r on r.id = u.role
@@ -155,7 +163,9 @@ class User_model extends CI_Model {
 		//insert ke database
 		// $this->db->set('created_at', 'now()', false);
 		// $this->db->set('created_by', $this->session->userdata('nlvsess')['admin_id']);
-		$this->db->insert('t_user', $data);
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$dbPmb->insert('t_user', $data);
 		$lastid = $this->db->insert_id();
 
 		if($_FILES['foto']['error'] != 4)
@@ -224,8 +234,10 @@ class User_model extends CI_Model {
 		//insert ke database
 		// $this->db->set('updated_at', 'now()', false);
 		// $this->db->set('updated_by', $this->session->userdata('nlvsess')['admin_id']);
-		$this->db->where('id', $id);
-		$this->db->update('t_user', $data);
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$dbPmb->where('id', $id);
+		$dbPmb->update('t_user', $data);
 
 		$this->session->set_flashdata('alert','update');
 		return true;
@@ -234,9 +246,11 @@ class User_model extends CI_Model {
 	public function delete($id)
 	{
 		//insert ke database
-		$this->db->set('status', 0);
-		$this->db->where('id', $id);
-		$this->db->update('t_user');
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$dbPmb->set('status', 0);
+		$dbPmb->where('id', $id);
+		$dbPmb->update('t_user');
 
 		$this->session->set_flashdata('alert','delete');
 		return true;
@@ -261,10 +275,12 @@ class User_model extends CI_Model {
 
 		if ($this->upload->do_upload('foto'))
         {
+        	$dbPmb = $this->load->database('pmb', TRUE);
+        	// $dbPmb->query
         	//bila berhasil update data path foto sebelumnya
-        	$this->db->set('foto', $newfilename);
-			$this->db->where('id', $id);
-			$this->db->update('t_user');
+        	$dbPmb->set('foto', $newfilename);
+			$dbPmb->where('id', $id);
+			$dbPmb->update('t_user');
         }
 	}
 }

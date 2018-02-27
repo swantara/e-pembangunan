@@ -31,27 +31,35 @@
                 <h3 class="box-title"><i class="fa fa-edit margin-r-5"></i>Target Kegiatan</h3>
               </div>
               <!-- /.box-header -->            
-              <?php echo form_open('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id, array('method' => 'POST', 'role' => 'form'));?>
+              <?php echo form_open('backend/edittargetkegiatan/?kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5, array('method' => 'POST', 'role' => 'form'));?>
               <?php echo validation_errors();?>
               <div class="box-body">
                 <div class="row">
                   <div class="col-xs-4">
                     <strong>OPD</strong>
-                    <p><?=$nama_opd->nama?></p>
+                    <p><?=$nama_opd->Nm_Sub_Unit?></p>
                     <hr/>
                     <strong>Nama Kegiatan</strong>
                     <p><?=$nama_kegiatan->nama;?></p>
                     <hr/>
                     <strong>Rincian</strong>
-                    <p><?=$data_kegiatan->keterangan;?></p>
+                    <p>
+                      <?php
+                        foreach ($uraian as $rowD) :
+                          if($data_kegiatan->Kd_Rek_1 == $rowD->Kd_Rek_1 && $data_kegiatan->Kd_Rek_2 == $rowD->Kd_Rek_2 && $data_kegiatan->Kd_Rek_3 == $rowD->Kd_Rek_3 && $data_kegiatan->Kd_Rek_4 == $rowD->Kd_Rek_4 && $data_kegiatan->Kd_Rek_5 == $rowD->Kd_Rek_5) :
+                            echo $rowD->Nm_Rek_5;
+                          endif;
+                        endforeach;
+                      ?>     
+                    </p>
                     <hr/>
                   </div>
                   <div class="col-xs-4">
                     <strong>Tahun</strong>
-                    <p><?=$data_kegiatan->tahun?></p>
+                    <p><?=$data_kegiatan->Tahun?></p>
                     <hr/>
                     <strong>Kode Rekening</strong>
-                    <p><?php echo $data_kegiatan->kd_urusan . " . 0" . $data_kegiatan->kd_bidang . " . 0" . $data_kegiatan->kd_unit . " . 0" . $data_kegiatan->kd_sub . " . 0" . $data_kegiatan->kd_prog . " . 0" . $data_kegiatan->kd_keg . " . 0" . $data_kegiatan->kd_rek_1 . " . 0" . $data_kegiatan->kd_rek_2 . " . 0" . $data_kegiatan->kd_rek_3 . " . 0" . $data_kegiatan->kd_rek_4 . " . 0" . $data_kegiatan->kd_rek_5 . " . 0" . $data_kegiatan->no_rinc . " . 0" . $data_kegiatan->no_id;?></p>
+                    <p><?php echo $data_kegiatan->Kd_Urusan . " . 0" . $data_kegiatan->Kd_Bidang . " . 0" . $data_kegiatan->Kd_Unit . " . 0" . $data_kegiatan->Kd_Sub . " . 0" . $data_kegiatan->Kd_Prog . " . 0" . $data_kegiatan->Kd_Keg . " . 0" . $data_kegiatan->Kd_Rek_1 . " . 0" . $data_kegiatan->Kd_Rek_2 . " . 0" . $data_kegiatan->Kd_Rek_3 . " . 0" . $data_kegiatan->Kd_Rek_4 . " . 0" . $data_kegiatan->Kd_Rek_5;?></p>
                     <hr/>
                   </div>
                   <div class="col-xs-4">
@@ -242,7 +250,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->tahun.'&kd_urusan='.$data_kegiatan->kd_urusan.'&kd_bidang='.$data_kegiatan->kd_bidang.'&kd_unit='.$data_kegiatan->kd_unit.'&kd_sub='.$data_kegiatan->kd_sub.'&kd_prog='.$data_kegiatan->kd_prog.'&kd_keg='.$data_kegiatan->kd_keg.'&kd_rek_1='.$data_kegiatan->kd_rek_1.'&kd_rek_2='.$data_kegiatan->kd_rek_2.'&kd_rek_3='.$data_kegiatan->kd_rek_3.'&kd_rek_4='.$data_kegiatan->kd_rek_4.'&kd_rek_5='.$data_kegiatan->kd_rek_5.'&no_rinc='.$data_kegiatan->no_rinc.'&no_id='.$data_kegiatan->no_id)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
+                <a href="<?=site_url('backend/detailrincianbykegiatan/?tahun='.$data_kegiatan->Tahun.'&kd_urusan='.$data_kegiatan->Kd_Urusan.'&kd_bidang='.$data_kegiatan->Kd_Bidang.'&kd_unit='.$data_kegiatan->Kd_Unit.'&kd_sub='.$data_kegiatan->Kd_Sub.'&kd_prog='.$data_kegiatan->Kd_Prog.'&kd_keg='.$data_kegiatan->Kd_Keg.'&kd_rek_1='.$data_kegiatan->Kd_Rek_1.'&kd_rek_2='.$data_kegiatan->Kd_Rek_2.'&kd_rek_3='.$data_kegiatan->Kd_Rek_3.'&kd_rek_4='.$data_kegiatan->Kd_Rek_4.'&kd_rek_5='.$data_kegiatan->Kd_Rek_5)?>" class="btn btn-default"><i class="fa fa-close"></i> Cancel</a>
                 <button type="submit" class="btn btn-default pull-right"><i class="fa fa-check text-green"></i> Submit</button>
               </div>
               </form>

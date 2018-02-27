@@ -47,8 +47,8 @@ class Login extends CI_Controller {
 			if(password_verify($pass, $user->password))
 			{
 				foreach ($data['nama_opd'] as $row) :
-					if($user->kd_urusan == $row->kd_urusan && $user->kd_bidang == $row->kd_bidang && $user->kd_unit == $row->kd_unit && $user->kd_sub == $row->kd_sub) :
-						$nama_opd = $row->nama;
+					if($user->kd_urusan == $row->Kd_Urusan && $user->kd_bidang == $row->Kd_Bidang && $user->kd_unit == $row->Kd_Unit && $user->kd_sub == $row->Kd_Sub) :
+						$nama_opd = $row->Nm_Sub_Unit;
 					endif;
 				endforeach;
 

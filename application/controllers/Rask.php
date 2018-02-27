@@ -270,10 +270,70 @@ class Rask extends CI_Controller {
 		echo json_encode($data['sum']);
 	}
 
+	public function ajaxgetsumanggaranopd()
+	{
+		$sum['induk'] = $this->rask->getsumanggaranindukopd()[0];
+		$sum['perubahan'] = $this->rask->getsumanggaranperubahanopd()[0];
+		if($sum['induk']->total > $sum['perubahan']->total)
+		{
+			$sum['real'] = $this->rask->getsumanggaraninduk();
+		}
+		else
+		{
+			$sum['real'] = $this->rask->getsumanggaranperubahan();			
+		}
+
+		$data['sum'] = (object)[
+			'name' => "Total Anggaran - " . number_format(($sum['real'][0]->total), 2, ',', '.') . " Miliar",
+			'children' =>	array([
+					'name' => "Belanja Tidak Langsung - " . number_format(($sum['real'][0]->b_taklangsung), 2, ',', '.') . " Miliar",
+					'children' => array([
+						'name' => "Pegawai - " . number_format(($sum['real'][0]->taklangsung_pegawai), 2, ',', '.') . " Miliar"
+					],
+					[
+						'name' => "Non Pegawai - " . number_format(($sum['real'][0]->taklangsung_non), 2, ',', '.') . " Miliar"
+					])
+				],
+				[
+					'name' => "Belanja Langsung - " . number_format(($sum['real'][0]->b_langsung), 2, ',', '.') . " Miliar",
+					'children' => array([
+						'name' => "Pegawai - " . number_format(($sum['real'][0]->langsung_pegawai), 2, ',', '.') . " Miliar"
+					],
+					[
+						'name' => "Non Pegawai - " . number_format(($sum['real'][0]->langsung_non), 2, ',', '.') . " Miliar",
+						'children' => array([
+							'name' => "Barang/Jasa - " . number_format(($sum['real'][0]->barangjasa), 2, ',', '.') . " Miliar"
+						],
+						[
+							'name' => "Modal - " . number_format(($sum['real'][0]->modal), 2, ',', '.') . " Miliar"
+						])
+					])
+				])
+		];
+		// $data['sum']->name = "Total Anggaran - " . $sum['real'][0]->total/1000000000 . " Miliar";
+		// $data['sum']->children[0]->name = "Belanja Tidak Langsung - " . $sum['real'][0]->b_taklangsung/1000000000 . " Miliar";
+		// $data['sum']->children[1]->name = "Belanja Langsung - " . $sum['real'][0]->b_langsung/1000000000 . " Miliar";
+		// $data['sum']->children[0][0]->name = "Pegawai - " . $sum['real'][0]->langsung_pegawai/1000000000 . " Miliar";
+		// $data['sum']->children[0][1]->name = "Non Pegawai - " . $sum['real'][0]->langsung_non/1000000000 . " Miliar";
+		// $data['sum']->children[1][0]->name = "Pegawai - " . $sum['real'][0]->taklangsung_pegawai/1000000000 . " Miliar";
+		// $data['sum']->children[1][1]->name = "Non Pegawai - " . $sum['real'][0]->taklangsung_non/1000000000 . " Miliar";
+		// $data['sum']->children[1][1][0]->name = "Barang/Jasa - " . $sum['real'][0]->barangjasa/1000000000 . " Miliar";
+		// $data['sum']->children[1][1][1]->name = "Modal - " . $sum['real'][0]->modal/1000000000 . " Miliar";
+
+		echo json_encode($data['sum']);
+	}
+
 	public function ajaxgetsumanggaranmix()
 	{
 		$data['induk'] = $this->rask->getsumanggaraninduk();
 		$data['perubahan'] = $this->rask->getsumanggaranperubahan();	
 		echo json_encode($data);
+	}
+	
+	public function sync()
+	{
+	    ini_set('memory_limit', '-1');
+		$data['sync'] = $this->rask->syncrask();
+		echo json_encode($data['sync']);
 	}
 }

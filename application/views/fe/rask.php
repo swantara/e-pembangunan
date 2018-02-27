@@ -14,7 +14,7 @@
     <div class="img-overlay bg-gradient" style="background-image: url('<?=base_url("assets/images/backgrounds/kantor-bupati.jpg")?>');">
       <div class="page-header-content">
         <div class="page-title align-center">
-          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PENGENDALIAN PEMBANGUNAN 
+          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PEMANTAUAN PEMBANGUNAN 
             <br/>(SIPPP) KABUPATEN BADUNG</div>
           <h4>
             <i class="icon-home2 position-left"></i>

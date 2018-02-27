@@ -8,19 +8,6 @@ class Beranda_model extends CI_Model {
 		parent::__construct();
 	}
 
-	// public function test(){
-	// 	$simda = $this->load->database('simda', TRUE);
-	// 	$query = $simda->query("select * from m_opd");
-	// 	if($query->num_rows() > 0)
-	// 	{
-	// 		return $query->result();
-	// 	}
-	// 	else
-	// 	{
-	// 		return false;
-	// 	}
-	// }
-
 	public function getkegiatanbyopd()
 	{
 		$getYear = $this -> input -> get('tahun');
@@ -33,12 +20,11 @@ class Beranda_model extends CI_Model {
 
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end) as total_induk,
-			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan,
-			count(case when tra.status_pengadaan = 1 and tra.status_target = 1 then tra.tahun end) as progress_data,
-			count(tra.tahun) as total_data 
-		from t_rask_arsip as tra 
+			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end) as total_perubahan
+		from ta_rask_arsip as tra 
 		where tra.tahun = '$tahun'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '411' 
 			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '412'
 		group by tra.kd_urusan, 
@@ -69,11 +55,12 @@ class Beranda_model extends CI_Model {
 		$query = $this->db->query("select tra.*, 
 			sum(case when tra.kd_perubahan = 4 then tra.total else 0 end)/1000000000 as total_induk,
 			sum(case when tra.kd_perubahan = 6 then tra.total else 0 end)/1000000000 as total_perubahan,
-            msu.nama
-		from t_rask_arsip as tra 
-		inner join m_sub_unit msu on msu.kd_urusan = tra.kd_urusan and msu.kd_bidang = tra.kd_bidang and msu.kd_unit = tra.kd_unit and msu.kd_sub = tra.kd_sub
+            msu.nm_sub_unit
+		from ta_rask_arsip as tra 
+		inner join ref_sub_unit msu on msu.kd_urusan = tra.kd_urusan and msu.kd_bidang = tra.kd_bidang and msu.kd_unit = tra.kd_unit and msu.kd_sub = tra.kd_sub
 		where tra.tahun = '$tahun'
 			and tra.kd_rek_1 = 5
+			and tra.kd_rek_2 = 2
 			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '411' 
 			and concat(tra.kd_urusan, tra.kd_bidang, tra.kd_unit) <> '412'
 		group by tra.kd_urusan, 
@@ -101,7 +88,9 @@ class Beranda_model extends CI_Model {
 			$tahun = date('Y');
 		}
 
-		$query = $this->db->query("select ra.*,
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select ra.*,
 				sum(jan) as total_jan,
 				sum(feb) as total_feb,
 				sum(mar) as total_mar,
@@ -114,9 +103,10 @@ class Beranda_model extends CI_Model {
 				sum(okt) as total_okt,
 				sum(nop) as total_nop,
 				sum(des) as total_des
-			from t_rencana_arsip ra
+			from ta_rencana_arsip ra
 			where ra.tahun = '$tahun'
-			and ra.kd_rek_1 = 5");
+			and ra.kd_rek_1 = 5
+			and ra.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -138,7 +128,9 @@ class Beranda_model extends CI_Model {
 			$tahun = date('Y');
 		}
 
-		$query = $this->db->query("select sp.*,
+		$dbPmb = $this->load->database('pmb', TRUE);
+        // $dbPmb->query
+		$query = $dbPmb->query("select sp.*,
 				sum(case when month(c.tgl_cair) = 1 then c.nilai else 0 end) as total_jan,
 				sum(case when month(c.tgl_cair) = 2 then c.nilai else 0 end) as total_feb,
 				sum(case when month(c.tgl_cair) = 3 then c.nilai else 0 end) as total_mar,
@@ -151,11 +143,12 @@ class Beranda_model extends CI_Model {
 				sum(case when month(c.tgl_cair) = 10 then c.nilai else 0 end) as total_okt,
 				sum(case when month(c.tgl_cair) = 11 then c.nilai else 0 end) as total_nop,
 				sum(case when month(c.tgl_cair) = 12 then c.nilai else 0 end) as total_des
-			from t_sp2d sp
-			inner join t_cheque c on sp.no_sp2d = c.no_sp2d
-		    inner join t_spm_rinc spm on sp.no_spm = spm.no_spm
+			from ta_sp2d sp
+			inner join ta_cheque c on sp.no_sp2d = c.no_sp2d
+		    inner join ta_spm_rinc spm on sp.no_spm = spm.no_spm
 			where spm.tahun = '$tahun'
-			and spm.kd_rek_1 = 5");
+			and spm.kd_rek_1 = 5
+			and spm.kd_rek_2 = 2");
 
 		if($query->num_rows() > 0)
 		{
@@ -175,7 +168,7 @@ class Beranda_model extends CI_Model {
 	  	$kd_sub = $this -> input -> get('kd_sub');
 
 		$query = $this->db->query("select msu.*
-		from m_sub_unit msu
+		from ref_sub_unit msu
 		where kd_urusan = '$kd_urusan'
 			and kd_bidang = '$kd_bidang'
 			and kd_unit = '$kd_unit'

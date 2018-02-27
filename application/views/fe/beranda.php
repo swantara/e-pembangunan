@@ -7,7 +7,7 @@
     <div class="img-overlay bg-gradient" style="background-image: url('<?=base_url("assets/images/backgrounds/kantor-bupati.jpg")?>');">
       <div class="page-header-content">
         <div class="page-title align-center">
-          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PENGENDALIAN PEMBANGUNAN 
+          <div class="h-40">SISTEM INFORMASI PELAPORAN &amp; PEMANTAUAN PEMBANGUNAN 
             <br/>(SIPPP) KABUPATEN BADUNG</div>
           <h4>
             <i class="icon-home2 position-left"></i>
@@ -97,11 +97,11 @@
                       <tr>
                         <td><?=$no?></td>  
                         <td>
-                          <a href="<?=site_url('beranda/opd/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub)?>">
+                          <a href="<?=site_url('beranda/opd/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub)?>">
                           <?php
                             foreach ($nama_opd as $rowB) :
-                              if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_unit == $rowB->kd_unit && $row->kd_sub == $rowB->kd_sub) :
-                                echo $rowB->nama;
+                              if($row->Kd_Urusan == $rowB->Kd_Urusan && $row->Kd_Bidang == $rowB->Kd_Bidang && $row->Kd_Unit == $rowB->Kd_Unit && $row->Kd_Sub == $rowB->Kd_Sub) :
+                                echo $rowB->Nm_Sub_Unit;
                               endif;
                             endforeach;
                           ?>
@@ -268,50 +268,50 @@
                       <tr>
                         <td><span class="pill-green">Target</span></td>
                         <td><?=$tahun?></td>
-                        <td><?=number_format($targetfisik->total_jan, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_feb, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_mar, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_apr, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_mei, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_jun, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_jul, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_agt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_sep, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_okt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_nop, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($targetfisik->total_des, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_jan, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_feb, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_mar, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_apr, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_mei, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_jun, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_jul, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_agt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_sep, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_okt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_nop, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($targetfisik->total_des, 2, ',', '.') . "%"?></td>
                       </tr>
                       <tr>
                         <td><span class="pill-blue">Realisasi</span></td>
                         <td><?=$tahun?></td>
-                        <td><?=number_format($realisasifisik->total_jan, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_feb, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_mar, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_apr, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_mei, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_jun, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_jul, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_agt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_sep, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_okt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_nop, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_des, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jan, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_feb, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mar, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_apr, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mei, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jun, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jul, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_agt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_sep, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_okt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_nop, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_des, 2, ',', '.') . "%"?></td>
                       </tr>
                       <tr>
                         <td><span class="pill-yellow">Deviasi</span></td>
                         <td><?=$tahun?></td>
-                        <td><?=number_format($realisasifisik->total_jan-$targetfisik->total_jan, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_feb-$targetfisik->total_feb, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_mar-$targetfisik->total_mar, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_apr-$targetfisik->total_apr, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_mei-$targetfisik->total_mei, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_jun-$targetfisik->total_jun, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_jul-$targetfisik->total_jul, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_agt-$targetfisik->total_agt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_sep-$targetfisik->total_sep, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_okt-$targetfisik->total_okt, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_nop-$targetfisik->total_nop, 0, ',', '.') . "%"?></td>
-                        <td><?=number_format($realisasifisik->total_des-$targetfisik->total_des, 0, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jan-$targetfisik->total_jan, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_feb-$targetfisik->total_feb, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mar-$targetfisik->total_mar, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_apr-$targetfisik->total_apr, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_mei-$targetfisik->total_mei, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jun-$targetfisik->total_jun, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_jul-$targetfisik->total_jul, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_agt-$targetfisik->total_agt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_sep-$targetfisik->total_sep, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_okt-$targetfisik->total_okt, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_nop-$targetfisik->total_nop, 2, ',', '.') . "%"?></td>
+                        <td><?=number_format($realisasifisik->total_des-$targetfisik->total_des, 2, ',', '.') . "%"?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -412,45 +412,44 @@
                         // Vertical axis
                         yAxis: [{
                             type: 'category',
-                            data: [nilai[0].nama,
-                              nilai[1].nama,
-                              nilai[2].nama,
-                              nilai[3].nama,
-                              nilai[4].nama,
-                              nilai[5].nama,
-                              nilai[6].nama,
-                              nilai[7].nama,
-                              nilai[8].nama,
-                              nilai[9].nama,
-                              nilai[10].nama,
-                              nilai[11].nama,
-                              nilai[12].nama,
-                              nilai[13].nama,
-                              nilai[14].nama,
-                              nilai[15].nama,
-                              nilai[16].nama,
-                              nilai[17].nama,
-                              nilai[18].nama,
-                              nilai[19].nama,
-                              nilai[20].nama,
-                              nilai[21].nama,
-                              nilai[22].nama,
-                              nilai[23].nama,
-                              nilai[24].nama,
-                              nilai[25].nama,
-                              nilai[26].nama,
-                              nilai[27].nama,
-                              nilai[28].nama,
-                              nilai[29].nama,
-                              nilai[30].nama,
-                              nilai[31].nama,
-                              nilai[32].nama,
-                              nilai[33].nama,
-                              nilai[34].nama,
-                              nilai[35].nama,
-                              nilai[36].nama,
-                              nilai[37].nama,
-                              nilai[38].nama]
+                            data: [nilai[0].nm_sub_unit,
+                              nilai[1].nm_sub_unit,
+                              nilai[2].nm_sub_unit,
+                              nilai[3].nm_sub_unit,
+                              nilai[4].nm_sub_unit,
+                              nilai[5].nm_sub_unit,
+                              nilai[6].nm_sub_unit,
+                              nilai[7].nm_sub_unit,
+                              nilai[8].nm_sub_unit,
+                              nilai[9].nm_sub_unit,
+                              nilai[10].nm_sub_unit,
+                              nilai[11].nm_sub_unit,
+                              nilai[12].nm_sub_unit,
+                              nilai[13].nm_sub_unit,
+                              nilai[14].nm_sub_unit,
+                              nilai[15].nm_sub_unit,
+                              nilai[16].nm_sub_unit,
+                              nilai[17].nm_sub_unit,
+                              nilai[18].nm_sub_unit,
+                              nilai[19].nm_sub_unit,
+                              nilai[20].nm_sub_unit,
+                              nilai[21].nm_sub_unit,
+                              nilai[22].nm_sub_unit,
+                              nilai[23].nm_sub_unit,
+                              nilai[24].nm_sub_unit,
+                              nilai[25].nm_sub_unit,
+                              nilai[26].nm_sub_unit,
+                              nilai[27].nm_sub_unit,
+                              nilai[28].nm_sub_unit,
+                              nilai[29].nm_sub_unit,
+                              nilai[30].nm_sub_unit,
+                              nilai[31].nm_sub_unit,
+                              nilai[32].nm_sub_unit,
+                              nilai[33].nm_sub_unit,
+                              nilai[34].nm_sub_unit,
+                              nilai[35].nm_sub_unit,
+                              nilai[36].nm_sub_unit,
+                              nilai[37].nm_sub_unit]
                         }],
 
                         // Add series
@@ -500,8 +499,7 @@
                               numeral(nilai[34].total_induk).format('0.00'),
                               numeral(nilai[35].total_induk).format('0.00'),
                               numeral(nilai[36].total_induk).format('0.00'),
-                              numeral(nilai[37].total_induk).format('0.00'),
-                              numeral(nilai[38].total_induk).format('0.00')]
+                              numeral(nilai[37].total_induk).format('0.00')]
                             },
                             {
                                 name: 'Perubahan (Miliar)',
@@ -548,8 +546,7 @@
                               numeral(nilai[34].total_perubahan).format('0.00'),
                               numeral(nilai[35].total_perubahan).format('0.00'),
                               numeral(nilai[36].total_perubahan).format('0.00'),
-                              numeral(nilai[37].total_perubahan).format('0.00'),
-                              numeral(nilai[38].total_perubahan).format('0.00')]
+                              numeral(nilai[37].total_perubahan).format('0.00')]
                             }
                         ]
                     };
@@ -591,18 +588,18 @@
             element: 'line-chart',
             resize: true,
             data: [
-                  {y: value[0].tahun + '-01', item1: numeral(value[0].total_jan).format('0.00'), item2: numeral(value[1].total_jan).format('0.00'), item3: numeral(value[2].total_jan).format('0.00')},
-                  {y: value[0].tahun + '-02', item1: numeral(value[0].total_feb).format('0.00'), item2: numeral(value[1].total_feb).format('0.00'), item3: numeral(value[2].total_feb).format('0.00')},
-                  {y: value[0].tahun + '-03', item1: numeral(value[0].total_mar).format('0.00'), item2: numeral(value[1].total_mar).format('0.00'), item3: numeral(value[2].total_mar).format('0.00')},
-                  {y: value[0].tahun + '-04', item1: numeral(value[0].total_apr).format('0.00'), item2: numeral(value[1].total_apr).format('0.00'), item3: numeral(value[2].total_apr).format('0.00')},
-                  {y: value[0].tahun + '-05', item1: numeral(value[0].total_mei).format('0.00'), item2: numeral(value[1].total_mei).format('0.00'), item3: numeral(value[2].total_mei).format('0.00')},
-                  {y: value[0].tahun + '-06', item1: numeral(value[0].total_jun).format('0.00'), item2: numeral(value[1].total_jun).format('0.00'), item3: numeral(value[2].total_jun).format('0.00')},
-                  {y: value[0].tahun + '-07', item1: numeral(value[0].total_jul).format('0.00'), item2: numeral(value[1].total_jul).format('0.00'), item3: numeral(value[2].total_jul).format('0.00')},
-                  {y: value[0].tahun + '-08', item1: numeral(value[0].total_agt).format('0.00'), item2: numeral(value[1].total_agt).format('0.00'), item3: numeral(value[2].total_agt).format('0.00')},
-                  {y: value[0].tahun + '-09', item1: numeral(value[0].total_sep).format('0.00'), item2: numeral(value[1].total_sep).format('0.00'), item3: numeral(value[2].total_sep).format('0.00')},
-                  {y: value[0].tahun + '-10', item1: numeral(value[0].total_okt).format('0.00'), item2: numeral(value[1].total_okt).format('0.00'), item3: numeral(value[2].total_okt).format('0.00')},
-                  {y: value[0].tahun + '-11', item1: numeral(value[0].total_nop).format('0.00'), item2: numeral(value[1].total_nop).format('0.00'), item3: numeral(value[2].total_nop).format('0.00')},
-                  {y: value[0].tahun + '-12', item1: numeral(value[0].total_des).format('0.00'), item2: numeral(value[1].total_des).format('0.00'), item3: numeral(value[2].total_des).format('0.00')}
+                  {y: value[0].Tahun + '-01', item1: (value[0].total_jan), item2: (value[1].total_jan), item3: (value[2].total_jan)},
+                  {y: value[0].Tahun + '-02', item1: (value[0].total_feb), item2: (value[1].total_feb), item3: (value[2].total_feb)},
+                  {y: value[0].Tahun + '-03', item1: (value[0].total_mar), item2: (value[1].total_mar), item3: (value[2].total_mar)},                 
+                  {y: value[0].Tahun + '-04', item1: (value[0].total_apr), item2: (value[1].total_apr), item3: (value[2].total_apr)},
+                  {y: value[0].Tahun + '-05', item1: (value[0].total_mei), item2: (value[1].total_mei), item3: (value[2].total_mei)},
+                  {y: value[0].Tahun + '-06', item1: (value[0].total_jun), item2: (value[1].total_jun), item3: (value[2].total_jun)},
+                  {y: value[0].Tahun + '-07', item1: (value[0].total_jul), item2: (value[1].total_jul), item3: (value[2].total_jul)},
+                  {y: value[0].Tahun + '-08', item1: (value[0].total_agt), item2: (value[1].total_agt), item3: (value[2].total_agt)},
+                  {y: value[0].Tahun + '-09', item1: (value[0].total_sep), item2: (value[1].total_sep), item3: (value[2].total_sep)},
+                  {y: value[0].Tahun + '-10', item1: (value[0].total_okt), item2: (value[1].total_okt), item3: (value[2].total_okt)},
+                  {y: value[0].Tahun + '-11', item1: (value[0].total_nop), item2: (value[1].total_nop), item3: (value[2].total_nop)},
+                  {y: value[0].Tahun + '-12', item1: (value[0].total_des), item2: (value[1].total_des), item3: (value[2].total_des)}
                 ],
             xkey: 'y',
             ykeys: ['item1', 'item2', 'item3'],
@@ -626,18 +623,18 @@
             element: 'line-chart2',
             resize: true,
             data: [
-                  {y: value[0].tahun + '-01', item1b: numeral(value[0].total_jan).format('0.0000'), item2b: numeral(value[1].total_jan).format('0.0000'), item3b: numeral(value[2].total_jan).format('0.0000')},
-                  {y: value[0].tahun + '-02', item1b: numeral(value[0].total_feb).format('0.0000'), item2b: numeral(value[1].total_feb).format('0.0000'), item3b: numeral(value[2].total_feb).format('0.0000')},
-                  {y: value[0].tahun + '-03', item1b: numeral(value[0].total_mar).format('0.0000'), item2b: numeral(value[1].total_mar).format('0.0000'), item3b: numeral(value[2].total_mar).format('0.0000')},
-                  {y: value[0].tahun + '-04', item1b: numeral(value[0].total_apr).format('0.0000'), item2b: numeral(value[1].total_apr).format('0.0000'), item3b: numeral(value[2].total_apr).format('0.0000')},
-                  {y: value[0].tahun + '-05', item1b: numeral(value[0].total_mei).format('0.0000'), item2b: numeral(value[1].total_mei).format('0.0000'), item3b: numeral(value[2].total_mei).format('0.0000')},
-                  {y: value[0].tahun + '-06', item1b: numeral(value[0].total_jun).format('0.0000'), item2b: numeral(value[1].total_jun).format('0.0000'), item3b: numeral(value[2].total_jun).format('0.0000')},
-                  {y: value[0].tahun + '-07', item1b: numeral(value[0].total_jul).format('0.0000'), item2b: numeral(value[1].total_jul).format('0.0000'), item3b: numeral(value[2].total_jul).format('0.0000')},
-                  {y: value[0].tahun + '-08', item1b: numeral(value[0].total_agt).format('0.0000'), item2b: numeral(value[1].total_agt).format('0.0000'), item3b: numeral(value[2].total_agt).format('0.0000')},
-                  {y: value[0].tahun + '-09', item1b: numeral(value[0].total_sep).format('0.0000'), item2b: numeral(value[1].total_sep).format('0.0000'), item3b: numeral(value[2].total_sep).format('0.0000')},
-                  {y: value[0].tahun + '-10', item1b: numeral(value[0].total_okt).format('0.0000'), item2b: numeral(value[1].total_okt).format('0.0000'), item3b: numeral(value[2].total_okt).format('0.0000')},
-                  {y: value[0].tahun + '-11', item1b: numeral(value[0].total_nop).format('0.0000'), item2b: numeral(value[1].total_nop).format('0.0000'), item3b: numeral(value[2].total_nop).format('0.0000')},
-                  {y: value[0].tahun + '-12', item1b: numeral(value[0].total_des).format('0.0000'), item2b: numeral(value[1].total_des).format('0.0000'), item3b: numeral(value[2].total_des).format('0.0000')}
+                  {y: value[0].tahun + '-01', item1b: (value[0].total_jan), item2b: (value[1].total_jan), item3b: (value[2].total_jan)},
+                  {y: value[0].tahun + '-02', item1b: (value[0].total_feb), item2b: (value[1].total_feb), item3b: (value[2].total_feb)},
+                  {y: value[0].tahun + '-03', item1b: (value[0].total_mar), item2b: (value[1].total_mar), item3b: (value[2].total_mar)},                 
+                  {y: value[0].tahun + '-04', item1b: (value[0].total_apr), item2b: (value[1].total_apr), item3b: (value[2].total_apr)},
+                  {y: value[0].tahun + '-05', item1b: (value[0].total_mei), item2b: (value[1].total_mei), item3b: (value[2].total_mei)},
+                  {y: value[0].tahun + '-06', item1b: (value[0].total_jun), item2b: (value[1].total_jun), item3b: (value[2].total_jun)},
+                  {y: value[0].tahun + '-07', item1b: (value[0].total_jul), item2b: (value[1].total_jul), item3b: (value[2].total_jul)},
+                  {y: value[0].tahun + '-08', item1b: (value[0].total_agt), item2b: (value[1].total_agt), item3b: (value[2].total_agt)},
+                  {y: value[0].tahun + '-09', item1b: (value[0].total_sep), item2b: (value[1].total_sep), item3b: (value[2].total_sep)},
+                  {y: value[0].tahun + '-10', item1b: (value[0].total_okt), item2b: (value[1].total_okt), item3b: (value[2].total_okt)},
+                  {y: value[0].tahun + '-11', item1b: (value[0].total_nop), item2b: (value[1].total_nop), item3b: (value[2].total_nop)},
+                  {y: value[0].tahun + '-12', item1b: (value[0].total_des), item2b: (value[1].total_des), item3b: (value[2].total_des)}
                 ],
             xkey: 'y',
             ykeys: ['item1b', 'item2b', 'item3b'],

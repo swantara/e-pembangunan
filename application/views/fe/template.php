@@ -79,10 +79,14 @@
           }
         ?>
         <li id="beranda"><a href="<?=site_url('beranda/?tahun='.$tahun)?>"><i class="icon-home2 position-left"></i> Beranda</a></li>
-        <li id="rask"><a href="<?=site_url('rask/?tahun='.$tahun)?>"><i class="icon-design position-left"></i> RASK</a></li>
+        <li id="rask"><a href="#"><i class="icon-design position-left"></i> RASK</a></li>
+        <li id="kontrak"><a href="#"><i class="icon-versions position-left"></i> Kontrak</a></li>
+        <li id="realisasi-keuangan"><a href="#"><i class="icon-stats-growth position-left"></i> Realisasi Keuangan</a></li>
+        <li id="realisasi-fisik"><a href="#"><i class="icon-clipboard2 position-left"></i> Realisasi Fisik</a></li>
+        <!-- <li id="rask"><a href="<?=site_url('rask/?tahun='.$tahun)?>"><i class="icon-design position-left"></i> RASK</a></li>
         <li id="kontrak"><a href="<?=site_url('kontrak/?tahun='.$tahun)?>"><i class="icon-versions position-left"></i> Kontrak</a></li>
         <li id="realisasi-keuangan"><a href="<?=site_url('realisasikeuangan/?tahun='.$tahun)?>"><i class="icon-stats-growth position-left"></i> Realisasi Keuangan</a></li>
-        <li id="realisasi-fisik"><a href="<?=site_url('realisasifisik/?tahun='.$tahun)?>"><i class="icon-clipboard2 position-left"></i> Realisasi Fisik</a></li>
+        <li id="realisasi-fisik"><a href="<?=site_url('realisasifisik/?tahun='.$tahun)?>"><i class="icon-clipboard2 position-left"></i> Realisasi Fisik</a></li> -->
         <!-- <li id="realisasi" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-statistics position-left"></i> Realisasi <span class="caret"></span>

@@ -18,6 +18,13 @@ class Backend extends CI_Controller {
    			redirect('login', 'refresh');
    		}
 	}
+	
+	public function test()
+    {
+		$data['test'] = $this->realisasikeuangan->gettargetsekda();
+        
+        echo json_encode($data['test']);
+    }
 
 	public function index()
 	{
@@ -35,7 +42,7 @@ class Backend extends CI_Controller {
 			$this->load->view('be/template_be', $data);			
 		}
 	}
-
+    
 	public function kegiatanbyopd()
 	{
 		// echo json_encode($this->backend->getdetailkegiatan());
@@ -132,8 +139,10 @@ class Backend extends CI_Controller {
 
 		$data['nama_kegiatan'] = $this->backend->getnamakegiatan();
 		$data['rincian'] = $this->backend->getlistrincianbykegiatan();
+		$data['uraian'] = $this->backend->geturaian();
 		$data['body'] = $this->load->view('be/rincianbykegiatan_list', $data, true);
 		$this->load->view('be/template_be', $data);
+        // echo json_encode($data['uraian']);
 	}
 
 	public function detailrincianbykegiatan()
@@ -221,14 +230,13 @@ class Backend extends CI_Controller {
 		}
 
 		$data['rincian'] = $data['real'][0];
+		$data['uraian'] = $this->backend->geturaian();
 		$data['nama_opd'] = $this->rask->getopd()[0];
 		$data['nama_kegiatan'] = $this->rask->getnamakegiatan()[0];
 		$data['data_kegiatan'] = $this->backend->getdatarinciankegiatan()[0];
 		$data['data_kontrak'] = $this->backend->getdatadetailkontrak()[0];
 		$data['target_keuangan'] = $this->realisasikeuangan->getrinciantarget()[0];
 		$data['target_fisik'] = $this->backend->gettargetfisik()[0];
-		$data['kontrak_keuangan'] = $this->backend->gettargetkeuangankontrak()[0];
-		$data['kontrak_fisik'] = $this->backend->gettargetfisikkontrak()[0];
 		$data['realisasi_keuangan'] = $this->realisasikeuangan->getrincianrealisasikeuangan()[0];
 		$data['realisasi_fisik'] = $this->backend->getrealisasifisik()[0];
 		$data['body'] = $this->load->view('be/rincianbykegiatan_detail', $data, true);
@@ -425,6 +433,7 @@ class Backend extends CI_Controller {
 			}
 
 			$data['rincian'] = $data['real'][0];
+			$data['uraian'] = $this->backend->geturaian();
 			$data['nama_opd'] = $this->backend->getnamaopd();
 			$data['opd'] = $this->rask->getopd()[0];
 			$data['nama_kegiatan'] = $this->rask->getnamakegiatan()[0];
@@ -456,6 +465,7 @@ class Backend extends CI_Controller {
 		if($this->form_validation->run() === false)
 		{
 			$data['nama_opd'] = $this->rask->getopd()[0];
+			$data['uraian'] = $this->backend->geturaian();
 			$data['nama_kegiatan'] = $this->rask->getnamakegiatan()[0];
 			$data['data_kegiatan'] = $this->backend->getdatarinciankegiatan()[0];
 			$data['target_fisik'] = $this->backend->gettargetfisik()[0];
@@ -506,6 +516,7 @@ class Backend extends CI_Controller {
 		if($this->form_validation->run() === false)
 		{
 			$data['nama_opd'] = $this->backend->getnamaopd();
+			$data['uraian'] = $this->backend->geturaian();
 			$data['opd'] = $this->rask->getopd()[0];
 			$data['nama_kegiatan'] = $this->rask->getnamakegiatan()[0];
 			$data['data_kegiatan'] = $this->backend->getdatarinciankegiatan()[0];

@@ -41,16 +41,16 @@
 
                 <tr>
                   <td><?=$no?></td>
-                  <td><?=$row->tahun?></td>
+                  <td><?=$row->Tahun?></td>
                   <td>
                     <?php 
-                      echo $row->kd_urusan . " . 0" . $row->kd_bidang . " . 0" . $row->kd_unit . " . 0" . $row->kd_sub . " . 0" . $row->kd_prog . " . 0" . $row->kd_keg;
+                      echo $row->Kd_Urusan . " . 0" . $row->Kd_Bidang . " . 0" . $row->Kd_Unit . " . 0" . $row->Kd_Sub . " . 0" . $row->Kd_Prog . " . 0" . $row->Kd_Keg;
                     ?>
                   </td>
                   <td>
                     <?php         
                       foreach ($nama_kegiatan as $rowB) :
-                        if($row->kd_urusan == $rowB->kd_urusan && $row->kd_bidang == $rowB->kd_bidang && $row->kd_prog == $rowB->kd_prog && $row->kd_keg == $rowB->kd_keg) :
+                        if($row->Kd_Urusan == $rowB->Kd_Urusan && $row->Kd_Bidang == $rowB->Kd_Bidang && $row->Kd_Unit == $rowB->Kd_Unit && $row->Kd_Sub == $rowB->Kd_Sub && $row->Kd_Prog == $rowB->Kd_Prog && $row->Kd_Keg == $rowB->Kd_Keg) :
                           echo $rowB->nama;
                           break;
                         endif;
@@ -60,7 +60,7 @@
                   <td style="text-align: right;"><?php echo number_format($row->total_induk, 0);?></td>
                   <td style="text-align: right;"><?php echo number_format($row->total_perubahan, 0);?></td>
                   <td>
-                    <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$row->tahun.'&kd_urusan='.$row->kd_urusan.'&kd_bidang='.$row->kd_bidang.'&kd_unit='.$row->kd_unit.'&kd_sub='.$row->kd_sub.'&kd_prog='.$row->kd_prog.'&kd_keg='.$row->kd_keg)?>">(<?=$row->progress_data."/".$row->total_data?>) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
+                    <a href="<?=site_url('backend/rincianbykegiatan/?tahun='.$row->Tahun.'&kd_urusan='.$row->Kd_Urusan.'&kd_bidang='.$row->Kd_Bidang.'&kd_unit='.$row->Kd_Unit.'&kd_sub='.$row->Kd_Sub.'&kd_prog='.$row->Kd_Prog.'&kd_keg='.$row->Kd_Keg)?>">(x/x) <i style="margin-left: 5px;" class="fa fa-circle-o-notch fa-spin text-aqua ml-10"></i></a>
                   </td>
                 </tr>
 
